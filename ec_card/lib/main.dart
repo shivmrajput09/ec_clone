@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'src/injection.dart'; // Nayi file ka import
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // Apni screens import karo yahan
 // import 'package:ec_card_app/src/presentation/login/login.dart'; 
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // App start hone se pehle DI container initialize kar diya
+  configureInjection();  
   runApp(const MyApp());
 }
 
