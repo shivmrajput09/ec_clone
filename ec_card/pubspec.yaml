@@ -40,6 +40,7 @@ dependencies:
   dio: ^5.11.1
   dartz: ^0.10.1
   flutter_secure_storage: ^11.2.0
+  pin_code_fields: ^10.1.1
 
 dev_dependencies:
   flutter_test:
