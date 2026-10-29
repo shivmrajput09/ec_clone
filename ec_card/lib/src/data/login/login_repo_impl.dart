@@ -30,7 +30,7 @@ class LoginRepoImpl implements LoginRepo {
         'auth/login', // BaseURL pehle se ApiModule mein set hai
         data: {
           'email': email,
-          'password': password,
+          
         },
       );
 

@@ -14,6 +14,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import 'application/core/application_bloc.dart' as _i642;
 import 'data/core/api/api_module.dart' as _i152;
 import 'data/local_storage/secure_storage_manager_impl.dart' as _i60;
 import 'data/login/login_repo_impl.dart' as _i220;
@@ -33,6 +34,13 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i963.LoginRepo>(
       () => _i220.LoginRepoImpl(gh<_i361.Dio>(), gh<InvalidType>()),
+    );
+    gh.singleton<_i642.ApplicationBloc>(
+      () => _i642.ApplicationBloc(
+        gh<InvalidType>(),
+        gh<InvalidType>(),
+        gh<InvalidType>(),
+      ),
     );
     return this;
   }

@@ -47,6 +47,7 @@ class _LoginViewState extends State<LoginView> {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Successful!'), backgroundColor: Colors.green));
                 // TODO: Navigate to Dashboard / OTP Screen here
               },
+              
               orElse: () {},
             );
           },

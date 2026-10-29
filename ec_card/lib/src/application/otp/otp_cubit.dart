@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'otp_cubit.freezed.dart';
+part '../login/core/otp/otp_cubit.freezed.dart';
 
 @freezed
 class OtpState with _$OtpState {
