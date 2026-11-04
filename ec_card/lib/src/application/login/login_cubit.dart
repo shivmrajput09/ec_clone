@@ -36,7 +36,7 @@ class LoginCubit extends Cubit<LoginState> {
 
     // Dartz Either ko handle karna (fold)
     result.fold(
-      (failure) => emit(LoginState.error(failure.message)), // Left: Error aayi toh UI ko error do
+(failure) => emit(LoginState.error(failure.toString())),       // Left: Error aayi toh UI ko error do
       (success) => emit(const LoginState.success()),        // Right: Success aayi toh UI ko success do
     );
   }

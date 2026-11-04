@@ -25,10 +25,10 @@ import '../utils/extension.dart';
 
 class MyAppView extends StatefulWidget {
   const MyAppView({
-    Key? key,
+    super.key,
     required this.settingsController,
     required this.localeProvider,
-  }) : super(key: key);
+  });
 
   final SettingsController settingsController;
   final LocaleProvider localeProvider;
@@ -76,10 +76,10 @@ class _MyAppViewState extends State<MyAppView> {
 /// The Widget that configures your application.
 class MyApp extends StatefulWidget {
   const MyApp({
-    Key? key,
+    super.key,
     required this.settingsController,
     required this.localeProvider,
-  }) : super(key: key);
+  });
 
   final SettingsController settingsController;
   final LocaleProvider localeProvider;
@@ -159,7 +159,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             builder: (context, child) {
               // ScreenUtil.setContext(context);
               return MediaQuery(
-                data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1)),
                 child: BlocListener<ApplicationBloc, ApplicationState>(
                   listener: (context, state) {
                     // Future.delayed(const Duration(seconds: 1), () {});

@@ -17,8 +17,7 @@ import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 class ProfileQuestionsScreen extends StatefulWidget {
   final bool showBackButton;
 
-  const ProfileQuestionsScreen({Key? key, this.showBackButton = true})
-      : super(key: key);
+  const ProfileQuestionsScreen({super.key, this.showBackButton = true});
 
   @override
   _ProfileQuestionsScreenState createState() => _ProfileQuestionsScreenState();

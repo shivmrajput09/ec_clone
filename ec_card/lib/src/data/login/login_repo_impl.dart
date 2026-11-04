@@ -13,7 +13,7 @@ import '../core/api/api_handler.dart';
 @LazySingleton(as: LoginRepo)
 class LoginRepoImpl implements LoginRepo {
   final Dio _dio;
-  final SecureStorageManager _storageManager;
+  final SecureStorgeManager _storageManager;
 
   // Constructor mein GetIt automatically Dio aur Storage de dega
   LoginRepoImpl(this._dio, this._storageManager);

@@ -20,8 +20,7 @@ import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 class LoadingStatusPage extends StatefulWidget {
   final bool skipProfileCheck;
 
-  const LoadingStatusPage({Key? key, this.skipProfileCheck = false})
-      : super(key: key);
+  const LoadingStatusPage({super.key, this.skipProfileCheck = false});
 
   static const routeName = '/loading-status';
 

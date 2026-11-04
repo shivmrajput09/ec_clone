@@ -64,7 +64,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
 
       // Stay on the splash screen while the user is asked about a newer
       // release. A required update never lets start-up continue.
-      await AppUpdateController.instance.waitForStartUp();
+    //  await AppUpdateController.instance.waitForStartUp();
 
       final accessToken = await _secureStorageManager.getAccessToken();
       final refreshToken = await _secureStorageManager.getRefreshToken();
