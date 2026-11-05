@@ -1,102 +1,118 @@
 // lib/src/presentation/otp/otp_screen.dart
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import '../home/dashboard_screen.dart';
 
-import '../../application/otp/otp_cubit.dart';
-import '../../injection.dart';
-
-class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
+class OtpScreen extends StatefulWidget {
+  final String emailOrPhone;
+  const OtpScreen({super.key, required this.emailOrPhone});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<OtpCubit>(),
-      child: const OtpView(),
+  State<OtpScreen> createState() => _OtpScreenState();
+}
+
+class _OtpScreenState extends State<OtpScreen> {
+  final List<TextEditingController> _controllers =
+      List.generate(6, (_) => TextEditingController());
+  bool _isLoading = false;
+
+  void _verifyOtp() async {
+    setState(() => _isLoading = true);
+    await Future.delayed(const Duration(seconds: 1)); // Verification simulation
+    setState(() => _isLoading = false);
+
+    if (!mounted) return;
+
+    // Navigate to Dashboard
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DashboardScreen(userIdentifier: widget.emailOrPhone),
+      ),
     );
   }
-}
-
-class OtpView extends StatefulWidget {
-  const OtpView({super.key});
-
-  @override
-  State<OtpView> createState() => _OtpViewState();
-}
-
-class _OtpViewState extends State<OtpView> {
-  String currentText = "";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Verify OTP')),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: BlocConsumer<OtpCubit, OtpState>(
-          listener: (context, state) {
-            state.maybeWhen(
-              error: (msg) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red)),
-              success: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Verification Done!'), backgroundColor: Colors.green)),
-              orElse: () {},
-            );
-          },
-          builder: (context, state) {
-            final isLoading = state.maybeWhen(loading: () => true, orElse: () => false);
+    const primaryColor = Color(0xFF3F51B5); // EC Card Indigo
 
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text("Enter the 6-digit code sent to your email/phone", textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
-                const SizedBox(height: 30),
-                
-                // OTP Field
-                PinCodeTextField(
-                  appContext: context,
-                  length: 6,
-                  obscureText: false,
-                  animationType: AnimationType.fade,
-                  pinTheme: PinTheme(
-                    shape: PinCodeFieldShape.box,
-                    borderRadius: BorderRadius.circular(8),
-                    fieldHeight: 50,
-                    fieldWidth: 40,
-                    activeFillColor: Colors.white,
-                    activeColor: Colors.blue,
-                    selectedColor: Colors.black,
-                    inactiveColor: Colors.grey,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('OTP Verification'),
+        backgroundColor: primaryColor,
+        foregroundColor: Colors.white,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            const Icon(Icons.mark_email_read_outlined, size: 70, color: primaryColor),
+            const SizedBox(height: 20),
+            const Text(
+              'Verification Code',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'We sent a 6-digit verification code to:\n${widget.emailOrPhone}',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey[700], fontSize: 14),
+            ),
+            const SizedBox(height: 35),
+
+            // 6-Digit OTP Input Boxes
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(6, (index) {
+                return SizedBox(
+                  width: 45,
+                  height: 55,
+                  child: TextField(
+                    controller: _controllers[index],
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    maxLength: 1,
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    decoration: InputDecoration(
+                      counterText: '',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: primaryColor, width: 2),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      if (value.isNotEmpty && index < 5) {
+                        FocusScope.of(context).nextFocus();
+                      } else if (value.isEmpty && index > 0) {
+                        FocusScope.of(context).previousFocus();
+                      }
+                    },
                   ),
-                  onChanged: (value) {
-                    currentText = value;
-                  },
+                );
+              }),
+            ),
+            const SizedBox(height: 35),
+
+            // Verify Button
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
-                
-                const SizedBox(height: 30),
-                
-                // Verify Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: isLoading
-                        ? null
-                        : () {
-                            if (currentText.length == 6) {
-                              context.read<OtpCubit>().verifyOtp(currentText);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Enter complete OTP")));
-                            }
-                          },
-                    child: isLoading 
-                        ? const CircularProgressIndicator(color: Colors.white) 
-                        : const Text('VERIFY', style: TextStyle(fontSize: 16)),
-                  ),
-                ),
-              ],
-            );
-          },
+                onPressed: _isLoading ? null : _verifyOtp,
+                child: _isLoading
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : const Text('VERIFY & CONTINUE',
+                        style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+            ),
+          ],
         ),
       ),
     );

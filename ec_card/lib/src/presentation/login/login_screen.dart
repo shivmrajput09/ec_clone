@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../application/login/login_cubit.dart';
-import '../../injection.dart'; // DI getIt ke liye
+import '../../injection.dart';
+import '../otp/otp_screen.dart'; // ✅ OTP Screen connected
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // UI ko Cubit provide karna
     return BlocProvider(
-      create: (context) => getIt<LoginCubit>(), // DI se Cubit mangwaya
+      create: (context) => getIt<LoginCubit>(),
       child: const LoginView(),
     );
   }
@@ -36,18 +36,38 @@ class _LoginViewState extends State<LoginView> {
       appBar: AppBar(title: const Text('EC Card Login')),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        // BlocConsumer UI rebuild karta hai aur side-effects (Snackbar/Navigation) handle karta hai
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             state.maybeWhen(
               error: (msg) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg, style: const TextStyle(color: Colors.white)), backgroundColor: Colors.red));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(msg, style: const TextStyle(color: Colors.white)),
+                    backgroundColor: Colors.red,
+                  ),
+                );
               },
               success: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Successful!'), backgroundColor: Colors.green));
-                // TODO: Navigate to Dashboard / OTP Screen here
+                // ✅ Green Snackbar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Login Successful! Redirecting to OTP...'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+
+                // ✅ Screen Change: Seedha OTP Screen par navigation
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OtpScreen(
+                      emailOrPhone: emailController.text.isNotEmpty
+                          ? emailController.text
+                          : 'user@example.com',
+                    ),
+                  ),
+                );
               },
-              
               orElse: () {},
             );
           },
@@ -59,13 +79,19 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
+                  decoration: const InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 const SizedBox(height: 15),
                 TextField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: const InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
+                  decoration: const InputDecoration(
+                    labelText: 'Password',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 const SizedBox(height: 30),
                 SizedBox(
@@ -75,7 +101,6 @@ class _LoginViewState extends State<LoginView> {
                     onPressed: isLoading
                         ? null
                         : () {
-                            // Cubit ka function call karna
                             context.read<LoginCubit>().loginPressed(
                                   emailController.text,
                                   passwordController.text,
