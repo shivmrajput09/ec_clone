@@ -1,7 +1,8 @@
 part of 'application_bloc.dart';
 
-@freezed
-class ApplicationEvent with _$ApplicationEvent {
+@freezed 
+
+ abstract class ApplicationEvent with _$ApplicationEvent {
   const factory ApplicationEvent.checkStatus() = CheckStatus;
 
   const factory ApplicationEvent.internetStatusChanged(bool isConnected) =

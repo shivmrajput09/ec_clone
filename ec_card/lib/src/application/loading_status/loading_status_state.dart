@@ -10,7 +10,7 @@ part of 'loading_status_cubit.dart';
 /// automatically is notepad ki copy banane ke functions (copyWith) generate karta hai.
 
 @freezed
-class LoadingStatusState with _$LoadingStatusState {
+abstract  class LoadingStatusState with _$LoadingStatusState {
   const factory LoadingStatusState({
     // Quiz/Video/Profile gatekeeper ka final result
     required Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,

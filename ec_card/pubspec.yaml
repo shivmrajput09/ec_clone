@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.13.3
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -29,5 +29,6 @@ dev_dependencies:
   flutter_lints: any
   build_runner: any          
   injectable_generator: any  
-  freezed: any           # ✅ Lock Version
-  json_serializable: any     # ✅ Lock Version
+  freezed: any
+  json_serializable: any
+ 

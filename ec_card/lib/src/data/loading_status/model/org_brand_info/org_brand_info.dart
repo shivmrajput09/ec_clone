@@ -1,8 +1,11 @@
 // ignore_for_file: invalid_annotation_target
+
 import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'org_brand_info.freezed.dart';
+
 part 'org_brand_info.g.dart';
 
 OrgBrandInfoData orgBrandInfoDataFromJson(String str) =>
@@ -12,7 +15,7 @@ String orgBrandInfoDataToJson(OrgBrandInfoData data) =>
     json.encode(data.toJson());
 
 @freezed
-class OrgBrandInfoData with _$OrgBrandInfoData {
+abstract class OrgBrandInfoData with _$OrgBrandInfoData {
   const factory OrgBrandInfoData({
     @JsonKey(name: 'orgName') @Default('') String orgName,
     @JsonKey(name: 'city') @Default('') String city,
