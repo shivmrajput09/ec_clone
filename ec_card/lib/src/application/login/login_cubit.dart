@@ -8,9 +8,6 @@ import '../../domain/login/login_repo.dart';
 
 part 'login_cubit.freezed.dart';
 
-// ==========================================
-// 1. STATES (UI ki condition)
-// ==========================================
 @freezed
 class LoginState with _$LoginState {
   const factory LoginState.initial() = _Initial;
@@ -19,25 +16,18 @@ class LoginState with _$LoginState {
   const factory LoginState.error(String message) = _Error;
 }
 
-// ==========================================
-// 2. CUBIT (Logic Handle Karega)
-// ==========================================
 @injectable
 class LoginCubit extends Cubit<LoginState> {
-  final LoginRepo _loginRepo; // DI khud yahan repo laake dega
+  final LoginRepository _loginRepo; // ✅ LoginRepo ki jagah LoginRepository
 
   LoginCubit(this._loginRepo) : super(const LoginState.initial());
 
-  Future<void> loginPressed(String email, String password) async {
-    emit(const LoginState.loading()); // Button dabte hi loading ghumao
-
-    // Repo se API call karo
-    final result = await _loginRepo.login(email: email, password: password);
-
-    // Dartz Either ko handle karna (fold)
+  Future<void> loginPressed(String phoneNumber) async {
+    emit(const LoginState.loading());
+    final result = await _loginRepo.sendOTP(phoneNumber);
     result.fold(
-(failure) => emit(LoginState.error(failure.toString())),       // Left: Error aayi toh UI ko error do
-      (success) => emit(const LoginState.success()),        // Right: Success aayi toh UI ko success do
+      (failure) => emit(LoginState.error(failure.toString())),
+      (success) => emit(const LoginState.success()),
     );
   }
 }

@@ -6,19 +6,22 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.13.3
+
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: any
   flutter_screenutil: any
   get_it: any
-  injectable: any            # Let Flutter decide
+  injectable: any
   dio: any
   dartz: any
   flutter_secure_storage: any
   pin_code_fields: any
   flutter_bloc: any
-  freezed_annotation: any    # Let Flutter decide
+  freezed_annotation: any
+  json_annotation: any  
+  shared_preferences: any
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +29,5 @@ dev_dependencies:
   flutter_lints: any
   build_runner: any          
   injectable_generator: any  
-  freezed: any
-
-  
+  freezed: any           # ✅ Lock Version
+  json_serializable: any     # ✅ Lock Version

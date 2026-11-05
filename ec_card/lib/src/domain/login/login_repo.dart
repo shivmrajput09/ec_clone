@@ -1,15 +1,11 @@
-// lib/src/domain/login/login_repo.dart
-
 import 'package:dartz/dartz.dart';
-import '../core/errors/failures.dart';
+import '../core/errors/errors.dart';
 
-// Yeh UI aur Data layer ke beech ka bridge hai
-abstract class LoginRepo {
-  // Login function jo email aur password lega aur Either (Success ya Failure) return karega
-  Future<Either<Failure, bool>> login({
-    required String email, 
-    required String password,
-  });
-  
-  // Signup aur baki auth contracts bhi yahan aayenge
+abstract class LoginRepository {
+  Future<Either<AppErrors, String>> sendOTP(String phoneNumber);
+
+  Future<Either<AppErrors, String>> signInWithOTP(
+      String phoneNumber, String otp);
+
+  Future<void> logout();
 }

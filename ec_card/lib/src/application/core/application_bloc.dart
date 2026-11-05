@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:ec_card_app/src/data/core/app_update/app_update_controller.dart';
+//import 'package:ec_card_app/src/data/core/app_update/app_update_controller.dart';
 import 'package:ec_card_app/src/data/core/network_info.dart';
 import 'package:ec_card_app/src/domain/local_storage/secure_storage_manager.dart';
 import 'package:ec_card_app/src/domain/login/login_repo.dart';
@@ -10,9 +10,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
-part '../login/core/application_event.dart';
-part '../login/core/application_state.dart';
-part '../login/core/application_bloc.freezed.dart';
+// ✅ SAHI PATH:
+part 'application_event.dart';
+part 'application_state.dart';
+part 'application_bloc.freezed.dart';
+
 
 @singleton
 class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
