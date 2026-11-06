@@ -39,7 +39,8 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final apiModule = _$ApiModule();
-    gh.factory<_i262.OtpCubit>(() => _i262.OtpCubit());
+    gh.factory<_i262.OtpCubit>(
+        () => _i262.OtpCubit(gh<_i963.LoginRepository>()));
     gh.lazySingleton<_i361.Dio>(() => apiModule.dio);
     gh.lazySingleton<_i718.NetworkInfo>(() => _i718.NetworkInfoImpl());
     gh.factory<_i360.LoadingStatusCubit>(() => _i360.LoadingStatusCubit(

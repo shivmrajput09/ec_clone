@@ -1,7 +1,7 @@
 // lib/src/presentation/quiz/quiz_complete.dart
 
 import 'package:flutter/material.dart';
-import '../home/dashboard_screen.dart';
+import '../home/home_page.dart'; // 👈 YAHAN NAYA IMPORT ADD KIYA HAI (HomePage ke liye)
 
 class QuizCompleteScreen extends StatelessWidget {
   final int score;
@@ -83,7 +83,7 @@ class QuizCompleteScreen extends StatelessWidget {
               ),
               const SizedBox(height: 35),
 
-              // Button to Dashboard
+              // 🎯 YAHAN MAIN CHANGE HUA HAI:
               SizedBox(
                 width: double.infinity,
                 height: 52,
@@ -93,10 +93,11 @@ class QuizCompleteScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                   onPressed: () {
+                    // 👇 YAHAN DASHBOARD KI JAGAH MAIN HOMEPAGE (4 TABS WALA) CONNECT KIYA HAI:
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(userIdentifier: 'Certified Member'),
+                        builder: (context) => const HomePage(), // 👈 YAHAN NAYI SCREEN JODI GAYI HAI
                       ),
                       (route) => false,
                     );
