@@ -6,7 +6,6 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
-
 dependencies:
   flutter:
     sdk: flutter
@@ -22,7 +21,12 @@ dependencies:
   freezed_annotation: any
   json_annotation: any  
   shared_preferences: any
+  # ✅ Part 11 Media Packages:
+  video_player: any
+  chewie: any
+  syncfusion_flutter_pdfviewer: any
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,4 +35,3 @@ dev_dependencies:
   injectable_generator: any  
   freezed: any
   json_serializable: any
- 
