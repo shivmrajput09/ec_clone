@@ -1,13 +1,9 @@
+// lib/src/injection.config.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format width=80
 
-// **************************************************************************
-// InjectableConfigGenerator
-// **************************************************************************
-
 // ignore_for_file: type=lint
 // coverage:ignore-file
-
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:dio/dio.dart' as _i361;
@@ -20,6 +16,8 @@ import 'application/login/login_cubit.dart' as _i1056;
 import 'application/otp/otp_cubit.dart' as _i262;
 import 'data/core/api/api_module.dart' as _i152;
 import 'data/core/network_info.dart' as _i718;
+import 'data/loading_status/loading_status_repo_impl.dart' as _i1001;
+import 'data/scanner/scanner_repo_impl.dart' as _i1002;
 import 'data/local_storage/secure_storage_manager_impl.dart' as _i60;
 import 'data/login/login_repo_impl.dart' as _i220;
 import 'domain/loading_status/loading_status_repo.dart' as _i968;
@@ -50,6 +48,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.lazySingleton<_i523.SecureStorgeManager>(
         () => _i60.SecureStorageManagerImpl());
+    gh.lazySingleton<_i968.LoadingStatusRepository>(
+        () => _i1001.LoadingStatusRepoImpl(gh<_i523.SecureStorgeManager>()));
+    gh.lazySingleton<_i375.ScannerRepository>(
+        () => _i1002.ScannerRepoImpl(gh<_i523.SecureStorgeManager>()));
     gh.lazySingleton<_i963.LoginRepository>(
         () => _i220.LoginRepositoryImpl(gh<_i523.SecureStorgeManager>()));
     gh.singleton<_i642.ApplicationBloc>(() => _i642.ApplicationBloc(

@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import '../login/login_screen.dart';
+import '../../domain/login/login_repo.dart';
+import '../../injection.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -112,6 +114,7 @@ class AccountScreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
+              getIt<LoginRepository>().logout();
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginScreen()),

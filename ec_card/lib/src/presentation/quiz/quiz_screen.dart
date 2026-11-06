@@ -1,6 +1,9 @@
 // lib/src/presentation/quiz/quiz_screen.dart
 
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import '../../domain/local_storage/secure_storage_manager.dart';
+import '../../injection.dart';
 import 'quiz_complete.dart';
 import 'quiz_fail_screen.dart';
 
@@ -79,6 +82,9 @@ class _QuizScreenState extends State<QuizScreen> {
 
     // 🎯 PASS / FAIL BRANCHING
     if (isPassed) {
+      await getIt<SecureStorgeManager>().setQuizPassStatusToLocal(
+        statusData: jsonEncode({'videosWatched': true, 'quizPassed': true}),
+      );
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

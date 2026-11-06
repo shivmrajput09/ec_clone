@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:ec_card_app/src/data/education/model/education_item/education_item.dart';
 
 class DocumentReaderPage extends StatelessWidget {
-  final EducationItem document;
+  final String title;
+  final String pdfUrl;
 
-  const DocumentReaderPage({Key? key, required this.document}) : super(key: key);
+  const DocumentReaderPage({
+    super.key,
+    required this.title,
+    required this.pdfUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(document.documentTitle),
+        title: Text(title),
         centerTitle: true,
       ),
       body: SfPdfViewer.network(
-        document.documentFile, // Remote URL of PDF
+        pdfUrl,
         canShowPaginationDialog: true,
         pageLayoutMode: PdfPageLayoutMode.continuous,
       ),

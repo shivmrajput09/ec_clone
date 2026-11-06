@@ -1,6 +1,9 @@
 // lib/src/presentation/videos/video_screen.dart
 
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import '../../domain/local_storage/secure_storage_manager.dart';
+import '../../injection.dart';
 import 'widgets/video_player_screen.dart';
 import '../quiz/quiz_screen.dart'; // ✅ Part 12: Quiz Screen connected
 
@@ -100,8 +103,11 @@ class _VideosScreenState extends State<VideosScreen> {
               height: 52,
               child: ElevatedButton(
                 onPressed: _allVideosWatched
-                    ? () {
-                        // ✅ Seedha Part 12: Quiz Screen par navigation
+                    ? () async {
+                        // Persist videosWatched to SecureStorage for Gatekeeper
+                        await getIt<SecureStorgeManager>().setQuizPassStatusToLocal(
+                          statusData: jsonEncode({'videosWatched': true}),
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(
