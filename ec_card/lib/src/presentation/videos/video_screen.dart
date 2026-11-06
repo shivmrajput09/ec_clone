@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'widgets/video_player_screen.dart';
+import '../quiz/quiz_screen.dart'; // ✅ Part 12: Quiz Screen connected
 
 class VideosScreen extends StatefulWidget {
   const VideosScreen({super.key});
@@ -91,7 +92,7 @@ class _VideosScreenState extends State<VideosScreen> {
             ),
           ),
 
-          // 🎯 TARGET BUTTON: Jab tak saari videos nahi dekhi jayengi, button disabled rahega
+          // 🎯 TARGET BUTTON: Videos dekhne ke baad yeh Unlock hoga aur Quiz Screen kholega
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: SizedBox(
@@ -100,14 +101,15 @@ class _VideosScreenState extends State<VideosScreen> {
               child: ElevatedButton(
                 onPressed: _allVideosWatched
                     ? () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Proceeding to Part 12: Quiz Engine!'),
-                            backgroundColor: Colors.green,
+                        // ✅ Seedha Part 12: Quiz Screen par navigation
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const QuizScreen(),
                           ),
                         );
                       }
-                    : null, // null hone par disabled rehta hai
+                    : null, // null hone par button disabled rehta hai
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   disabledBackgroundColor: Colors.grey[300],
