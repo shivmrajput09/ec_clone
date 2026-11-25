@@ -1,4 +1,4 @@
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -10,12 +10,29 @@ import 'src/presentation/core/res/app_theme.dart';
 import 'src/presentation/loading_status/loading_status_page.dart';
 import 'src/presentation/login/login_screen.dart';
 
+const FirebaseOptions _iosFirebaseOptions = FirebaseOptions(
+  apiKey: 'AIzaSyA7cwT2gqaRMIbiS_mLxTlBB7UVAfxqdEo',
+  appId: '1:585835365280:ios:ae2b8b97052450317ddac5',
+  messagingSenderId: '585835365280',
+  projectId: 'ec-card-firebase',
+  iosBundleId: 'uk.b60.provide.ec-card.stage',
+  storageBucket: 'ec-card-firebase.firebasestorage.app',
+);
+
+Future<void> _initializeFirebase() async {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.iOS) {
+    await Firebase.initializeApp(options: _iosFirebaseOptions);
+    return;
+  }
+  await Firebase.initializeApp();
+}
+
 // Background notification handler
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(
   RemoteMessage message,
 ) async {
-  await Firebase.initializeApp();
+  await _initializeFirebase();
 
   debugPrint(
     '[Background Message Received] ID: ${message.messageId}',
@@ -27,7 +44,7 @@ Future<void> main() async {
 
   // 1. Firebase initialization with try-catch
   try {
-    await Firebase.initializeApp();
+    await _initializeFirebase();
 
     FirebaseMessaging.onBackgroundMessage(
       firebaseMessagingBackgroundHandler,
@@ -76,7 +93,6 @@ class MyApp extends StatelessWidget {
       home: isLoggedIn
           ? const LoadingStatusPage()
           : const LoginScreen(),
-    
     );
   }
 }

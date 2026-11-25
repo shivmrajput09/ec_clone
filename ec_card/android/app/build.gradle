@@ -3,11 +3,11 @@ plugins {
     id("com.android.application")
     // Flutter plugin must be applied after Android and Kotlin plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.ec_card"
-
+namespace = "com.nhs.android"
     // Updated Android SDK
     compileSdk = 36
 
@@ -18,16 +18,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    defaultConfig {
-        applicationId = "com.example.ec_card"
-
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
-    }
-
+ defaultConfig {
+    applicationId = "com.nhs.android"
+    minSdk = flutter.minSdkVersion
+    targetSdk = 36
+    versionCode = 93
+    versionName = "4.0.22"
+}
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("debug")
