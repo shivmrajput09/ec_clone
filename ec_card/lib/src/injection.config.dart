@@ -25,6 +25,10 @@ import 'domain/local_storage/secure_storage_manager.dart' as _i523;
 import 'domain/login/login_repo.dart' as _i963;
 import 'domain/scanner/scanner_repo.dart' as _i375;
 
+import 'data/venue/venue_repo_impl.dart' as _i966;
+import 'domain/venue/venue_repo.dart' as _i965;
+import 'application/venue/venue_cubit.dart' as _i967;
+
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
@@ -59,9 +63,24 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i523.SecureStorgeManager>(),
           gh<_i963.LoginRepository>(),
         ));
-    gh.factory<_i1056.LoginCubit>(
-        () => _i1056.LoginCubit(gh<_i963.LoginRepository>()));
-    return this;
+
+        
+   gh.factory<_i1056.LoginCubit>(
+  () => _i1056.LoginCubit(gh<_i963.LoginRepository>())
+);
+
+// Venue Registration
+gh.lazySingleton<_i965.VenueRepository>(
+  () => _i966.VenueRepoImpl(),
+);
+
+gh.factory<_i967.VenueCubit>(
+  () => _i967.VenueCubit(
+    gh<_i965.VenueRepository>(),
+  ),
+);
+
+return this;
   }
 }
 

@@ -6,6 +6,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -21,11 +22,20 @@ dependencies:
   freezed_annotation: any
   json_annotation: any  
   shared_preferences: any
-  # ✅ Part 11 Media Packages:
+  
+  # ✅ Media Packages:
   video_player: any
   chewie: any
   syncfusion_flutter_pdfviewer: any
+  
+  # ✅ Step 14 (Maps & Venues):
+  google_maps_flutter: ^2.10.1
+  geolocator: ^10.1.1
+  sliding_up_panel: ^2.0.0+1
 
+  mobile_scanner: ^5.2.3     # Live Camera QR Scanner
+  firebase_core: ^2.32.0     # Firebase Core
+  firebase_messaging: ^14.7.10 # Push Notifications
   
 dev_dependencies:
   flutter_test:
@@ -35,3 +45,6 @@ dev_dependencies:
   injectable_generator: any  
   freezed: any
   json_serializable: any
+
+flutter:
+  uses-material-design: true

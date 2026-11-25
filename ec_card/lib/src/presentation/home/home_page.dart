@@ -1,9 +1,13 @@
-// lib/src/presentation/home/home_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
 import '../education/education_screen.dart';
 import '../account/account_screen.dart';
-
+import '../venue/venue_screen.dart';
+import '../venue/map_controller_handle.dart';
+import 'scanner/scanner_page.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,43 +19,106 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final int _unreadMessagesCount = 3; // Dynamic Badge Count
+  final int _unreadMessagesCount = 3;
+
+  // Google Maps Location Variables
+  LatLng _currentPosition = const LatLng(54.0934, -2.8948);
+
+  final MapControllerHandle _mapHandle = MapControllerHandle();
+
+  bool _isLoadingLocation = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _determinePosition();
+  }
+
+  // Determine Current GPS Location
+  Future<void> _determinePosition() async {
+    try {
+      LocationPermission permission =
+          await Geolocator.checkPermission();
+
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+      }
+
+      if (permission == LocationPermission.whileInUse ||
+          permission == LocationPermission.always) {
+        final pos = await Geolocator.getCurrentPosition();
+
+        if (mounted) {
+          setState(() {
+            _currentPosition =
+                LatLng(pos.latitude, pos.longitude);
+            _isLoadingLocation = false;
+          });
+        }
+        return;
+      }
+    } catch (_) {}
+
+    if (mounted) {
+      setState(() => _isLoadingLocation = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     const primaryColor = Color(0xFF3F51B5);
-    const accentCyan = Colors.cyan;
+    const accentCyan = Color(0xFF00ADB5);
 
     return Scaffold(
-      // 🎯 TARGET 1: IndexedStack taaki Tab switch karne par page destroy/rebuild na ho
+      // IndexedStack: Maintains tab state
       body: IndexedStack(
         index: _currentIndex,
         children: [
-          _buildVenuesTab(primaryColor),        // Tab 0: Venues / Map Hub
-          const EducationScreen(),              // Tab 1: Part 11 Media Hub
-          _buildMessagesTab(primaryColor),      // Tab 2: Messages / Notifications
-          const AccountScreen(),                // Tab 3: Account & Profile
+          // Tab 0: Google Maps Venue Screen
+          _isLoadingLocation
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : VenueScreen(
+                  initialCameraPosition: _currentPosition,
+                  completer: _mapHandle,
+                ),
+
+          // Tab 1: Education
+          const EducationScreen(),
+
+          // Tab 2: Messages
+          _buildMessagesTab(primaryColor),
+
+          // Tab 3: Account
+          const AccountScreen(),
         ],
       ),
 
-      // 🎯 TARGET 2: Center Docked FAB (QR Code Scanner)
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // Center Docked FAB
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.centerDocked,
+
       floatingActionButton: FloatingActionButton(
         elevation: 4,
         backgroundColor: accentCyan,
         shape: const CircleBorder(),
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Opening QR Scanner to claim pharmacy vouchers...'),
-              backgroundColor: primaryColor,
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ScannerPage(),
             ),
           );
         },
-        child: const Icon(Icons.qr_code_scanner, color: Colors.white, size: 28),
+        child: const Icon(
+          Icons.qr_code_scanner,
+          color: Colors.white,
+          size: 30,
+        ),
       ),
 
-      // 🎯 TARGET 3: Custom Bottom Navigation Bar with Notched Dock & Badges
+      // Custom Bottom Navigation Bar
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 8,
@@ -62,7 +129,7 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              // Left Group: Venues & Education
+              // Venues
               _buildNavTabItem(
                 icon: Icons.storefront_outlined,
                 activeIcon: Icons.storefront,
@@ -70,6 +137,8 @@ class _HomePageState extends State<HomePage> {
                 index: 0,
                 primaryColor: primaryColor,
               ),
+
+              // Education
               _buildNavTabItem(
                 icon: Icons.menu_book_outlined,
                 activeIcon: Icons.menu_book,
@@ -78,18 +147,20 @@ class _HomePageState extends State<HomePage> {
                 primaryColor: primaryColor,
               ),
 
-              // Spacer for Center Docked FAB
+              // FAB Spacer
               const SizedBox(width: 48),
 
-              // Right Group: Messages & Account
+              // Messages
               _buildNavTabItem(
                 icon: Icons.mail_outline,
                 activeIcon: Icons.mail,
                 label: 'Messages',
                 index: 2,
-                badgeCount: _unreadMessagesCount, // 🔴 Badge
+                badgeCount: _unreadMessagesCount,
                 primaryColor: primaryColor,
               ),
+
+              // Account
               _buildNavTabItem(
                 icon: Icons.person_outline,
                 activeIcon: Icons.person,
@@ -104,6 +175,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // Bottom Navigation Tab Item
   Widget _buildNavTabItem({
     required IconData icon,
     required IconData activeIcon,
@@ -118,7 +190,10 @@ class _HomePageState extends State<HomePage> {
       onTap: () => setState(() => _currentIndex = index),
       borderRadius: BorderRadius.circular(12),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 4,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -130,7 +205,8 @@ class _HomePageState extends State<HomePage> {
                   color: isSelected ? primaryColor : Colors.grey,
                   size: 24,
                 ),
-                // 🔴 BADGE INTEGRATION
+
+                // Notification Badge
                 if (badgeCount > 0)
                   Positioned(
                     right: -6,
@@ -141,7 +217,10 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.redAccent,
                         shape: BoxShape.circle,
                       ),
-                      constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                      constraints: const BoxConstraints(
+                        minWidth: 16,
+                        minHeight: 16,
+                      ),
                       child: Text(
                         '$badgeCount',
                         style: const TextStyle(
@@ -155,13 +234,17 @@ class _HomePageState extends State<HomePage> {
                   ),
               ],
             ),
+
             const SizedBox(height: 2),
+
             Text(
               label,
               style: TextStyle(
                 color: isSelected ? primaryColor : Colors.grey,
                 fontSize: 11,
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                fontWeight: isSelected
+                    ? FontWeight.bold
+                    : FontWeight.normal,
               ),
             ),
           ],
@@ -170,66 +253,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Tab 0: Venues Placeholder (Google Maps & Pharmacy Locator)
-  Widget _buildVenuesTab(Color primaryColor) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Participating Venues'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Container(
-            height: 180,
-            decoration: BoxDecoration(
-              color: Colors.indigo.shade50,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: Colors.indigo.shade200),
-            ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.map_outlined, size: 50, color: primaryColor),
-                  const SizedBox(height: 8),
-                  Text('Interactive Pharmacy Map',
-                      style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 16)),
-                  const Text('GPS Location Active: Showing venues within 5 miles',
-                      style: TextStyle(color: Colors.grey, fontSize: 12)),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const Text('Nearby Authorized Pharmacies', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 10),
-          _buildVenueCard('Boots Pharmacy - Central Plaza', '0.4 miles away • Open until 8:00 PM', true),
-          _buildVenueCard('Well Pharmacy - High Street', '1.1 miles away • Open until 6:30 PM', true),
-          _buildVenueCard('Superdrug Health Clinic', '2.5 miles away • Closed today', false),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildVenueCard(String name, String details, bool isOpen) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: isOpen ? Colors.green.shade50 : Colors.grey.shade100,
-          child: Icon(Icons.local_pharmacy, color: isOpen ? Colors.green : Colors.grey),
-        ),
-        title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(details),
-        trailing: const Icon(Icons.directions, color: Colors.indigo),
-      ),
-    );
-  }
-
-  // Tab 2: Messages Tab
+  // Tab 2: Messages
   Widget _buildMessagesTab(Color primaryColor) {
     return Scaffold(
       appBar: AppBar(
@@ -240,26 +264,64 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         padding: const EdgeInsets.all(12),
         children: [
-          _buildMessageItem('Card Renewal Confirmed', 'Your EC membership has been certified for 12 months.', '2 hrs ago'),
-          _buildMessageItem('New Pharmacy Added', 'A new participating venue is available in your area.', '1 day ago'),
-          _buildMessageItem('Training Milestone Completed', 'You have successfully unlocked the certification quiz.', '3 days ago'),
+          _buildMessageItem(
+            'Card Renewal Confirmed',
+            'Your EC membership has been certified for 12 months.',
+            '2 hrs ago',
+          ),
+          _buildMessageItem(
+            'New Pharmacy Added',
+            'A new participating venue is available in your area.',
+            '1 day ago',
+          ),
+          _buildMessageItem(
+            'Training Milestone Completed',
+            'You have successfully unlocked the certification quiz.',
+            '3 days ago',
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildMessageItem(String title, String desc, String time) {
+  // Message Card
+  Widget _buildMessageItem(
+    String title,
+    String desc,
+    String time,
+  ) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: ListTile(
         leading: const CircleAvatar(
           backgroundColor: Colors.indigoAccent,
-          child: Icon(Icons.notifications, color: Colors.white, size: 20),
+          child: Icon(
+            Icons.notifications,
+            color: Colors.white,
+            size: 20,
+          ),
         ),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-        subtitle: Text(desc, style: const TextStyle(fontSize: 12)),
-        trailing: Text(time, style: TextStyle(color: Colors.grey[600], fontSize: 11)),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+        ),
+        subtitle: Text(
+          desc,
+          style: const TextStyle(fontSize: 12),
+        ),
+        trailing: Text(
+          time,
+          style: TextStyle(
+            color: Colors.grey[600],
+            fontSize: 11,
+          ),
+        ),
       ),
     );
   }
