@@ -25,27 +25,36 @@ Future<void> firebaseMessagingBackgroundHandler(
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 1. Initialize Firebase
-  await Firebase.initializeApp();
+  // 1. Firebase initialization with try-catch
+  try {
+    await Firebase.initializeApp();
 
-  // 2. Register background notification handler
-  FirebaseMessaging.onBackgroundMessage(
-    firebaseMessagingBackgroundHandler,
-  );
+    FirebaseMessaging.onBackgroundMessage(
+      firebaseMessagingBackgroundHandler,
+    );
+
+    // 2. Initialize foreground notification service
+    await FirebaseMessagingService.initialize();
+  } catch (e) {
+    debugPrint("Firebase init note: $e");
+  }
 
   // 3. Initialize Dependency Injection
   configureInjection();
 
   // 4. Check login session from Secure Storage
-  final storage = getIt<SecureStorgeManager>();
-  final token = await storage.getAccessToken();
+  bool isLoggedIn = false;
 
-  final isLoggedIn = token != null && token.isNotEmpty;
+  try {
+    final storage = getIt<SecureStorgeManager>();
+    final token = await storage.getAccessToken();
 
-  // 5. Initialize foreground notification service
-  FirebaseMessagingService.initialize();
+    isLoggedIn = token != null && token.isNotEmpty;
+  } catch (e) {
+    debugPrint("Secure Storage note: $e");
+  }
 
-  // 6. Run application
+  // 5. Run application
   runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
@@ -67,6 +76,7 @@ class MyApp extends StatelessWidget {
       home: isLoggedIn
           ? const LoadingStatusPage()
           : const LoginScreen(),
+    
     );
   }
 }

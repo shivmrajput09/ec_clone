@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "585835365280",
+    "project_id": "ec-card-firebase",
+    "storage_bucket": "ec-card-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585835365280:android:7e2eeb7929b9f5b57ddac5",
+        "android_client_info": {
+          "package_name": "com.nhs.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXFPKUlEodJc5BIru2-r1LfFinWpgxukY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

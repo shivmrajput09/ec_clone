@@ -9,7 +9,7 @@ android {
     namespace = "com.example.ec_card"
 
     // Updated Android SDK
-    compileSdk = 35
+    compileSdk = 36
 
     ndkVersion = flutter.ndkVersion
 

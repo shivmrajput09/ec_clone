@@ -33,9 +33,10 @@ dependencies:
   geolocator: ^10.1.1
   sliding_up_panel: ^2.0.0+1
 
-  mobile_scanner: ^5.2.3     # Live Camera QR Scanner
-  firebase_core: ^2.32.0     # Firebase Core
-  firebase_messaging: ^14.7.10 # Push Notifications
+  mobile_scanner: ^5.2.3 
+      # Live Camera QR Scanner
+  firebase_core: ^3.0.0
+  firebase_messaging: ^15.0.0 # Push Notifications
   
 dev_dependencies:
   flutter_test:
