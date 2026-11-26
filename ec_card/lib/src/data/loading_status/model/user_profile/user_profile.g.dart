@@ -6,46 +6,52 @@ part of 'user_profile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UserProfileData _$UserProfileDataFromJson(Map<String, dynamic> json) =>
-    _UserProfileData(
+_$UserProfileDataImpl _$$UserProfileDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserProfileDataImpl(
       profile: Profile.fromJson(json['profile'] as Map<String, dynamic>),
       questions: Questions.fromJson(json['questions'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$UserProfileDataToJson(_UserProfileData instance) =>
+Map<String, dynamic> _$$UserProfileDataImplToJson(
+        _$UserProfileDataImpl instance) =>
     <String, dynamic>{
       'profile': instance.profile,
       'questions': instance.questions,
     };
 
-_Profile _$ProfileFromJson(Map<String, dynamic> json) => _Profile(
+_$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
+    _$ProfileImpl(
       mobile: json['mobile'] as String,
       postalCode: json['postalCode'] as String,
       dateOfBirth: json['dateOfBirth'] as String,
       gender: json['gender'] as String,
     );
 
-Map<String, dynamic> _$ProfileToJson(_Profile instance) => <String, dynamic>{
+Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
+    <String, dynamic>{
       'mobile': instance.mobile,
       'postalCode': instance.postalCode,
       'dateOfBirth': instance.dateOfBirth,
       'gender': instance.gender,
     };
 
-_Questions _$QuestionsFromJson(Map<String, dynamic> json) => _Questions(
+_$QuestionsImpl _$$QuestionsImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionsImpl(
       show: json['show'] as bool,
       list: (json['list'] as List<dynamic>)
           .map((e) => Question.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$QuestionsToJson(_Questions instance) =>
+Map<String, dynamic> _$$QuestionsImplToJson(_$QuestionsImpl instance) =>
     <String, dynamic>{
       'show': instance.show,
       'list': instance.list,
     };
 
-_Question _$QuestionFromJson(Map<String, dynamic> json) => _Question(
+_$QuestionImpl _$$QuestionImplFromJson(Map<String, dynamic> json) =>
+    _$QuestionImpl(
       choiceType: json['choiceType'] as String,
       required: json['required'] as bool,
       enabled: json['enabled'] as bool,
@@ -56,7 +62,8 @@ _Question _$QuestionFromJson(Map<String, dynamic> json) => _Question(
           (json['options'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$QuestionToJson(_Question instance) => <String, dynamic>{
+Map<String, dynamic> _$$QuestionImplToJson(_$QuestionImpl instance) =>
+    <String, dynamic>{
       'choiceType': instance.choiceType,
       'required': instance.required,
       'enabled': instance.enabled,

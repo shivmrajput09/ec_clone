@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_profile.dart';
@@ -9,57 +9,31 @@ part of 'user_profile.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
 
-/// @nodoc
-mixin _$UserProfileData {
-  Profile get profile;
-  Questions get questions;
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $UserProfileDataCopyWith<UserProfileData> get copyWith =>
-      _$UserProfileDataCopyWithImpl<UserProfileData>(
-          this as UserProfileData, _$identity);
-
-  /// Serializes this UserProfileData to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as UserProfileData;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is UserProfileData &&
-            (identical(other.profile, _this.profile) ||
-                other.profile == _this.profile) &&
-            (identical(other.questions, _this.questions) ||
-                other.questions == _this.questions));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as UserProfileData;
-    return Object.hash(runtimeType, _this.profile, _this.questions);
-  }
-
-  @override
-  String toString() {
-    final _this = this as UserProfileData;
-    return 'UserProfileData(profile: ${_this.profile}, questions: ${_this.questions})';
-  }
+UserProfileData _$UserProfileDataFromJson(Map<String, dynamic> json) {
+  return _UserProfileData.fromJson(json);
 }
 
 /// @nodoc
-abstract mixin class $UserProfileDataCopyWith<$Res> {
+mixin _$UserProfileData {
+  Profile get profile => throw _privateConstructorUsedError;
+  Questions get questions => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserProfileDataCopyWith<UserProfileData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserProfileDataCopyWith<$Res> {
   factory $UserProfileDataCopyWith(
-          UserProfileData value, $Res Function(UserProfileData) _then) =
-      _$UserProfileDataCopyWithImpl;
+          UserProfileData value, $Res Function(UserProfileData) then) =
+      _$UserProfileDataCopyWithImpl<$Res, UserProfileData>;
   @useResult
   $Res call({Profile profile, Questions questions});
 
@@ -68,391 +42,193 @@ abstract mixin class $UserProfileDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserProfileDataCopyWithImpl<$Res>
+class _$UserProfileDataCopyWithImpl<$Res, $Val extends UserProfileData>
     implements $UserProfileDataCopyWith<$Res> {
-  _$UserProfileDataCopyWithImpl(this._self, this._then);
+  _$UserProfileDataCopyWithImpl(this._value, this._then);
 
-  final UserProfileData _self;
-  final $Res Function(UserProfileData) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? profile = null,
     Object? questions = null,
   }) {
-    return _then(UserProfileData(
+    return _then(_value.copyWith(
       profile: null == profile
-          ? _self.profile
+          ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile,
       questions: null == questions
-          ? _self.questions
+          ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as Questions,
-    ));
+    ) as $Val);
   }
 
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res> get profile {
-    return $ProfileCopyWith<$Res>(_self.profile, (value) {
-      return _then(_self.copyWith(profile: value));
+    return $ProfileCopyWith<$Res>(_value.profile, (value) {
+      return _then(_value.copyWith(profile: value) as $Val);
     });
   }
 
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuestionsCopyWith<$Res> get questions {
-    return $QuestionsCopyWith<$Res>(_self.questions, (value) {
-      return _then(_self.copyWith(questions: value));
+    return $QuestionsCopyWith<$Res>(_value.questions, (value) {
+      return _then(_value.copyWith(questions: value) as $Val);
     });
   }
 }
 
-/// Adds pattern-matching-related methods to [UserProfileData].
-extension UserProfileDataPatterns on UserProfileData {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+/// @nodoc
+abstract class _$$UserProfileDataImplCopyWith<$Res>
+    implements $UserProfileDataCopyWith<$Res> {
+  factory _$$UserProfileDataImplCopyWith(_$UserProfileDataImpl value,
+          $Res Function(_$UserProfileDataImpl) then) =
+      __$$UserProfileDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Profile profile, Questions questions});
 
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserProfileData value)? $default, {
-    required TResult orElse(),
+  @override
+  $ProfileCopyWith<$Res> get profile;
+  @override
+  $QuestionsCopyWith<$Res> get questions;
+}
+
+/// @nodoc
+class __$$UserProfileDataImplCopyWithImpl<$Res>
+    extends _$UserProfileDataCopyWithImpl<$Res, _$UserProfileDataImpl>
+    implements _$$UserProfileDataImplCopyWith<$Res> {
+  __$$UserProfileDataImplCopyWithImpl(
+      _$UserProfileDataImpl _value, $Res Function(_$UserProfileDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? profile = null,
+    Object? questions = null,
   }) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserProfileData value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_UserProfileData value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(Profile profile, Questions questions)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData() when $default != null:
-        return $default(_that.profile, _that.questions);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(Profile profile, Questions questions) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData():
-        return $default(_that.profile, _that.questions);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(Profile profile, Questions questions)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _UserProfileData() when $default != null:
-        return $default(_that.profile, _that.questions);
-      case _:
-        return null;
-    }
+    return _then(_$UserProfileDataImpl(
+      profile: null == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as Profile,
+      questions: null == questions
+          ? _value.questions
+          : questions // ignore: cast_nullable_to_non_nullable
+              as Questions,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _UserProfileData implements UserProfileData {
-  const _UserProfileData({required this.profile, required this.questions});
-  factory _UserProfileData.fromJson(Map<String, dynamic> json) =>
-      _$UserProfileDataFromJson(json);
+class _$UserProfileDataImpl implements _UserProfileData {
+  const _$UserProfileDataImpl({required this.profile, required this.questions});
+
+  factory _$UserProfileDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserProfileDataImplFromJson(json);
 
   @override
   final Profile profile;
   @override
   final Questions questions;
 
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$UserProfileDataCopyWith<_UserProfileData> get copyWith =>
-      __$UserProfileDataCopyWithImpl<_UserProfileData>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$UserProfileDataToJson(
-      this,
-    );
+  String toString() {
+    return 'UserProfileData(profile: $profile, questions: $questions)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserProfileData &&
+            other is _$UserProfileDataImpl &&
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.questions, questions) ||
                 other.questions == questions));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, profile, questions);
-  }
+  int get hashCode => Object.hash(runtimeType, profile, questions);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserProfileDataImplCopyWith<_$UserProfileDataImpl> get copyWith =>
+      __$$UserProfileDataImplCopyWithImpl<_$UserProfileDataImpl>(
+          this, _$identity);
 
   @override
-  String toString() {
-    return 'UserProfileData(profile: $profile, questions: $questions)';
+  Map<String, dynamic> toJson() {
+    return _$$UserProfileDataImplToJson(
+      this,
+    );
   }
 }
 
-/// @nodoc
-abstract mixin class _$UserProfileDataCopyWith<$Res>
-    implements $UserProfileDataCopyWith<$Res> {
-  factory _$UserProfileDataCopyWith(
-          _UserProfileData value, $Res Function(_UserProfileData) _then) =
-      __$UserProfileDataCopyWithImpl;
-  @override
-  @useResult
-  $Res call({Profile profile, Questions questions});
+abstract class _UserProfileData implements UserProfileData {
+  const factory _UserProfileData(
+      {required final Profile profile,
+      required final Questions questions}) = _$UserProfileDataImpl;
+
+  factory _UserProfileData.fromJson(Map<String, dynamic> json) =
+      _$UserProfileDataImpl.fromJson;
 
   @override
-  $ProfileCopyWith<$Res> get profile;
+  Profile get profile;
   @override
-  $QuestionsCopyWith<$Res> get questions;
+  Questions get questions;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserProfileDataImplCopyWith<_$UserProfileDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-/// @nodoc
-class __$UserProfileDataCopyWithImpl<$Res>
-    implements _$UserProfileDataCopyWith<$Res> {
-  __$UserProfileDataCopyWithImpl(this._self, this._then);
-
-  final _UserProfileData _self;
-  final $Res Function(_UserProfileData) _then;
-
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? profile = null,
-    Object? questions = null,
-  }) {
-    return _then(_UserProfileData(
-      profile: null == profile
-          ? _self.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile,
-      questions: null == questions
-          ? _self.questions
-          : questions // ignore: cast_nullable_to_non_nullable
-              as Questions,
-    ));
-  }
-
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ProfileCopyWith<$Res> get profile {
-    return $ProfileCopyWith<$Res>(_self.profile, (value) {
-      return _then(_self.copyWith(profile: value));
-    });
-  }
-
-  /// Create a copy of UserProfileData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $QuestionsCopyWith<$Res> get questions {
-    return $QuestionsCopyWith<$Res>(_self.questions, (value) {
-      return _then(_self.copyWith(questions: value));
-    });
-  }
+Profile _$ProfileFromJson(Map<String, dynamic> json) {
+  return _Profile.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Profile {
-  String get mobile;
-  String get postalCode;
-  String get dateOfBirth;
-  String get gender;
+  String get mobile => throw _privateConstructorUsedError;
+  String get postalCode => throw _privateConstructorUsedError;
+  String get dateOfBirth => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
 
-  /// Create a copy of Profile
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $ProfileCopyWith<Profile> get copyWith =>
-      _$ProfileCopyWithImpl<Profile>(this as Profile, _$identity);
-
-  /// Serializes this Profile to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as Profile;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Profile &&
-            (identical(other.mobile, _this.mobile) ||
-                other.mobile == _this.mobile) &&
-            (identical(other.postalCode, _this.postalCode) ||
-                other.postalCode == _this.postalCode) &&
-            (identical(other.dateOfBirth, _this.dateOfBirth) ||
-                other.dateOfBirth == _this.dateOfBirth) &&
-            (identical(other.gender, _this.gender) ||
-                other.gender == _this.gender));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as Profile;
-    return Object.hash(runtimeType, _this.mobile, _this.postalCode,
-        _this.dateOfBirth, _this.gender);
-  }
-
-  @override
-  String toString() {
-    final _this = this as Profile;
-    return 'Profile(mobile: ${_this.mobile}, postalCode: ${_this.postalCode}, dateOfBirth: ${_this.dateOfBirth}, gender: ${_this.gender})';
-  }
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ProfileCopyWith<Profile> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $ProfileCopyWith<$Res> {
-  factory $ProfileCopyWith(Profile value, $Res Function(Profile) _then) =
-      _$ProfileCopyWithImpl;
+abstract class $ProfileCopyWith<$Res> {
+  factory $ProfileCopyWith(Profile value, $Res Function(Profile) then) =
+      _$ProfileCopyWithImpl<$Res, Profile>;
   @useResult
   $Res call(
       {String mobile, String postalCode, String dateOfBirth, String gender});
 }
 
 /// @nodoc
-class _$ProfileCopyWithImpl<$Res> implements $ProfileCopyWith<$Res> {
-  _$ProfileCopyWithImpl(this._self, this._then);
+class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
+    implements $ProfileCopyWith<$Res> {
+  _$ProfileCopyWithImpl(this._value, this._then);
 
-  final Profile _self;
-  final $Res Function(Profile) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of Profile
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,203 +237,86 @@ class _$ProfileCopyWithImpl<$Res> implements $ProfileCopyWith<$Res> {
     Object? dateOfBirth = null,
     Object? gender = null,
   }) {
-    return _then(Profile(
+    return _then(_value.copyWith(
       mobile: null == mobile
-          ? _self.mobile
+          ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String,
       postalCode: null == postalCode
-          ? _self.postalCode
+          ? _value.postalCode
           : postalCode // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfBirth: null == dateOfBirth
-          ? _self.dateOfBirth
+          ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String,
       gender: null == gender
-          ? _self.gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
+  factory _$$ProfileImplCopyWith(
+          _$ProfileImpl value, $Res Function(_$ProfileImpl) then) =
+      __$$ProfileImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String mobile, String postalCode, String dateOfBirth, String gender});
+}
+
+/// @nodoc
+class __$$ProfileImplCopyWithImpl<$Res>
+    extends _$ProfileCopyWithImpl<$Res, _$ProfileImpl>
+    implements _$$ProfileImplCopyWith<$Res> {
+  __$$ProfileImplCopyWithImpl(
+      _$ProfileImpl _value, $Res Function(_$ProfileImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mobile = null,
+    Object? postalCode = null,
+    Object? dateOfBirth = null,
+    Object? gender = null,
+  }) {
+    return _then(_$ProfileImpl(
+      mobile: null == mobile
+          ? _value.mobile
+          : mobile // ignore: cast_nullable_to_non_nullable
+              as String,
+      postalCode: null == postalCode
+          ? _value.postalCode
+          : postalCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirth: null == dateOfBirth
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [Profile].
-extension ProfilePatterns on Profile {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Profile value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Profile() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Profile value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Profile():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Profile value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Profile() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String mobile, String postalCode, String dateOfBirth,
-            String gender)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Profile() when $default != null:
-        return $default(
-            _that.mobile, _that.postalCode, _that.dateOfBirth, _that.gender);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String mobile, String postalCode, String dateOfBirth, String gender)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Profile():
-        return $default(
-            _that.mobile, _that.postalCode, _that.dateOfBirth, _that.gender);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String mobile, String postalCode, String dateOfBirth,
-            String gender)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Profile() when $default != null:
-        return $default(
-            _that.mobile, _that.postalCode, _that.dateOfBirth, _that.gender);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _Profile implements Profile {
-  const _Profile(
+class _$ProfileImpl implements _Profile {
+  const _$ProfileImpl(
       {required this.mobile,
       required this.postalCode,
       required this.dateOfBirth,
       required this.gender});
-  factory _Profile.fromJson(Map<String, dynamic> json) =>
-      _$ProfileFromJson(json);
+
+  factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProfileImplFromJson(json);
 
   @override
   final String mobile;
@@ -668,26 +327,16 @@ class _Profile implements Profile {
   @override
   final String gender;
 
-  /// Create a copy of Profile
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ProfileCopyWith<_Profile> get copyWith =>
-      __$ProfileCopyWithImpl<_Profile>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$ProfileToJson(
-      this,
-    );
+  String toString() {
+    return 'Profile(mobile: $mobile, postalCode: $postalCode, dateOfBirth: $dateOfBirth, gender: $gender)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Profile &&
+            other is _$ProfileImpl &&
             (identical(other.mobile, mobile) || other.mobile == mobile) &&
             (identical(other.postalCode, postalCode) ||
                 other.postalCode == postalCode) &&
@@ -696,306 +345,147 @@ class _Profile implements Profile {
             (identical(other.gender, gender) || other.gender == gender));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, mobile, postalCode, dateOfBirth, gender);
-  }
+  int get hashCode =>
+      Object.hash(runtimeType, mobile, postalCode, dateOfBirth, gender);
 
-  @override
-  String toString() {
-    return 'Profile(mobile: $mobile, postalCode: $postalCode, dateOfBirth: $dateOfBirth, gender: $gender)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$ProfileCopyWith<$Res> implements $ProfileCopyWith<$Res> {
-  factory _$ProfileCopyWith(_Profile value, $Res Function(_Profile) _then) =
-      __$ProfileCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {String mobile, String postalCode, String dateOfBirth, String gender});
-}
-
-/// @nodoc
-class __$ProfileCopyWithImpl<$Res> implements _$ProfileCopyWith<$Res> {
-  __$ProfileCopyWithImpl(this._self, this._then);
-
-  final _Profile _self;
-  final $Res Function(_Profile) _then;
-
-  /// Create a copy of Profile
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? mobile = null,
-    Object? postalCode = null,
-    Object? dateOfBirth = null,
-    Object? gender = null,
-  }) {
-    return _then(_Profile(
-      mobile: null == mobile
-          ? _self.mobile
-          : mobile // ignore: cast_nullable_to_non_nullable
-              as String,
-      postalCode: null == postalCode
-          ? _self.postalCode
-          : postalCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      dateOfBirth: null == dateOfBirth
-          ? _self.dateOfBirth
-          : dateOfBirth // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
-          ? _self.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>
+      __$$ProfileImplCopyWithImpl<_$ProfileImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ProfileImplToJson(
+      this,
+    );
   }
+}
+
+abstract class _Profile implements Profile {
+  const factory _Profile(
+      {required final String mobile,
+      required final String postalCode,
+      required final String dateOfBirth,
+      required final String gender}) = _$ProfileImpl;
+
+  factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
+
+  @override
+  String get mobile;
+  @override
+  String get postalCode;
+  @override
+  String get dateOfBirth;
+  @override
+  String get gender;
+  @override
+  @JsonKey(ignore: true)
+  _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Questions _$QuestionsFromJson(Map<String, dynamic> json) {
+  return _Questions.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Questions {
-  bool get show;
-  List<Question> get list;
+  bool get show => throw _privateConstructorUsedError;
+  List<Question> get list => throw _privateConstructorUsedError;
 
-  /// Create a copy of Questions
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $QuestionsCopyWith<Questions> get copyWith =>
-      _$QuestionsCopyWithImpl<Questions>(this as Questions, _$identity);
-
-  /// Serializes this Questions to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as Questions;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Questions &&
-            (identical(other.show, _this.show) || other.show == _this.show) &&
-            const DeepCollectionEquality().equals(other.list, _this.list));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as Questions;
-    return Object.hash(runtimeType, _this.show,
-        const DeepCollectionEquality().hash(_this.list));
-  }
-
-  @override
-  String toString() {
-    final _this = this as Questions;
-    return 'Questions(show: ${_this.show}, list: ${_this.list})';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $QuestionsCopyWith<$Res> {
-  factory $QuestionsCopyWith(Questions value, $Res Function(Questions) _then) =
-      _$QuestionsCopyWithImpl;
+abstract class $QuestionsCopyWith<$Res> {
+  factory $QuestionsCopyWith(Questions value, $Res Function(Questions) then) =
+      _$QuestionsCopyWithImpl<$Res, Questions>;
   @useResult
   $Res call({bool show, List<Question> list});
 }
 
 /// @nodoc
-class _$QuestionsCopyWithImpl<$Res> implements $QuestionsCopyWith<$Res> {
-  _$QuestionsCopyWithImpl(this._self, this._then);
+class _$QuestionsCopyWithImpl<$Res, $Val extends Questions>
+    implements $QuestionsCopyWith<$Res> {
+  _$QuestionsCopyWithImpl(this._value, this._then);
 
-  final Questions _self;
-  final $Res Function(Questions) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of Questions
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? show = null,
     Object? list = null,
   }) {
-    return _then(Questions(
+    return _then(_value.copyWith(
       show: null == show
-          ? _self.show
+          ? _value.show
           : show // ignore: cast_nullable_to_non_nullable
               as bool,
       list: null == list
-          ? _self.list
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<Question>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$QuestionsImplCopyWith<$Res>
+    implements $QuestionsCopyWith<$Res> {
+  factory _$$QuestionsImplCopyWith(
+          _$QuestionsImpl value, $Res Function(_$QuestionsImpl) then) =
+      __$$QuestionsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool show, List<Question> list});
+}
+
+/// @nodoc
+class __$$QuestionsImplCopyWithImpl<$Res>
+    extends _$QuestionsCopyWithImpl<$Res, _$QuestionsImpl>
+    implements _$$QuestionsImplCopyWith<$Res> {
+  __$$QuestionsImplCopyWithImpl(
+      _$QuestionsImpl _value, $Res Function(_$QuestionsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? show = null,
+    Object? list = null,
+  }) {
+    return _then(_$QuestionsImpl(
+      show: null == show
+          ? _value.show
+          : show // ignore: cast_nullable_to_non_nullable
+              as bool,
+      list: null == list
+          ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<Question>,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [Questions].
-extension QuestionsPatterns on Questions {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Questions value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Questions() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Questions value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Questions():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Questions value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Questions() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(bool show, List<Question> list)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Questions() when $default != null:
-        return $default(_that.show, _that.list);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(bool show, List<Question> list) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Questions():
-        return $default(_that.show, _that.list);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(bool show, List<Question> list)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Questions() when $default != null:
-        return $default(_that.show, _that.list);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _Questions implements Questions {
-  const _Questions({required this.show, required List<Question> list})
+class _$QuestionsImpl implements _Questions {
+  const _$QuestionsImpl(
+      {required this.show, required final List<Question> list})
       : _list = list;
-  factory _Questions.fromJson(Map<String, dynamic> json) =>
-      _$QuestionsFromJson(json);
+
+  factory _$QuestionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestionsImplFromJson(json);
 
   @override
   final bool show;
@@ -1007,149 +497,81 @@ class _Questions implements Questions {
     return EqualUnmodifiableListView(_list);
   }
 
-  /// Create a copy of Questions
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$QuestionsCopyWith<_Questions> get copyWith =>
-      __$QuestionsCopyWithImpl<_Questions>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$QuestionsToJson(
-      this,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _Questions &&
-            (identical(other.show, show) || other.show == show) &&
-            const DeepCollectionEquality().equals(other.list, _list));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    return Object.hash(
-        runtimeType, show, const DeepCollectionEquality().hash(_list));
-  }
-
   @override
   String toString() {
     return 'Questions(show: $show, list: $list)';
   }
-}
 
-/// @nodoc
-abstract mixin class _$QuestionsCopyWith<$Res>
-    implements $QuestionsCopyWith<$Res> {
-  factory _$QuestionsCopyWith(
-          _Questions value, $Res Function(_Questions) _then) =
-      __$QuestionsCopyWithImpl;
   @override
-  @useResult
-  $Res call({bool show, List<Question> list});
-}
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QuestionsImpl &&
+            (identical(other.show, show) || other.show == show) &&
+            const DeepCollectionEquality().equals(other._list, _list));
+  }
 
-/// @nodoc
-class __$QuestionsCopyWithImpl<$Res> implements _$QuestionsCopyWith<$Res> {
-  __$QuestionsCopyWithImpl(this._self, this._then);
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, show, const DeepCollectionEquality().hash(_list));
 
-  final _Questions _self;
-  final $Res Function(_Questions) _then;
-
-  /// Create a copy of Questions
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? show = null,
-    Object? list = null,
-  }) {
-    return _then(_Questions(
-      show: null == show
-          ? _self.show
-          : show // ignore: cast_nullable_to_non_nullable
-              as bool,
-      list: null == list
-          ? _self._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<Question>,
-    ));
+  _$$QuestionsImplCopyWith<_$QuestionsImpl> get copyWith =>
+      __$$QuestionsImplCopyWithImpl<_$QuestionsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QuestionsImplToJson(
+      this,
+    );
   }
+}
+
+abstract class _Questions implements Questions {
+  const factory _Questions(
+      {required final bool show,
+      required final List<Question> list}) = _$QuestionsImpl;
+
+  factory _Questions.fromJson(Map<String, dynamic> json) =
+      _$QuestionsImpl.fromJson;
+
+  @override
+  bool get show;
+  @override
+  List<Question> get list;
+  @override
+  @JsonKey(ignore: true)
+  _$$QuestionsImplCopyWith<_$QuestionsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Question _$QuestionFromJson(Map<String, dynamic> json) {
+  return _Question.fromJson(json);
 }
 
 /// @nodoc
 mixin _$Question {
-  String get choiceType;
-  bool get required;
-  bool get enabled;
-  String get type;
-  String get title;
-  String get questionType;
-  List<String> get options;
+  String get choiceType => throw _privateConstructorUsedError;
+  bool get required => throw _privateConstructorUsedError;
+  bool get enabled => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get questionType => throw _privateConstructorUsedError;
+  List<String> get options => throw _privateConstructorUsedError;
 
-  /// Create a copy of Question
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $QuestionCopyWith<Question> get copyWith =>
-      _$QuestionCopyWithImpl<Question>(this as Question, _$identity);
-
-  /// Serializes this Question to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as Question;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Question &&
-            (identical(other.choiceType, _this.choiceType) ||
-                other.choiceType == _this.choiceType) &&
-            (identical(other.required, _this.required) ||
-                other.required == _this.required) &&
-            (identical(other.enabled, _this.enabled) ||
-                other.enabled == _this.enabled) &&
-            (identical(other.type, _this.type) || other.type == _this.type) &&
-            (identical(other.title, _this.title) ||
-                other.title == _this.title) &&
-            (identical(other.questionType, _this.questionType) ||
-                other.questionType == _this.questionType) &&
-            const DeepCollectionEquality()
-                .equals(other.options, _this.options));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as Question;
-    return Object.hash(
-        runtimeType,
-        _this.choiceType,
-        _this.required,
-        _this.enabled,
-        _this.type,
-        _this.title,
-        _this.questionType,
-        const DeepCollectionEquality().hash(_this.options));
-  }
-
-  @override
-  String toString() {
-    final _this = this as Question;
-    return 'Question(choiceType: ${_this.choiceType}, required: ${_this.required}, enabled: ${_this.enabled}, type: ${_this.type}, title: ${_this.title}, questionType: ${_this.questionType}, options: ${_this.options})';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $QuestionCopyWith<$Res> {
-  factory $QuestionCopyWith(Question value, $Res Function(Question) _then) =
-      _$QuestionCopyWithImpl;
+abstract class $QuestionCopyWith<$Res> {
+  factory $QuestionCopyWith(Question value, $Res Function(Question) then) =
+      _$QuestionCopyWithImpl<$Res, Question>;
   @useResult
   $Res call(
       {String choiceType,
@@ -1162,14 +584,15 @@ abstract mixin class $QuestionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
-  _$QuestionCopyWithImpl(this._self, this._then);
+class _$QuestionCopyWithImpl<$Res, $Val extends Question>
+    implements $QuestionCopyWith<$Res> {
+  _$QuestionCopyWithImpl(this._value, this._then);
 
-  final Question _self;
-  final $Res Function(Question) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of Question
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1181,237 +604,124 @@ class _$QuestionCopyWithImpl<$Res> implements $QuestionCopyWith<$Res> {
     Object? questionType = null,
     Object? options = null,
   }) {
-    return _then(Question(
+    return _then(_value.copyWith(
       choiceType: null == choiceType
-          ? _self.choiceType
+          ? _value.choiceType
           : choiceType // ignore: cast_nullable_to_non_nullable
               as String,
       required: null == required
-          ? _self.required
+          ? _value.required
           : required // ignore: cast_nullable_to_non_nullable
               as bool,
       enabled: null == enabled
-          ? _self.enabled
+          ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
               as bool,
       type: null == type
-          ? _self.type
+          ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
-          ? _self.title
+          ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       questionType: null == questionType
-          ? _self.questionType
+          ? _value.questionType
           : questionType // ignore: cast_nullable_to_non_nullable
               as String,
       options: null == options
-          ? _self.options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$QuestionImplCopyWith<$Res>
+    implements $QuestionCopyWith<$Res> {
+  factory _$$QuestionImplCopyWith(
+          _$QuestionImpl value, $Res Function(_$QuestionImpl) then) =
+      __$$QuestionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String choiceType,
+      bool required,
+      bool enabled,
+      String type,
+      String title,
+      String questionType,
+      List<String> options});
+}
+
+/// @nodoc
+class __$$QuestionImplCopyWithImpl<$Res>
+    extends _$QuestionCopyWithImpl<$Res, _$QuestionImpl>
+    implements _$$QuestionImplCopyWith<$Res> {
+  __$$QuestionImplCopyWithImpl(
+      _$QuestionImpl _value, $Res Function(_$QuestionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? choiceType = null,
+    Object? required = null,
+    Object? enabled = null,
+    Object? type = null,
+    Object? title = null,
+    Object? questionType = null,
+    Object? options = null,
+  }) {
+    return _then(_$QuestionImpl(
+      choiceType: null == choiceType
+          ? _value.choiceType
+          : choiceType // ignore: cast_nullable_to_non_nullable
+              as String,
+      required: null == required
+          ? _value.required
+          : required // ignore: cast_nullable_to_non_nullable
+              as bool,
+      enabled: null == enabled
+          ? _value.enabled
+          : enabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      questionType: null == questionType
+          ? _value.questionType
+          : questionType // ignore: cast_nullable_to_non_nullable
+              as String,
+      options: null == options
+          ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [Question].
-extension QuestionPatterns on Question {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_Question value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Question() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_Question value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Question():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_Question value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Question() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String choiceType,
-            bool required,
-            bool enabled,
-            String type,
-            String title,
-            String questionType,
-            List<String> options)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _Question() when $default != null:
-        return $default(_that.choiceType, _that.required, _that.enabled,
-            _that.type, _that.title, _that.questionType, _that.options);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            String choiceType,
-            bool required,
-            bool enabled,
-            String type,
-            String title,
-            String questionType,
-            List<String> options)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Question():
-        return $default(_that.choiceType, _that.required, _that.enabled,
-            _that.type, _that.title, _that.questionType, _that.options);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String choiceType,
-            bool required,
-            bool enabled,
-            String type,
-            String title,
-            String questionType,
-            List<String> options)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _Question() when $default != null:
-        return $default(_that.choiceType, _that.required, _that.enabled,
-            _that.type, _that.title, _that.questionType, _that.options);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _Question implements Question {
-  const _Question(
+class _$QuestionImpl implements _Question {
+  const _$QuestionImpl(
       {required this.choiceType,
       required this.required,
       required this.enabled,
       required this.type,
       required this.title,
       required this.questionType,
-      required List<String> options})
+      required final List<String> options})
       : _options = options;
-  factory _Question.fromJson(Map<String, dynamic> json) =>
-      _$QuestionFromJson(json);
+
+  factory _$QuestionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestionImplFromJson(json);
 
   @override
   final String choiceType;
@@ -1433,26 +743,16 @@ class _Question implements Question {
     return EqualUnmodifiableListView(_options);
   }
 
-  /// Create a copy of Question
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$QuestionCopyWith<_Question> get copyWith =>
-      __$QuestionCopyWithImpl<_Question>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$QuestionToJson(
-      this,
-    );
+  String toString() {
+    return 'Question(choiceType: $choiceType, required: $required, enabled: $enabled, type: $type, title: $title, questionType: $questionType, options: $options)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Question &&
+            other is _$QuestionImpl &&
             (identical(other.choiceType, choiceType) ||
                 other.choiceType == choiceType) &&
             (identical(other.required, required) ||
@@ -1462,90 +762,57 @@ class _Question implements Question {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.questionType, questionType) ||
                 other.questionType == questionType) &&
-            const DeepCollectionEquality().equals(other.options, _options));
+            const DeepCollectionEquality().equals(other._options, _options));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, choiceType, required, enabled, type, title,
-        questionType, const DeepCollectionEquality().hash(_options));
-  }
+  int get hashCode => Object.hash(runtimeType, choiceType, required, enabled,
+      type, title, questionType, const DeepCollectionEquality().hash(_options));
 
-  @override
-  String toString() {
-    return 'Question(choiceType: $choiceType, required: $required, enabled: $enabled, type: $type, title: $title, questionType: $questionType, options: $options)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$QuestionCopyWith<$Res>
-    implements $QuestionCopyWith<$Res> {
-  factory _$QuestionCopyWith(_Question value, $Res Function(_Question) _then) =
-      __$QuestionCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {String choiceType,
-      bool required,
-      bool enabled,
-      String type,
-      String title,
-      String questionType,
-      List<String> options});
-}
-
-/// @nodoc
-class __$QuestionCopyWithImpl<$Res> implements _$QuestionCopyWith<$Res> {
-  __$QuestionCopyWithImpl(this._self, this._then);
-
-  final _Question _self;
-  final $Res Function(_Question) _then;
-
-  /// Create a copy of Question
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? choiceType = null,
-    Object? required = null,
-    Object? enabled = null,
-    Object? type = null,
-    Object? title = null,
-    Object? questionType = null,
-    Object? options = null,
-  }) {
-    return _then(_Question(
-      choiceType: null == choiceType
-          ? _self.choiceType
-          : choiceType // ignore: cast_nullable_to_non_nullable
-              as String,
-      required: null == required
-          ? _self.required
-          : required // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enabled: null == enabled
-          ? _self.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      type: null == type
-          ? _self.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      questionType: null == questionType
-          ? _self.questionType
-          : questionType // ignore: cast_nullable_to_non_nullable
-              as String,
-      options: null == options
-          ? _self._options
-          : options // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
+      __$$QuestionImplCopyWithImpl<_$QuestionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QuestionImplToJson(
+      this,
+    );
   }
 }
 
-// dart format on
+abstract class _Question implements Question {
+  const factory _Question(
+      {required final String choiceType,
+      required final bool required,
+      required final bool enabled,
+      required final String type,
+      required final String title,
+      required final String questionType,
+      required final List<String> options}) = _$QuestionImpl;
+
+  factory _Question.fromJson(Map<String, dynamic> json) =
+      _$QuestionImpl.fromJson;
+
+  @override
+  String get choiceType;
+  @override
+  bool get required;
+  @override
+  bool get enabled;
+  @override
+  String get type;
+  @override
+  String get title;
+  @override
+  String get questionType;
+  @override
+  List<String> get options;
+  @override
+  @JsonKey(ignore: true)
+  _$$QuestionImplCopyWith<_$QuestionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

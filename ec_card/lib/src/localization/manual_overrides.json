@@ -1,0 +1,9 @@
+{
+  "@comment": "Manual translation overrides for the Flutter locale packs. Applied by scripts/regen-language-packs.js AFTER machine translation, so they win over Google Translate output and survive every regeneration. Use for interjections, brand terms, and anything the auto-translator handles poorly. Keys mirror app_en.arb; only list the languages/keys you want to override.",
+  "ro": { "oops": "Ups!", "otp": "OTP" },
+  "pl": { "oops": "Ups!" },
+  "es": { "oops": "¡Uy!", "otp": "OTP" },
+  "pt": { "oops": "Ops!" },
+  "fr": { "oops": "Oups !" },
+  "tr": { "oops": "Hay aksi!" }
+}

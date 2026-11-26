@@ -6,7 +6,8 @@ part of 'video_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_VideoItem _$VideoItemFromJson(Map<String, dynamic> json) => _VideoItem(
+_$VideoItemImpl _$$VideoItemImplFromJson(Map<String, dynamic> json) =>
+    _$VideoItemImpl(
       videoPath: json['videoPath'] as String? ?? '',
       videoTitle: json['videoTitle'] as String? ?? '',
       videoDescription: json['videoDescription'] as String? ?? '',
@@ -18,7 +19,7 @@ _VideoItem _$VideoItemFromJson(Map<String, dynamic> json) => _VideoItem(
       watched: json['watched'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$VideoItemToJson(_VideoItem instance) =>
+Map<String, dynamic> _$$VideoItemImplToJson(_$VideoItemImpl instance) =>
     <String, dynamic>{
       'videoPath': instance.videoPath,
       'videoTitle': instance.videoTitle,

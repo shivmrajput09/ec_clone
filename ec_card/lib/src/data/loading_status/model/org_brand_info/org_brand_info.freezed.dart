@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'org_brand_info.dart';
@@ -9,116 +9,55 @@ part of 'org_brand_info.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+OrgBrandInfoData _$OrgBrandInfoDataFromJson(Map<String, dynamic> json) {
+  return _OrgBrandInfoData.fromJson(json);
+}
 
 /// @nodoc
 mixin _$OrgBrandInfoData {
   @JsonKey(name: 'orgName')
-  String get orgName;
+  String get orgName => throw _privateConstructorUsedError;
   @JsonKey(name: 'city')
-  String get city;
+  String get city => throw _privateConstructorUsedError;
   @JsonKey(name: 'county')
-  String get county;
+  String get county => throw _privateConstructorUsedError;
   @JsonKey(name: 'country')
-  String get country;
+  String get country => throw _privateConstructorUsedError;
   @JsonKey(name: 'countryCode')
-  String get countryCode;
+  String get countryCode => throw _privateConstructorUsedError;
   @JsonKey(name: 'copyrightText')
-  String get copyrightText;
+  String get copyrightText => throw _privateConstructorUsedError;
   @JsonKey(name: 'brandLogo')
-  String get brandLogo;
+  String get brandLogo => throw _privateConstructorUsedError;
   @JsonKey(name: 'isPublished')
-  bool get isPublished;
+  bool get isPublished => throw _privateConstructorUsedError;
   @JsonKey(name: 'isActivated')
-  bool get isActivated;
+  bool get isActivated => throw _privateConstructorUsedError;
   @JsonKey(name: 'isDeleted')
-  bool get isDeleted;
+  bool get isDeleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'orgId')
-  String get orgId;
+  String get orgId => throw _privateConstructorUsedError;
   @JsonKey(name: 'created')
-  String get created;
+  String get created => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastModified')
-  String get lastModified;
+  String get lastModified => throw _privateConstructorUsedError;
 
-  /// Create a copy of OrgBrandInfoData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $OrgBrandInfoDataCopyWith<OrgBrandInfoData> get copyWith =>
-      _$OrgBrandInfoDataCopyWithImpl<OrgBrandInfoData>(
-          this as OrgBrandInfoData, _$identity);
-
-  /// Serializes this OrgBrandInfoData to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as OrgBrandInfoData;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is OrgBrandInfoData &&
-            (identical(other.orgName, _this.orgName) ||
-                other.orgName == _this.orgName) &&
-            (identical(other.city, _this.city) || other.city == _this.city) &&
-            (identical(other.county, _this.county) ||
-                other.county == _this.county) &&
-            (identical(other.country, _this.country) ||
-                other.country == _this.country) &&
-            (identical(other.countryCode, _this.countryCode) ||
-                other.countryCode == _this.countryCode) &&
-            (identical(other.copyrightText, _this.copyrightText) ||
-                other.copyrightText == _this.copyrightText) &&
-            (identical(other.brandLogo, _this.brandLogo) ||
-                other.brandLogo == _this.brandLogo) &&
-            (identical(other.isPublished, _this.isPublished) ||
-                other.isPublished == _this.isPublished) &&
-            (identical(other.isActivated, _this.isActivated) ||
-                other.isActivated == _this.isActivated) &&
-            (identical(other.isDeleted, _this.isDeleted) ||
-                other.isDeleted == _this.isDeleted) &&
-            (identical(other.orgId, _this.orgId) ||
-                other.orgId == _this.orgId) &&
-            (identical(other.created, _this.created) ||
-                other.created == _this.created) &&
-            (identical(other.lastModified, _this.lastModified) ||
-                other.lastModified == _this.lastModified));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as OrgBrandInfoData;
-    return Object.hash(
-        runtimeType,
-        _this.orgName,
-        _this.city,
-        _this.county,
-        _this.country,
-        _this.countryCode,
-        _this.copyrightText,
-        _this.brandLogo,
-        _this.isPublished,
-        _this.isActivated,
-        _this.isDeleted,
-        _this.orgId,
-        _this.created,
-        _this.lastModified);
-  }
-
-  @override
-  String toString() {
-    final _this = this as OrgBrandInfoData;
-    return 'OrgBrandInfoData(orgName: ${_this.orgName}, city: ${_this.city}, county: ${_this.county}, country: ${_this.country}, countryCode: ${_this.countryCode}, copyrightText: ${_this.copyrightText}, brandLogo: ${_this.brandLogo}, isPublished: ${_this.isPublished}, isActivated: ${_this.isActivated}, isDeleted: ${_this.isDeleted}, orgId: ${_this.orgId}, created: ${_this.created}, lastModified: ${_this.lastModified})';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $OrgBrandInfoDataCopyWith<$Res> {
+abstract class $OrgBrandInfoDataCopyWith<$Res> {
   factory $OrgBrandInfoDataCopyWith(
-          OrgBrandInfoData value, $Res Function(OrgBrandInfoData) _then) =
-      _$OrgBrandInfoDataCopyWithImpl;
+          OrgBrandInfoData value, $Res Function(OrgBrandInfoData) then) =
+      _$OrgBrandInfoDataCopyWithImpl<$Res, OrgBrandInfoData>;
   @useResult
   $Res call(
       {@JsonKey(name: 'orgName') String orgName,
@@ -137,15 +76,15 @@ abstract mixin class $OrgBrandInfoDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrgBrandInfoDataCopyWithImpl<$Res>
+class _$OrgBrandInfoDataCopyWithImpl<$Res, $Val extends OrgBrandInfoData>
     implements $OrgBrandInfoDataCopyWith<$Res> {
-  _$OrgBrandInfoDataCopyWithImpl(this._self, this._then);
+  _$OrgBrandInfoDataCopyWithImpl(this._value, this._then);
 
-  final OrgBrandInfoData _self;
-  final $Res Function(OrgBrandInfoData) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of OrgBrandInfoData
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,305 +102,173 @@ class _$OrgBrandInfoDataCopyWithImpl<$Res>
     Object? created = null,
     Object? lastModified = null,
   }) {
-    return _then(OrgBrandInfoData(
+    return _then(_value.copyWith(
       orgName: null == orgName
-          ? _self.orgName
+          ? _value.orgName
           : orgName // ignore: cast_nullable_to_non_nullable
               as String,
       city: null == city
-          ? _self.city
+          ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
       county: null == county
-          ? _self.county
+          ? _value.county
           : county // ignore: cast_nullable_to_non_nullable
               as String,
       country: null == country
-          ? _self.country
+          ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
       countryCode: null == countryCode
-          ? _self.countryCode
+          ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String,
       copyrightText: null == copyrightText
-          ? _self.copyrightText
+          ? _value.copyrightText
           : copyrightText // ignore: cast_nullable_to_non_nullable
               as String,
       brandLogo: null == brandLogo
-          ? _self.brandLogo
+          ? _value.brandLogo
           : brandLogo // ignore: cast_nullable_to_non_nullable
               as String,
       isPublished: null == isPublished
-          ? _self.isPublished
+          ? _value.isPublished
           : isPublished // ignore: cast_nullable_to_non_nullable
               as bool,
       isActivated: null == isActivated
-          ? _self.isActivated
+          ? _value.isActivated
           : isActivated // ignore: cast_nullable_to_non_nullable
               as bool,
       isDeleted: null == isDeleted
-          ? _self.isDeleted
+          ? _value.isDeleted
           : isDeleted // ignore: cast_nullable_to_non_nullable
               as bool,
       orgId: null == orgId
-          ? _self.orgId
+          ? _value.orgId
           : orgId // ignore: cast_nullable_to_non_nullable
               as String,
       created: null == created
-          ? _self.created
+          ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String,
       lastModified: null == lastModified
-          ? _self.lastModified
+          ? _value.lastModified
+          : lastModified // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OrgBrandInfoDataImplCopyWith<$Res>
+    implements $OrgBrandInfoDataCopyWith<$Res> {
+  factory _$$OrgBrandInfoDataImplCopyWith(_$OrgBrandInfoDataImpl value,
+          $Res Function(_$OrgBrandInfoDataImpl) then) =
+      __$$OrgBrandInfoDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'orgName') String orgName,
+      @JsonKey(name: 'city') String city,
+      @JsonKey(name: 'county') String county,
+      @JsonKey(name: 'country') String country,
+      @JsonKey(name: 'countryCode') String countryCode,
+      @JsonKey(name: 'copyrightText') String copyrightText,
+      @JsonKey(name: 'brandLogo') String brandLogo,
+      @JsonKey(name: 'isPublished') bool isPublished,
+      @JsonKey(name: 'isActivated') bool isActivated,
+      @JsonKey(name: 'isDeleted') bool isDeleted,
+      @JsonKey(name: 'orgId') String orgId,
+      @JsonKey(name: 'created') String created,
+      @JsonKey(name: 'lastModified') String lastModified});
+}
+
+/// @nodoc
+class __$$OrgBrandInfoDataImplCopyWithImpl<$Res>
+    extends _$OrgBrandInfoDataCopyWithImpl<$Res, _$OrgBrandInfoDataImpl>
+    implements _$$OrgBrandInfoDataImplCopyWith<$Res> {
+  __$$OrgBrandInfoDataImplCopyWithImpl(_$OrgBrandInfoDataImpl _value,
+      $Res Function(_$OrgBrandInfoDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orgName = null,
+    Object? city = null,
+    Object? county = null,
+    Object? country = null,
+    Object? countryCode = null,
+    Object? copyrightText = null,
+    Object? brandLogo = null,
+    Object? isPublished = null,
+    Object? isActivated = null,
+    Object? isDeleted = null,
+    Object? orgId = null,
+    Object? created = null,
+    Object? lastModified = null,
+  }) {
+    return _then(_$OrgBrandInfoDataImpl(
+      orgName: null == orgName
+          ? _value.orgName
+          : orgName // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      county: null == county
+          ? _value.county
+          : county // ignore: cast_nullable_to_non_nullable
+              as String,
+      country: null == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String,
+      countryCode: null == countryCode
+          ? _value.countryCode
+          : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      copyrightText: null == copyrightText
+          ? _value.copyrightText
+          : copyrightText // ignore: cast_nullable_to_non_nullable
+              as String,
+      brandLogo: null == brandLogo
+          ? _value.brandLogo
+          : brandLogo // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPublished: null == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActivated: null == isActivated
+          ? _value.isActivated
+          : isActivated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDeleted: null == isDeleted
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      orgId: null == orgId
+          ? _value.orgId
+          : orgId // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastModified: null == lastModified
+          ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [OrgBrandInfoData].
-extension OrgBrandInfoDataPatterns on OrgBrandInfoData {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_OrgBrandInfoData value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_OrgBrandInfoData value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_OrgBrandInfoData value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'orgName') String orgName,
-            @JsonKey(name: 'city') String city,
-            @JsonKey(name: 'county') String county,
-            @JsonKey(name: 'country') String country,
-            @JsonKey(name: 'countryCode') String countryCode,
-            @JsonKey(name: 'copyrightText') String copyrightText,
-            @JsonKey(name: 'brandLogo') String brandLogo,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'isDeleted') bool isDeleted,
-            @JsonKey(name: 'orgId') String orgId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData() when $default != null:
-        return $default(
-            _that.orgName,
-            _that.city,
-            _that.county,
-            _that.country,
-            _that.countryCode,
-            _that.copyrightText,
-            _that.brandLogo,
-            _that.isPublished,
-            _that.isActivated,
-            _that.isDeleted,
-            _that.orgId,
-            _that.created,
-            _that.lastModified);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'orgName') String orgName,
-            @JsonKey(name: 'city') String city,
-            @JsonKey(name: 'county') String county,
-            @JsonKey(name: 'country') String country,
-            @JsonKey(name: 'countryCode') String countryCode,
-            @JsonKey(name: 'copyrightText') String copyrightText,
-            @JsonKey(name: 'brandLogo') String brandLogo,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'isDeleted') bool isDeleted,
-            @JsonKey(name: 'orgId') String orgId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData():
-        return $default(
-            _that.orgName,
-            _that.city,
-            _that.county,
-            _that.country,
-            _that.countryCode,
-            _that.copyrightText,
-            _that.brandLogo,
-            _that.isPublished,
-            _that.isActivated,
-            _that.isDeleted,
-            _that.orgId,
-            _that.created,
-            _that.lastModified);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            @JsonKey(name: 'orgName') String orgName,
-            @JsonKey(name: 'city') String city,
-            @JsonKey(name: 'county') String county,
-            @JsonKey(name: 'country') String country,
-            @JsonKey(name: 'countryCode') String countryCode,
-            @JsonKey(name: 'copyrightText') String copyrightText,
-            @JsonKey(name: 'brandLogo') String brandLogo,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'isDeleted') bool isDeleted,
-            @JsonKey(name: 'orgId') String orgId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _OrgBrandInfoData() when $default != null:
-        return $default(
-            _that.orgName,
-            _that.city,
-            _that.county,
-            _that.country,
-            _that.countryCode,
-            _that.copyrightText,
-            _that.brandLogo,
-            _that.isPublished,
-            _that.isActivated,
-            _that.isDeleted,
-            _that.orgId,
-            _that.created,
-            _that.lastModified);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _OrgBrandInfoData implements OrgBrandInfoData {
-  const _OrgBrandInfoData(
+class _$OrgBrandInfoDataImpl implements _OrgBrandInfoData {
+  const _$OrgBrandInfoDataImpl(
       {@JsonKey(name: 'orgName') this.orgName = '',
       @JsonKey(name: 'city') this.city = '',
       @JsonKey(name: 'county') this.county = '',
@@ -475,8 +282,9 @@ class _OrgBrandInfoData implements OrgBrandInfoData {
       @JsonKey(name: 'orgId') this.orgId = '',
       @JsonKey(name: 'created') this.created = '',
       @JsonKey(name: 'lastModified') this.lastModified = ''});
-  factory _OrgBrandInfoData.fromJson(Map<String, dynamic> json) =>
-      _$OrgBrandInfoDataFromJson(json);
+
+  factory _$OrgBrandInfoDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrgBrandInfoDataImplFromJson(json);
 
   @override
   @JsonKey(name: 'orgName')
@@ -518,26 +326,16 @@ class _OrgBrandInfoData implements OrgBrandInfoData {
   @JsonKey(name: 'lastModified')
   final String lastModified;
 
-  /// Create a copy of OrgBrandInfoData
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$OrgBrandInfoDataCopyWith<_OrgBrandInfoData> get copyWith =>
-      __$OrgBrandInfoDataCopyWithImpl<_OrgBrandInfoData>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$OrgBrandInfoDataToJson(
-      this,
-    );
+  String toString() {
+    return 'OrgBrandInfoData(orgName: $orgName, city: $city, county: $county, country: $country, countryCode: $countryCode, copyrightText: $copyrightText, brandLogo: $brandLogo, isPublished: $isPublished, isActivated: $isActivated, isDeleted: $isDeleted, orgId: $orgId, created: $created, lastModified: $lastModified)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _OrgBrandInfoData &&
+            other is _$OrgBrandInfoDataImpl &&
             (identical(other.orgName, orgName) || other.orgName == orgName) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.county, county) || other.county == county) &&
@@ -560,138 +358,100 @@ class _OrgBrandInfoData implements OrgBrandInfoData {
                 other.lastModified == lastModified));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode {
-    return Object.hash(
-        runtimeType,
-        orgName,
-        city,
-        county,
-        country,
-        countryCode,
-        copyrightText,
-        brandLogo,
-        isPublished,
-        isActivated,
-        isDeleted,
-        orgId,
-        created,
-        lastModified);
-  }
+  int get hashCode => Object.hash(
+      runtimeType,
+      orgName,
+      city,
+      county,
+      country,
+      countryCode,
+      copyrightText,
+      brandLogo,
+      isPublished,
+      isActivated,
+      isDeleted,
+      orgId,
+      created,
+      lastModified);
 
-  @override
-  String toString() {
-    return 'OrgBrandInfoData(orgName: $orgName, city: $city, county: $county, country: $country, countryCode: $countryCode, copyrightText: $copyrightText, brandLogo: $brandLogo, isPublished: $isPublished, isActivated: $isActivated, isDeleted: $isDeleted, orgId: $orgId, created: $created, lastModified: $lastModified)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$OrgBrandInfoDataCopyWith<$Res>
-    implements $OrgBrandInfoDataCopyWith<$Res> {
-  factory _$OrgBrandInfoDataCopyWith(
-          _OrgBrandInfoData value, $Res Function(_OrgBrandInfoData) _then) =
-      __$OrgBrandInfoDataCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'orgName') String orgName,
-      @JsonKey(name: 'city') String city,
-      @JsonKey(name: 'county') String county,
-      @JsonKey(name: 'country') String country,
-      @JsonKey(name: 'countryCode') String countryCode,
-      @JsonKey(name: 'copyrightText') String copyrightText,
-      @JsonKey(name: 'brandLogo') String brandLogo,
-      @JsonKey(name: 'isPublished') bool isPublished,
-      @JsonKey(name: 'isActivated') bool isActivated,
-      @JsonKey(name: 'isDeleted') bool isDeleted,
-      @JsonKey(name: 'orgId') String orgId,
-      @JsonKey(name: 'created') String created,
-      @JsonKey(name: 'lastModified') String lastModified});
-}
-
-/// @nodoc
-class __$OrgBrandInfoDataCopyWithImpl<$Res>
-    implements _$OrgBrandInfoDataCopyWith<$Res> {
-  __$OrgBrandInfoDataCopyWithImpl(this._self, this._then);
-
-  final _OrgBrandInfoData _self;
-  final $Res Function(_OrgBrandInfoData) _then;
-
-  /// Create a copy of OrgBrandInfoData
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? orgName = null,
-    Object? city = null,
-    Object? county = null,
-    Object? country = null,
-    Object? countryCode = null,
-    Object? copyrightText = null,
-    Object? brandLogo = null,
-    Object? isPublished = null,
-    Object? isActivated = null,
-    Object? isDeleted = null,
-    Object? orgId = null,
-    Object? created = null,
-    Object? lastModified = null,
-  }) {
-    return _then(_OrgBrandInfoData(
-      orgName: null == orgName
-          ? _self.orgName
-          : orgName // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
-          ? _self.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      county: null == county
-          ? _self.county
-          : county // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
-          ? _self.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      countryCode: null == countryCode
-          ? _self.countryCode
-          : countryCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      copyrightText: null == copyrightText
-          ? _self.copyrightText
-          : copyrightText // ignore: cast_nullable_to_non_nullable
-              as String,
-      brandLogo: null == brandLogo
-          ? _self.brandLogo
-          : brandLogo // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPublished: null == isPublished
-          ? _self.isPublished
-          : isPublished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isActivated: null == isActivated
-          ? _self.isActivated
-          : isActivated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDeleted: null == isDeleted
-          ? _self.isDeleted
-          : isDeleted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      orgId: null == orgId
-          ? _self.orgId
-          : orgId // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _self.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastModified: null == lastModified
-          ? _self.lastModified
-          : lastModified // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  _$$OrgBrandInfoDataImplCopyWith<_$OrgBrandInfoDataImpl> get copyWith =>
+      __$$OrgBrandInfoDataImplCopyWithImpl<_$OrgBrandInfoDataImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrgBrandInfoDataImplToJson(
+      this,
+    );
   }
 }
 
-// dart format on
+abstract class _OrgBrandInfoData implements OrgBrandInfoData {
+  const factory _OrgBrandInfoData(
+          {@JsonKey(name: 'orgName') final String orgName,
+          @JsonKey(name: 'city') final String city,
+          @JsonKey(name: 'county') final String county,
+          @JsonKey(name: 'country') final String country,
+          @JsonKey(name: 'countryCode') final String countryCode,
+          @JsonKey(name: 'copyrightText') final String copyrightText,
+          @JsonKey(name: 'brandLogo') final String brandLogo,
+          @JsonKey(name: 'isPublished') final bool isPublished,
+          @JsonKey(name: 'isActivated') final bool isActivated,
+          @JsonKey(name: 'isDeleted') final bool isDeleted,
+          @JsonKey(name: 'orgId') final String orgId,
+          @JsonKey(name: 'created') final String created,
+          @JsonKey(name: 'lastModified') final String lastModified}) =
+      _$OrgBrandInfoDataImpl;
+
+  factory _OrgBrandInfoData.fromJson(Map<String, dynamic> json) =
+      _$OrgBrandInfoDataImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'orgName')
+  String get orgName;
+  @override
+  @JsonKey(name: 'city')
+  String get city;
+  @override
+  @JsonKey(name: 'county')
+  String get county;
+  @override
+  @JsonKey(name: 'country')
+  String get country;
+  @override
+  @JsonKey(name: 'countryCode')
+  String get countryCode;
+  @override
+  @JsonKey(name: 'copyrightText')
+  String get copyrightText;
+  @override
+  @JsonKey(name: 'brandLogo')
+  String get brandLogo;
+  @override
+  @JsonKey(name: 'isPublished')
+  bool get isPublished;
+  @override
+  @JsonKey(name: 'isActivated')
+  bool get isActivated;
+  @override
+  @JsonKey(name: 'isDeleted')
+  bool get isDeleted;
+  @override
+  @JsonKey(name: 'orgId')
+  String get orgId;
+  @override
+  @JsonKey(name: 'created')
+  String get created;
+  @override
+  @JsonKey(name: 'lastModified')
+  String get lastModified;
+  @override
+  @JsonKey(ignore: true)
+  _$$OrgBrandInfoDataImplCopyWith<_$OrgBrandInfoDataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

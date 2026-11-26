@@ -6,8 +6,9 @@ part of 'org_brand_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_OrgBrandInfoData _$OrgBrandInfoDataFromJson(Map<String, dynamic> json) =>
-    _OrgBrandInfoData(
+_$OrgBrandInfoDataImpl _$$OrgBrandInfoDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OrgBrandInfoDataImpl(
       orgName: json['orgName'] as String? ?? '',
       city: json['city'] as String? ?? '',
       county: json['county'] as String? ?? '',
@@ -23,7 +24,8 @@ _OrgBrandInfoData _$OrgBrandInfoDataFromJson(Map<String, dynamic> json) =>
       lastModified: json['lastModified'] as String? ?? '',
     );
 
-Map<String, dynamic> _$OrgBrandInfoDataToJson(_OrgBrandInfoData instance) =>
+Map<String, dynamic> _$$OrgBrandInfoDataImplToJson(
+        _$OrgBrandInfoDataImpl instance) =>
     <String, dynamic>{
       'orgName': instance.orgName,
       'city': instance.city,

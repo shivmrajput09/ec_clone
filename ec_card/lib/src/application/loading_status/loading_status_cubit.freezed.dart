@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'loading_status_cubit.dart';
@@ -9,121 +9,54 @@ part of 'loading_status_cubit.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LoadingStatusState {
-  Option<Either<AppErrors, String>> get quizPassedFailureOrSuccess;
+// Quiz/Video/Profile gatekeeper ka final result
+  Option<Either<AppErrors, String>> get quizPassedFailureOrSuccess =>
+      throw _privateConstructorUsedError;
 
   /// [Change Effect]
   /// `@Default(false)` ka matlab hai agar Cubit ne `isLoading` ki value nahi di,
   /// toh default false maan lo. Agar tum yahan se `@Default(false)` hata do,
   /// toh Freezed error dega ki ya toh default value batao, ya isko 'required' karo.
-  bool get isLoading;
-  OrgBrandInfoData? get brandInfo;
-  UserDashboardData? get userDashboardData;
+  bool get isLoading =>
+      throw _privateConstructorUsedError; // API se aane wala data yahan save hota hai
+  OrgBrandInfoData? get brandInfo => throw _privateConstructorUsedError;
+  UserDashboardData? get userDashboardData =>
+      throw _privateConstructorUsedError; // Dashboard ka data lane mein success hui ya fail?
   Option<Either<AppErrors, UserDashboardData>>
-      get dashboardCallFailureOrSuccess;
-  bool get dashboardLoading;
-  UserProfileData? get userProfileData;
-  Option<Either<AppErrors, UserProfileData>> get profileCallFailureOrSuccess;
-  bool get profileLoading;
-  bool get otpLoading;
-  bool get selfDeletionProcessStarted;
-  String get otp;
-  Option<Either<AppErrors, String>> get deleteFailureOrSuccessOption;
-  List<VideoItem> get videoList;
-  bool get isConnectedToInternet;
+      get dashboardCallFailureOrSuccess => throw _privateConstructorUsedError;
+  bool get dashboardLoading =>
+      throw _privateConstructorUsedError; // Profile (Form) ka data aur uski loading state
+  UserProfileData? get userProfileData => throw _privateConstructorUsedError;
+  Option<Either<AppErrors, UserProfileData>> get profileCallFailureOrSuccess =>
+      throw _privateConstructorUsedError;
+  bool get profileLoading =>
+      throw _privateConstructorUsedError; // Account delete karne ka process
+  bool get otpLoading => throw _privateConstructorUsedError;
+  bool get selfDeletionProcessStarted => throw _privateConstructorUsedError;
+  String get otp => throw _privateConstructorUsedError;
+  Option<Either<AppErrors, String>> get deleteFailureOrSuccessOption =>
+      throw _privateConstructorUsedError; // Mandatory videos ki list jo user ko dekhni hai
+  List<VideoItem> get videoList =>
+      throw _privateConstructorUsedError; // Internet connection ka current status
+  bool get isConnectedToInternet => throw _privateConstructorUsedError;
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  @JsonKey(ignore: true)
   $LoadingStatusStateCopyWith<LoadingStatusState> get copyWith =>
-      _$LoadingStatusStateCopyWithImpl<LoadingStatusState>(
-          this as LoadingStatusState, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as LoadingStatusState;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is LoadingStatusState &&
-            (identical(other.quizPassedFailureOrSuccess, _this.quizPassedFailureOrSuccess) ||
-                other.quizPassedFailureOrSuccess ==
-                    _this.quizPassedFailureOrSuccess) &&
-            (identical(other.isLoading, _this.isLoading) ||
-                other.isLoading == _this.isLoading) &&
-            (identical(other.brandInfo, _this.brandInfo) ||
-                other.brandInfo == _this.brandInfo) &&
-            (identical(other.userDashboardData, _this.userDashboardData) ||
-                other.userDashboardData == _this.userDashboardData) &&
-            (identical(other.dashboardCallFailureOrSuccess,
-                    _this.dashboardCallFailureOrSuccess) ||
-                other.dashboardCallFailureOrSuccess ==
-                    _this.dashboardCallFailureOrSuccess) &&
-            (identical(other.dashboardLoading, _this.dashboardLoading) ||
-                other.dashboardLoading == _this.dashboardLoading) &&
-            (identical(other.userProfileData, _this.userProfileData) ||
-                other.userProfileData == _this.userProfileData) &&
-            (identical(other.profileCallFailureOrSuccess,
-                    _this.profileCallFailureOrSuccess) ||
-                other.profileCallFailureOrSuccess ==
-                    _this.profileCallFailureOrSuccess) &&
-            (identical(other.profileLoading, _this.profileLoading) ||
-                other.profileLoading == _this.profileLoading) &&
-            (identical(other.otpLoading, _this.otpLoading) ||
-                other.otpLoading == _this.otpLoading) &&
-            (identical(other.selfDeletionProcessStarted, _this.selfDeletionProcessStarted) ||
-                other.selfDeletionProcessStarted ==
-                    _this.selfDeletionProcessStarted) &&
-            (identical(other.otp, _this.otp) || other.otp == _this.otp) &&
-            (identical(other.deleteFailureOrSuccessOption,
-                    _this.deleteFailureOrSuccessOption) ||
-                other.deleteFailureOrSuccessOption ==
-                    _this.deleteFailureOrSuccessOption) &&
-            const DeepCollectionEquality()
-                .equals(other.videoList, _this.videoList) &&
-            (identical(other.isConnectedToInternet, _this.isConnectedToInternet) ||
-                other.isConnectedToInternet == _this.isConnectedToInternet));
-  }
-
-  @override
-  int get hashCode {
-    final _this = this as LoadingStatusState;
-    return Object.hash(
-        runtimeType,
-        _this.quizPassedFailureOrSuccess,
-        _this.isLoading,
-        _this.brandInfo,
-        _this.userDashboardData,
-        _this.dashboardCallFailureOrSuccess,
-        _this.dashboardLoading,
-        _this.userProfileData,
-        _this.profileCallFailureOrSuccess,
-        _this.profileLoading,
-        _this.otpLoading,
-        _this.selfDeletionProcessStarted,
-        _this.otp,
-        _this.deleteFailureOrSuccessOption,
-        const DeepCollectionEquality().hash(_this.videoList),
-        _this.isConnectedToInternet);
-  }
-
-  @override
-  String toString() {
-    final _this = this as LoadingStatusState;
-    return 'LoadingStatusState(quizPassedFailureOrSuccess: ${_this.quizPassedFailureOrSuccess}, isLoading: ${_this.isLoading}, brandInfo: ${_this.brandInfo}, userDashboardData: ${_this.userDashboardData}, dashboardCallFailureOrSuccess: ${_this.dashboardCallFailureOrSuccess}, dashboardLoading: ${_this.dashboardLoading}, userProfileData: ${_this.userProfileData}, profileCallFailureOrSuccess: ${_this.profileCallFailureOrSuccess}, profileLoading: ${_this.profileLoading}, otpLoading: ${_this.otpLoading}, selfDeletionProcessStarted: ${_this.selfDeletionProcessStarted}, otp: ${_this.otp}, deleteFailureOrSuccessOption: ${_this.deleteFailureOrSuccessOption}, videoList: ${_this.videoList}, isConnectedToInternet: ${_this.isConnectedToInternet})';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $LoadingStatusStateCopyWith<$Res> {
+abstract class $LoadingStatusStateCopyWith<$Res> {
   factory $LoadingStatusStateCopyWith(
-          LoadingStatusState value, $Res Function(LoadingStatusState) _then) =
-      _$LoadingStatusStateCopyWithImpl;
+          LoadingStatusState value, $Res Function(LoadingStatusState) then) =
+      _$LoadingStatusStateCopyWithImpl<$Res, LoadingStatusState>;
   @useResult
   $Res call(
       {Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
@@ -149,15 +82,15 @@ abstract mixin class $LoadingStatusStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoadingStatusStateCopyWithImpl<$Res>
+class _$LoadingStatusStateCopyWithImpl<$Res, $Val extends LoadingStatusState>
     implements $LoadingStatusStateCopyWith<$Res> {
-  _$LoadingStatusStateCopyWithImpl(this._self, this._then);
+  _$LoadingStatusStateCopyWithImpl(this._value, this._then);
 
-  final LoadingStatusState _self;
-  final $Res Function(LoadingStatusState) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,373 +110,237 @@ class _$LoadingStatusStateCopyWithImpl<$Res>
     Object? videoList = null,
     Object? isConnectedToInternet = null,
   }) {
-    return _then(LoadingStatusState(
+    return _then(_value.copyWith(
       quizPassedFailureOrSuccess: null == quizPassedFailureOrSuccess
-          ? _self.quizPassedFailureOrSuccess
+          ? _value.quizPassedFailureOrSuccess
           : quizPassedFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppErrors, String>>,
       isLoading: null == isLoading
-          ? _self.isLoading
+          ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       brandInfo: freezed == brandInfo
-          ? _self.brandInfo
+          ? _value.brandInfo
           : brandInfo // ignore: cast_nullable_to_non_nullable
               as OrgBrandInfoData?,
       userDashboardData: freezed == userDashboardData
-          ? _self.userDashboardData
+          ? _value.userDashboardData
           : userDashboardData // ignore: cast_nullable_to_non_nullable
               as UserDashboardData?,
       dashboardCallFailureOrSuccess: null == dashboardCallFailureOrSuccess
-          ? _self.dashboardCallFailureOrSuccess
+          ? _value.dashboardCallFailureOrSuccess
           : dashboardCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppErrors, UserDashboardData>>,
       dashboardLoading: null == dashboardLoading
-          ? _self.dashboardLoading
+          ? _value.dashboardLoading
           : dashboardLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       userProfileData: freezed == userProfileData
-          ? _self.userProfileData
+          ? _value.userProfileData
           : userProfileData // ignore: cast_nullable_to_non_nullable
               as UserProfileData?,
       profileCallFailureOrSuccess: null == profileCallFailureOrSuccess
-          ? _self.profileCallFailureOrSuccess
+          ? _value.profileCallFailureOrSuccess
           : profileCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppErrors, UserProfileData>>,
       profileLoading: null == profileLoading
-          ? _self.profileLoading
+          ? _value.profileLoading
           : profileLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       otpLoading: null == otpLoading
-          ? _self.otpLoading
+          ? _value.otpLoading
           : otpLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       selfDeletionProcessStarted: null == selfDeletionProcessStarted
-          ? _self.selfDeletionProcessStarted
+          ? _value.selfDeletionProcessStarted
           : selfDeletionProcessStarted // ignore: cast_nullable_to_non_nullable
               as bool,
       otp: null == otp
-          ? _self.otp
+          ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String,
       deleteFailureOrSuccessOption: null == deleteFailureOrSuccessOption
-          ? _self.deleteFailureOrSuccessOption
+          ? _value.deleteFailureOrSuccessOption
           : deleteFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppErrors, String>>,
       videoList: null == videoList
-          ? _self.videoList
+          ? _value.videoList
           : videoList // ignore: cast_nullable_to_non_nullable
               as List<VideoItem>,
       isConnectedToInternet: null == isConnectedToInternet
-          ? _self.isConnectedToInternet
+          ? _value.isConnectedToInternet
           : isConnectedToInternet // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrgBrandInfoDataCopyWith<$Res>? get brandInfo {
-    if (_self.brandInfo == null) {
+    if (_value.brandInfo == null) {
       return null;
     }
 
-    return $OrgBrandInfoDataCopyWith<$Res>(_self.brandInfo!, (value) {
-      return _then(_self.copyWith(brandInfo: value));
+    return $OrgBrandInfoDataCopyWith<$Res>(_value.brandInfo!, (value) {
+      return _then(_value.copyWith(brandInfo: value) as $Val);
     });
   }
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDashboardDataCopyWith<$Res>? get userDashboardData {
-    if (_self.userDashboardData == null) {
+    if (_value.userDashboardData == null) {
       return null;
     }
 
-    return $UserDashboardDataCopyWith<$Res>(_self.userDashboardData!, (value) {
-      return _then(_self.copyWith(userDashboardData: value));
+    return $UserDashboardDataCopyWith<$Res>(_value.userDashboardData!, (value) {
+      return _then(_value.copyWith(userDashboardData: value) as $Val);
     });
   }
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserProfileDataCopyWith<$Res>? get userProfileData {
-    if (_self.userProfileData == null) {
+    if (_value.userProfileData == null) {
       return null;
     }
 
-    return $UserProfileDataCopyWith<$Res>(_self.userProfileData!, (value) {
-      return _then(_self.copyWith(userProfileData: value));
+    return $UserProfileDataCopyWith<$Res>(_value.userProfileData!, (value) {
+      return _then(_value.copyWith(userProfileData: value) as $Val);
     });
   }
 }
 
-/// Adds pattern-matching-related methods to [LoadingStatusState].
-extension LoadingStatusStatePatterns on LoadingStatusState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+/// @nodoc
+abstract class _$$LoadingStatusStateImplCopyWith<$Res>
+    implements $LoadingStatusStateCopyWith<$Res> {
+  factory _$$LoadingStatusStateImplCopyWith(_$LoadingStatusStateImpl value,
+          $Res Function(_$LoadingStatusStateImpl) then) =
+      __$$LoadingStatusStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
+      bool isLoading,
+      OrgBrandInfoData? brandInfo,
+      UserDashboardData? userDashboardData,
+      Option<Either<AppErrors, UserDashboardData>>
+          dashboardCallFailureOrSuccess,
+      bool dashboardLoading,
+      UserProfileData? userProfileData,
+      Option<Either<AppErrors, UserProfileData>> profileCallFailureOrSuccess,
+      bool profileLoading,
+      bool otpLoading,
+      bool selfDeletionProcessStarted,
+      String otp,
+      Option<Either<AppErrors, String>> deleteFailureOrSuccessOption,
+      List<VideoItem> videoList,
+      bool isConnectedToInternet});
 
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoadingStatusState value)? $default, {
-    required TResult orElse(),
+  @override
+  $OrgBrandInfoDataCopyWith<$Res>? get brandInfo;
+  @override
+  $UserDashboardDataCopyWith<$Res>? get userDashboardData;
+  @override
+  $UserProfileDataCopyWith<$Res>? get userProfileData;
+}
+
+/// @nodoc
+class __$$LoadingStatusStateImplCopyWithImpl<$Res>
+    extends _$LoadingStatusStateCopyWithImpl<$Res, _$LoadingStatusStateImpl>
+    implements _$$LoadingStatusStateImplCopyWith<$Res> {
+  __$$LoadingStatusStateImplCopyWithImpl(_$LoadingStatusStateImpl _value,
+      $Res Function(_$LoadingStatusStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? quizPassedFailureOrSuccess = null,
+    Object? isLoading = null,
+    Object? brandInfo = freezed,
+    Object? userDashboardData = freezed,
+    Object? dashboardCallFailureOrSuccess = null,
+    Object? dashboardLoading = null,
+    Object? userProfileData = freezed,
+    Object? profileCallFailureOrSuccess = null,
+    Object? profileLoading = null,
+    Object? otpLoading = null,
+    Object? selfDeletionProcessStarted = null,
+    Object? otp = null,
+    Object? deleteFailureOrSuccessOption = null,
+    Object? videoList = null,
+    Object? isConnectedToInternet = null,
   }) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoadingStatusState value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_LoadingStatusState value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
-            bool isLoading,
-            OrgBrandInfoData? brandInfo,
-            UserDashboardData? userDashboardData,
-            Option<Either<AppErrors, UserDashboardData>>
-                dashboardCallFailureOrSuccess,
-            bool dashboardLoading,
-            UserProfileData? userProfileData,
-            Option<Either<AppErrors, UserProfileData>>
-                profileCallFailureOrSuccess,
-            bool profileLoading,
-            bool otpLoading,
-            bool selfDeletionProcessStarted,
-            String otp,
-            Option<Either<AppErrors, String>> deleteFailureOrSuccessOption,
-            List<VideoItem> videoList,
-            bool isConnectedToInternet)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState() when $default != null:
-        return $default(
-            _that.quizPassedFailureOrSuccess,
-            _that.isLoading,
-            _that.brandInfo,
-            _that.userDashboardData,
-            _that.dashboardCallFailureOrSuccess,
-            _that.dashboardLoading,
-            _that.userProfileData,
-            _that.profileCallFailureOrSuccess,
-            _that.profileLoading,
-            _that.otpLoading,
-            _that.selfDeletionProcessStarted,
-            _that.otp,
-            _that.deleteFailureOrSuccessOption,
-            _that.videoList,
-            _that.isConnectedToInternet);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
-            bool isLoading,
-            OrgBrandInfoData? brandInfo,
-            UserDashboardData? userDashboardData,
-            Option<Either<AppErrors, UserDashboardData>>
-                dashboardCallFailureOrSuccess,
-            bool dashboardLoading,
-            UserProfileData? userProfileData,
-            Option<Either<AppErrors, UserProfileData>>
-                profileCallFailureOrSuccess,
-            bool profileLoading,
-            bool otpLoading,
-            bool selfDeletionProcessStarted,
-            String otp,
-            Option<Either<AppErrors, String>> deleteFailureOrSuccessOption,
-            List<VideoItem> videoList,
-            bool isConnectedToInternet)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState():
-        return $default(
-            _that.quizPassedFailureOrSuccess,
-            _that.isLoading,
-            _that.brandInfo,
-            _that.userDashboardData,
-            _that.dashboardCallFailureOrSuccess,
-            _that.dashboardLoading,
-            _that.userProfileData,
-            _that.profileCallFailureOrSuccess,
-            _that.profileLoading,
-            _that.otpLoading,
-            _that.selfDeletionProcessStarted,
-            _that.otp,
-            _that.deleteFailureOrSuccessOption,
-            _that.videoList,
-            _that.isConnectedToInternet);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
-            bool isLoading,
-            OrgBrandInfoData? brandInfo,
-            UserDashboardData? userDashboardData,
-            Option<Either<AppErrors, UserDashboardData>>
-                dashboardCallFailureOrSuccess,
-            bool dashboardLoading,
-            UserProfileData? userProfileData,
-            Option<Either<AppErrors, UserProfileData>>
-                profileCallFailureOrSuccess,
-            bool profileLoading,
-            bool otpLoading,
-            bool selfDeletionProcessStarted,
-            String otp,
-            Option<Either<AppErrors, String>> deleteFailureOrSuccessOption,
-            List<VideoItem> videoList,
-            bool isConnectedToInternet)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoadingStatusState() when $default != null:
-        return $default(
-            _that.quizPassedFailureOrSuccess,
-            _that.isLoading,
-            _that.brandInfo,
-            _that.userDashboardData,
-            _that.dashboardCallFailureOrSuccess,
-            _that.dashboardLoading,
-            _that.userProfileData,
-            _that.profileCallFailureOrSuccess,
-            _that.profileLoading,
-            _that.otpLoading,
-            _that.selfDeletionProcessStarted,
-            _that.otp,
-            _that.deleteFailureOrSuccessOption,
-            _that.videoList,
-            _that.isConnectedToInternet);
-      case _:
-        return null;
-    }
+    return _then(_$LoadingStatusStateImpl(
+      quizPassedFailureOrSuccess: null == quizPassedFailureOrSuccess
+          ? _value.quizPassedFailureOrSuccess
+          : quizPassedFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AppErrors, String>>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      brandInfo: freezed == brandInfo
+          ? _value.brandInfo
+          : brandInfo // ignore: cast_nullable_to_non_nullable
+              as OrgBrandInfoData?,
+      userDashboardData: freezed == userDashboardData
+          ? _value.userDashboardData
+          : userDashboardData // ignore: cast_nullable_to_non_nullable
+              as UserDashboardData?,
+      dashboardCallFailureOrSuccess: null == dashboardCallFailureOrSuccess
+          ? _value.dashboardCallFailureOrSuccess
+          : dashboardCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AppErrors, UserDashboardData>>,
+      dashboardLoading: null == dashboardLoading
+          ? _value.dashboardLoading
+          : dashboardLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userProfileData: freezed == userProfileData
+          ? _value.userProfileData
+          : userProfileData // ignore: cast_nullable_to_non_nullable
+              as UserProfileData?,
+      profileCallFailureOrSuccess: null == profileCallFailureOrSuccess
+          ? _value.profileCallFailureOrSuccess
+          : profileCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AppErrors, UserProfileData>>,
+      profileLoading: null == profileLoading
+          ? _value.profileLoading
+          : profileLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      otpLoading: null == otpLoading
+          ? _value.otpLoading
+          : otpLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selfDeletionProcessStarted: null == selfDeletionProcessStarted
+          ? _value.selfDeletionProcessStarted
+          : selfDeletionProcessStarted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      otp: null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
+              as String,
+      deleteFailureOrSuccessOption: null == deleteFailureOrSuccessOption
+          ? _value.deleteFailureOrSuccessOption
+          : deleteFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AppErrors, String>>,
+      videoList: null == videoList
+          ? _value._videoList
+          : videoList // ignore: cast_nullable_to_non_nullable
+              as List<VideoItem>,
+      isConnectedToInternet: null == isConnectedToInternet
+          ? _value.isConnectedToInternet
+          : isConnectedToInternet // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
 /// @nodoc
 
-class _LoadingStatusState implements LoadingStatusState {
-  const _LoadingStatusState(
+class _$LoadingStatusStateImpl implements _LoadingStatusState {
+  const _$LoadingStatusStateImpl(
       {required this.quizPassedFailureOrSuccess,
       this.isLoading = false,
       this.brandInfo,
@@ -557,10 +354,11 @@ class _LoadingStatusState implements LoadingStatusState {
       this.selfDeletionProcessStarted = false,
       this.otp = '',
       required this.deleteFailureOrSuccessOption,
-      List<VideoItem> videoList = const [],
+      final List<VideoItem> videoList = const [],
       this.isConnectedToInternet = false})
       : _videoList = videoList;
 
+// Quiz/Video/Profile gatekeeper ka final result
   @override
   final Option<Either<AppErrors, String>> quizPassedFailureOrSuccess;
 
@@ -571,16 +369,19 @@ class _LoadingStatusState implements LoadingStatusState {
   @override
   @JsonKey()
   final bool isLoading;
+// API se aane wala data yahan save hota hai
   @override
   final OrgBrandInfoData? brandInfo;
   @override
   final UserDashboardData? userDashboardData;
+// Dashboard ka data lane mein success hui ya fail?
   @override
   final Option<Either<AppErrors, UserDashboardData>>
       dashboardCallFailureOrSuccess;
   @override
   @JsonKey()
   final bool dashboardLoading;
+// Profile (Form) ka data aur uski loading state
   @override
   final UserProfileData? userProfileData;
   @override
@@ -588,6 +389,7 @@ class _LoadingStatusState implements LoadingStatusState {
   @override
   @JsonKey()
   final bool profileLoading;
+// Account delete karne ka process
   @override
   @JsonKey()
   final bool otpLoading;
@@ -599,7 +401,9 @@ class _LoadingStatusState implements LoadingStatusState {
   final String otp;
   @override
   final Option<Either<AppErrors, String>> deleteFailureOrSuccessOption;
+// Mandatory videos ki list jo user ko dekhni hai
   final List<VideoItem> _videoList;
+// Mandatory videos ki list jo user ko dekhni hai
   @override
   @JsonKey()
   List<VideoItem> get videoList {
@@ -608,23 +412,21 @@ class _LoadingStatusState implements LoadingStatusState {
     return EqualUnmodifiableListView(_videoList);
   }
 
+// Internet connection ka current status
   @override
   @JsonKey()
   final bool isConnectedToInternet;
 
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$LoadingStatusStateCopyWith<_LoadingStatusState> get copyWith =>
-      __$LoadingStatusStateCopyWithImpl<_LoadingStatusState>(this, _$identity);
+  String toString() {
+    return 'LoadingStatusState(quizPassedFailureOrSuccess: $quizPassedFailureOrSuccess, isLoading: $isLoading, brandInfo: $brandInfo, userDashboardData: $userDashboardData, dashboardCallFailureOrSuccess: $dashboardCallFailureOrSuccess, dashboardLoading: $dashboardLoading, userProfileData: $userProfileData, profileCallFailureOrSuccess: $profileCallFailureOrSuccess, profileLoading: $profileLoading, otpLoading: $otpLoading, selfDeletionProcessStarted: $selfDeletionProcessStarted, otp: $otp, deleteFailureOrSuccessOption: $deleteFailureOrSuccessOption, videoList: $videoList, isConnectedToInternet: $isConnectedToInternet)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadingStatusState &&
+            other is _$LoadingStatusStateImpl &&
             (identical(other.quizPassedFailureOrSuccess, quizPassedFailureOrSuccess) ||
                 other.quizPassedFailureOrSuccess ==
                     quizPassedFailureOrSuccess) &&
@@ -659,206 +461,98 @@ class _LoadingStatusState implements LoadingStatusState {
                 other.deleteFailureOrSuccessOption ==
                     deleteFailureOrSuccessOption) &&
             const DeepCollectionEquality()
-                .equals(other.videoList, _videoList) &&
+                .equals(other._videoList, _videoList) &&
             (identical(other.isConnectedToInternet, isConnectedToInternet) ||
                 other.isConnectedToInternet == isConnectedToInternet));
   }
 
   @override
-  int get hashCode {
-    return Object.hash(
-        runtimeType,
-        quizPassedFailureOrSuccess,
-        isLoading,
-        brandInfo,
-        userDashboardData,
-        dashboardCallFailureOrSuccess,
-        dashboardLoading,
-        userProfileData,
-        profileCallFailureOrSuccess,
-        profileLoading,
-        otpLoading,
-        selfDeletionProcessStarted,
-        otp,
-        deleteFailureOrSuccessOption,
-        const DeepCollectionEquality().hash(_videoList),
-        isConnectedToInternet);
-  }
+  int get hashCode => Object.hash(
+      runtimeType,
+      quizPassedFailureOrSuccess,
+      isLoading,
+      brandInfo,
+      userDashboardData,
+      dashboardCallFailureOrSuccess,
+      dashboardLoading,
+      userProfileData,
+      profileCallFailureOrSuccess,
+      profileLoading,
+      otpLoading,
+      selfDeletionProcessStarted,
+      otp,
+      deleteFailureOrSuccessOption,
+      const DeepCollectionEquality().hash(_videoList),
+      isConnectedToInternet);
 
+  @JsonKey(ignore: true)
   @override
-  String toString() {
-    return 'LoadingStatusState(quizPassedFailureOrSuccess: $quizPassedFailureOrSuccess, isLoading: $isLoading, brandInfo: $brandInfo, userDashboardData: $userDashboardData, dashboardCallFailureOrSuccess: $dashboardCallFailureOrSuccess, dashboardLoading: $dashboardLoading, userProfileData: $userProfileData, profileCallFailureOrSuccess: $profileCallFailureOrSuccess, profileLoading: $profileLoading, otpLoading: $otpLoading, selfDeletionProcessStarted: $selfDeletionProcessStarted, otp: $otp, deleteFailureOrSuccessOption: $deleteFailureOrSuccessOption, videoList: $videoList, isConnectedToInternet: $isConnectedToInternet)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$LoadingStatusStateImplCopyWith<_$LoadingStatusStateImpl> get copyWith =>
+      __$$LoadingStatusStateImplCopyWithImpl<_$LoadingStatusStateImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$LoadingStatusStateCopyWith<$Res>
-    implements $LoadingStatusStateCopyWith<$Res> {
-  factory _$LoadingStatusStateCopyWith(
-          _LoadingStatusState value, $Res Function(_LoadingStatusState) _then) =
-      __$LoadingStatusStateCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {Option<Either<AppErrors, String>> quizPassedFailureOrSuccess,
-      bool isLoading,
-      OrgBrandInfoData? brandInfo,
-      UserDashboardData? userDashboardData,
-      Option<Either<AppErrors, UserDashboardData>>
+abstract class _LoadingStatusState implements LoadingStatusState {
+  const factory _LoadingStatusState(
+      {required final Option<Either<AppErrors, String>>
+          quizPassedFailureOrSuccess,
+      final bool isLoading,
+      final OrgBrandInfoData? brandInfo,
+      final UserDashboardData? userDashboardData,
+      required final Option<Either<AppErrors, UserDashboardData>>
           dashboardCallFailureOrSuccess,
-      bool dashboardLoading,
-      UserProfileData? userProfileData,
-      Option<Either<AppErrors, UserProfileData>> profileCallFailureOrSuccess,
-      bool profileLoading,
-      bool otpLoading,
-      bool selfDeletionProcessStarted,
-      String otp,
-      Option<Either<AppErrors, String>> deleteFailureOrSuccessOption,
-      List<VideoItem> videoList,
-      bool isConnectedToInternet});
+      final bool dashboardLoading,
+      final UserProfileData? userProfileData,
+      required final Option<Either<AppErrors, UserProfileData>>
+          profileCallFailureOrSuccess,
+      final bool profileLoading,
+      final bool otpLoading,
+      final bool selfDeletionProcessStarted,
+      final String otp,
+      required final Option<Either<AppErrors, String>>
+          deleteFailureOrSuccessOption,
+      final List<VideoItem> videoList,
+      final bool isConnectedToInternet}) = _$LoadingStatusStateImpl;
 
+  @override // Quiz/Video/Profile gatekeeper ka final result
+  Option<Either<AppErrors, String>> get quizPassedFailureOrSuccess;
   @override
-  $OrgBrandInfoDataCopyWith<$Res>? get brandInfo;
+
+  /// [Change Effect]
+  /// `@Default(false)` ka matlab hai agar Cubit ne `isLoading` ki value nahi di,
+  /// toh default false maan lo. Agar tum yahan se `@Default(false)` hata do,
+  /// toh Freezed error dega ki ya toh default value batao, ya isko 'required' karo.
+  bool get isLoading;
+  @override // API se aane wala data yahan save hota hai
+  OrgBrandInfoData? get brandInfo;
   @override
-  $UserDashboardDataCopyWith<$Res>? get userDashboardData;
+  UserDashboardData? get userDashboardData;
+  @override // Dashboard ka data lane mein success hui ya fail?
+  Option<Either<AppErrors, UserDashboardData>>
+      get dashboardCallFailureOrSuccess;
   @override
-  $UserProfileDataCopyWith<$Res>? get userProfileData;
+  bool get dashboardLoading;
+  @override // Profile (Form) ka data aur uski loading state
+  UserProfileData? get userProfileData;
+  @override
+  Option<Either<AppErrors, UserProfileData>> get profileCallFailureOrSuccess;
+  @override
+  bool get profileLoading;
+  @override // Account delete karne ka process
+  bool get otpLoading;
+  @override
+  bool get selfDeletionProcessStarted;
+  @override
+  String get otp;
+  @override
+  Option<Either<AppErrors, String>> get deleteFailureOrSuccessOption;
+  @override // Mandatory videos ki list jo user ko dekhni hai
+  List<VideoItem> get videoList;
+  @override // Internet connection ka current status
+  bool get isConnectedToInternet;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadingStatusStateImplCopyWith<_$LoadingStatusStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class __$LoadingStatusStateCopyWithImpl<$Res>
-    implements _$LoadingStatusStateCopyWith<$Res> {
-  __$LoadingStatusStateCopyWithImpl(this._self, this._then);
-
-  final _LoadingStatusState _self;
-  final $Res Function(_LoadingStatusState) _then;
-
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? quizPassedFailureOrSuccess = null,
-    Object? isLoading = null,
-    Object? brandInfo = freezed,
-    Object? userDashboardData = freezed,
-    Object? dashboardCallFailureOrSuccess = null,
-    Object? dashboardLoading = null,
-    Object? userProfileData = freezed,
-    Object? profileCallFailureOrSuccess = null,
-    Object? profileLoading = null,
-    Object? otpLoading = null,
-    Object? selfDeletionProcessStarted = null,
-    Object? otp = null,
-    Object? deleteFailureOrSuccessOption = null,
-    Object? videoList = null,
-    Object? isConnectedToInternet = null,
-  }) {
-    return _then(_LoadingStatusState(
-      quizPassedFailureOrSuccess: null == quizPassedFailureOrSuccess
-          ? _self.quizPassedFailureOrSuccess
-          : quizPassedFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AppErrors, String>>,
-      isLoading: null == isLoading
-          ? _self.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      brandInfo: freezed == brandInfo
-          ? _self.brandInfo
-          : brandInfo // ignore: cast_nullable_to_non_nullable
-              as OrgBrandInfoData?,
-      userDashboardData: freezed == userDashboardData
-          ? _self.userDashboardData
-          : userDashboardData // ignore: cast_nullable_to_non_nullable
-              as UserDashboardData?,
-      dashboardCallFailureOrSuccess: null == dashboardCallFailureOrSuccess
-          ? _self.dashboardCallFailureOrSuccess
-          : dashboardCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AppErrors, UserDashboardData>>,
-      dashboardLoading: null == dashboardLoading
-          ? _self.dashboardLoading
-          : dashboardLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userProfileData: freezed == userProfileData
-          ? _self.userProfileData
-          : userProfileData // ignore: cast_nullable_to_non_nullable
-              as UserProfileData?,
-      profileCallFailureOrSuccess: null == profileCallFailureOrSuccess
-          ? _self.profileCallFailureOrSuccess
-          : profileCallFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AppErrors, UserProfileData>>,
-      profileLoading: null == profileLoading
-          ? _self.profileLoading
-          : profileLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      otpLoading: null == otpLoading
-          ? _self.otpLoading
-          : otpLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      selfDeletionProcessStarted: null == selfDeletionProcessStarted
-          ? _self.selfDeletionProcessStarted
-          : selfDeletionProcessStarted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      otp: null == otp
-          ? _self.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as String,
-      deleteFailureOrSuccessOption: null == deleteFailureOrSuccessOption
-          ? _self.deleteFailureOrSuccessOption
-          : deleteFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AppErrors, String>>,
-      videoList: null == videoList
-          ? _self._videoList
-          : videoList // ignore: cast_nullable_to_non_nullable
-              as List<VideoItem>,
-      isConnectedToInternet: null == isConnectedToInternet
-          ? _self.isConnectedToInternet
-          : isConnectedToInternet // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $OrgBrandInfoDataCopyWith<$Res>? get brandInfo {
-    if (_self.brandInfo == null) {
-      return null;
-    }
-
-    return $OrgBrandInfoDataCopyWith<$Res>(_self.brandInfo!, (value) {
-      return _then(_self.copyWith(brandInfo: value));
-    });
-  }
-
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserDashboardDataCopyWith<$Res>? get userDashboardData {
-    if (_self.userDashboardData == null) {
-      return null;
-    }
-
-    return $UserDashboardDataCopyWith<$Res>(_self.userDashboardData!, (value) {
-      return _then(_self.copyWith(userDashboardData: value));
-    });
-  }
-
-  /// Create a copy of LoadingStatusState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserProfileDataCopyWith<$Res>? get userProfileData {
-    if (_self.userProfileData == null) {
-      return null;
-    }
-
-    return $UserProfileDataCopyWith<$Res>(_self.userProfileData!, (value) {
-      return _then(_self.copyWith(userProfileData: value));
-    });
-  }
-}
-
-// dart format on

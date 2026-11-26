@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'video_item.dart';
@@ -9,95 +9,46 @@ part of 'video_item.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+VideoItem _$VideoItemFromJson(Map<String, dynamic> json) {
+  return _VideoItem.fromJson(json);
+}
 
 /// @nodoc
 mixin _$VideoItem {
   @JsonKey(name: 'videoPath')
-  String get videoPath;
+  String get videoPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'videoTitle')
-  String get videoTitle;
+  String get videoTitle => throw _privateConstructorUsedError;
   @JsonKey(name: 'videoDescription')
-  String get videoDescription;
+  String get videoDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'isPublished')
-  bool get isPublished;
+  bool get isPublished => throw _privateConstructorUsedError;
   @JsonKey(name: 'isActivated')
-  bool get isActivated;
+  bool get isActivated => throw _privateConstructorUsedError;
   @JsonKey(name: 'videoId')
-  String get videoId;
+  String get videoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'created')
-  String get created;
+  String get created => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastModified')
-  String get lastModified;
+  String get lastModified => throw _privateConstructorUsedError;
   @JsonKey(name: 'watched')
-  bool get watched;
+  bool get watched => throw _privateConstructorUsedError;
 
-  /// Create a copy of VideoItem
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
   $VideoItemCopyWith<VideoItem> get copyWith =>
-      _$VideoItemCopyWithImpl<VideoItem>(this as VideoItem, _$identity);
-
-  /// Serializes this VideoItem to a JSON map.
-  Map<String, dynamic> toJson();
-
-  @override
-  bool operator ==(Object other) {
-    final _this = this as VideoItem;
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is VideoItem &&
-            (identical(other.videoPath, _this.videoPath) ||
-                other.videoPath == _this.videoPath) &&
-            (identical(other.videoTitle, _this.videoTitle) ||
-                other.videoTitle == _this.videoTitle) &&
-            (identical(other.videoDescription, _this.videoDescription) ||
-                other.videoDescription == _this.videoDescription) &&
-            (identical(other.isPublished, _this.isPublished) ||
-                other.isPublished == _this.isPublished) &&
-            (identical(other.isActivated, _this.isActivated) ||
-                other.isActivated == _this.isActivated) &&
-            (identical(other.videoId, _this.videoId) ||
-                other.videoId == _this.videoId) &&
-            (identical(other.created, _this.created) ||
-                other.created == _this.created) &&
-            (identical(other.lastModified, _this.lastModified) ||
-                other.lastModified == _this.lastModified) &&
-            (identical(other.watched, _this.watched) ||
-                other.watched == _this.watched));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode {
-    final _this = this as VideoItem;
-    return Object.hash(
-        runtimeType,
-        _this.videoPath,
-        _this.videoTitle,
-        _this.videoDescription,
-        _this.isPublished,
-        _this.isActivated,
-        _this.videoId,
-        _this.created,
-        _this.lastModified,
-        _this.watched);
-  }
-
-  @override
-  String toString() {
-    final _this = this as VideoItem;
-    return 'VideoItem(videoPath: ${_this.videoPath}, videoTitle: ${_this.videoTitle}, videoDescription: ${_this.videoDescription}, isPublished: ${_this.isPublished}, isActivated: ${_this.isActivated}, videoId: ${_this.videoId}, created: ${_this.created}, lastModified: ${_this.lastModified}, watched: ${_this.watched})';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $VideoItemCopyWith<$Res> {
-  factory $VideoItemCopyWith(VideoItem value, $Res Function(VideoItem) _then) =
-      _$VideoItemCopyWithImpl;
+abstract class $VideoItemCopyWith<$Res> {
+  factory $VideoItemCopyWith(VideoItem value, $Res Function(VideoItem) then) =
+      _$VideoItemCopyWithImpl<$Res, VideoItem>;
   @useResult
   $Res call(
       {@JsonKey(name: 'videoPath') String videoPath,
@@ -112,14 +63,15 @@ abstract mixin class $VideoItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VideoItemCopyWithImpl<$Res> implements $VideoItemCopyWith<$Res> {
-  _$VideoItemCopyWithImpl(this._self, this._then);
+class _$VideoItemCopyWithImpl<$Res, $Val extends VideoItem>
+    implements $VideoItemCopyWith<$Res> {
+  _$VideoItemCopyWithImpl(this._value, this._then);
 
-  final VideoItem _self;
-  final $Res Function(VideoItem) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of VideoItem
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,265 +85,133 @@ class _$VideoItemCopyWithImpl<$Res> implements $VideoItemCopyWith<$Res> {
     Object? lastModified = null,
     Object? watched = null,
   }) {
-    return _then(VideoItem(
+    return _then(_value.copyWith(
       videoPath: null == videoPath
-          ? _self.videoPath
+          ? _value.videoPath
           : videoPath // ignore: cast_nullable_to_non_nullable
               as String,
       videoTitle: null == videoTitle
-          ? _self.videoTitle
+          ? _value.videoTitle
           : videoTitle // ignore: cast_nullable_to_non_nullable
               as String,
       videoDescription: null == videoDescription
-          ? _self.videoDescription
+          ? _value.videoDescription
           : videoDescription // ignore: cast_nullable_to_non_nullable
               as String,
       isPublished: null == isPublished
-          ? _self.isPublished
+          ? _value.isPublished
           : isPublished // ignore: cast_nullable_to_non_nullable
               as bool,
       isActivated: null == isActivated
-          ? _self.isActivated
+          ? _value.isActivated
           : isActivated // ignore: cast_nullable_to_non_nullable
               as bool,
       videoId: null == videoId
-          ? _self.videoId
+          ? _value.videoId
           : videoId // ignore: cast_nullable_to_non_nullable
               as String,
       created: null == created
-          ? _self.created
+          ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
               as String,
       lastModified: null == lastModified
-          ? _self.lastModified
+          ? _value.lastModified
           : lastModified // ignore: cast_nullable_to_non_nullable
               as String,
       watched: null == watched
-          ? _self.watched
+          ? _value.watched
+          : watched // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$VideoItemImplCopyWith<$Res>
+    implements $VideoItemCopyWith<$Res> {
+  factory _$$VideoItemImplCopyWith(
+          _$VideoItemImpl value, $Res Function(_$VideoItemImpl) then) =
+      __$$VideoItemImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'videoPath') String videoPath,
+      @JsonKey(name: 'videoTitle') String videoTitle,
+      @JsonKey(name: 'videoDescription') String videoDescription,
+      @JsonKey(name: 'isPublished') bool isPublished,
+      @JsonKey(name: 'isActivated') bool isActivated,
+      @JsonKey(name: 'videoId') String videoId,
+      @JsonKey(name: 'created') String created,
+      @JsonKey(name: 'lastModified') String lastModified,
+      @JsonKey(name: 'watched') bool watched});
+}
+
+/// @nodoc
+class __$$VideoItemImplCopyWithImpl<$Res>
+    extends _$VideoItemCopyWithImpl<$Res, _$VideoItemImpl>
+    implements _$$VideoItemImplCopyWith<$Res> {
+  __$$VideoItemImplCopyWithImpl(
+      _$VideoItemImpl _value, $Res Function(_$VideoItemImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? videoPath = null,
+    Object? videoTitle = null,
+    Object? videoDescription = null,
+    Object? isPublished = null,
+    Object? isActivated = null,
+    Object? videoId = null,
+    Object? created = null,
+    Object? lastModified = null,
+    Object? watched = null,
+  }) {
+    return _then(_$VideoItemImpl(
+      videoPath: null == videoPath
+          ? _value.videoPath
+          : videoPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoTitle: null == videoTitle
+          ? _value.videoTitle
+          : videoTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      videoDescription: null == videoDescription
+          ? _value.videoDescription
+          : videoDescription // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPublished: null == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isActivated: null == isActivated
+          ? _value.isActivated
+          : isActivated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      videoId: null == videoId
+          ? _value.videoId
+          : videoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastModified: null == lastModified
+          ? _value.lastModified
+          : lastModified // ignore: cast_nullable_to_non_nullable
+              as String,
+      watched: null == watched
+          ? _value.watched
           : watched // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [VideoItem].
-extension VideoItemPatterns on VideoItem {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_VideoItem value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_VideoItem value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_VideoItem value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'videoPath') String videoPath,
-            @JsonKey(name: 'videoTitle') String videoTitle,
-            @JsonKey(name: 'videoDescription') String videoDescription,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'videoId') String videoId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified,
-            @JsonKey(name: 'watched') bool watched)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem() when $default != null:
-        return $default(
-            _that.videoPath,
-            _that.videoTitle,
-            _that.videoDescription,
-            _that.isPublished,
-            _that.isActivated,
-            _that.videoId,
-            _that.created,
-            _that.lastModified,
-            _that.watched);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(
-            @JsonKey(name: 'videoPath') String videoPath,
-            @JsonKey(name: 'videoTitle') String videoTitle,
-            @JsonKey(name: 'videoDescription') String videoDescription,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'videoId') String videoId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified,
-            @JsonKey(name: 'watched') bool watched)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem():
-        return $default(
-            _that.videoPath,
-            _that.videoTitle,
-            _that.videoDescription,
-            _that.isPublished,
-            _that.isActivated,
-            _that.videoId,
-            _that.created,
-            _that.lastModified,
-            _that.watched);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            @JsonKey(name: 'videoPath') String videoPath,
-            @JsonKey(name: 'videoTitle') String videoTitle,
-            @JsonKey(name: 'videoDescription') String videoDescription,
-            @JsonKey(name: 'isPublished') bool isPublished,
-            @JsonKey(name: 'isActivated') bool isActivated,
-            @JsonKey(name: 'videoId') String videoId,
-            @JsonKey(name: 'created') String created,
-            @JsonKey(name: 'lastModified') String lastModified,
-            @JsonKey(name: 'watched') bool watched)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _VideoItem() when $default != null:
-        return $default(
-            _that.videoPath,
-            _that.videoTitle,
-            _that.videoDescription,
-            _that.isPublished,
-            _that.isActivated,
-            _that.videoId,
-            _that.created,
-            _that.lastModified,
-            _that.watched);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 @JsonSerializable()
-class _VideoItem implements VideoItem {
-  const _VideoItem(
+class _$VideoItemImpl implements _VideoItem {
+  const _$VideoItemImpl(
       {@JsonKey(name: 'videoPath') this.videoPath = '',
       @JsonKey(name: 'videoTitle') this.videoTitle = '',
       @JsonKey(name: 'videoDescription') this.videoDescription = '',
@@ -401,8 +221,9 @@ class _VideoItem implements VideoItem {
       @JsonKey(name: 'created') this.created = '',
       @JsonKey(name: 'lastModified') this.lastModified = '',
       @JsonKey(name: 'watched') this.watched = false});
-  factory _VideoItem.fromJson(Map<String, dynamic> json) =>
-      _$VideoItemFromJson(json);
+
+  factory _$VideoItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VideoItemImplFromJson(json);
 
   @override
   @JsonKey(name: 'videoPath')
@@ -432,26 +253,16 @@ class _VideoItem implements VideoItem {
   @JsonKey(name: 'watched')
   final bool watched;
 
-  /// Create a copy of VideoItem
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$VideoItemCopyWith<_VideoItem> get copyWith =>
-      __$VideoItemCopyWithImpl<_VideoItem>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$VideoItemToJson(
-      this,
-    );
+  String toString() {
+    return 'VideoItem(videoPath: $videoPath, videoTitle: $videoTitle, videoDescription: $videoDescription, isPublished: $isPublished, isActivated: $isActivated, videoId: $videoId, created: $created, lastModified: $lastModified, watched: $watched)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VideoItem &&
+            other is _$VideoItemImpl &&
             (identical(other.videoPath, videoPath) ||
                 other.videoPath == videoPath) &&
             (identical(other.videoTitle, videoTitle) ||
@@ -469,100 +280,78 @@ class _VideoItem implements VideoItem {
             (identical(other.watched, watched) || other.watched == watched));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, videoPath, videoTitle, videoDescription,
-        isPublished, isActivated, videoId, created, lastModified, watched);
-  }
+  int get hashCode => Object.hash(
+      runtimeType,
+      videoPath,
+      videoTitle,
+      videoDescription,
+      isPublished,
+      isActivated,
+      videoId,
+      created,
+      lastModified,
+      watched);
 
-  @override
-  String toString() {
-    return 'VideoItem(videoPath: $videoPath, videoTitle: $videoTitle, videoDescription: $videoDescription, isPublished: $isPublished, isActivated: $isActivated, videoId: $videoId, created: $created, lastModified: $lastModified, watched: $watched)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$VideoItemCopyWith<$Res>
-    implements $VideoItemCopyWith<$Res> {
-  factory _$VideoItemCopyWith(
-          _VideoItem value, $Res Function(_VideoItem) _then) =
-      __$VideoItemCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'videoPath') String videoPath,
-      @JsonKey(name: 'videoTitle') String videoTitle,
-      @JsonKey(name: 'videoDescription') String videoDescription,
-      @JsonKey(name: 'isPublished') bool isPublished,
-      @JsonKey(name: 'isActivated') bool isActivated,
-      @JsonKey(name: 'videoId') String videoId,
-      @JsonKey(name: 'created') String created,
-      @JsonKey(name: 'lastModified') String lastModified,
-      @JsonKey(name: 'watched') bool watched});
-}
-
-/// @nodoc
-class __$VideoItemCopyWithImpl<$Res> implements _$VideoItemCopyWith<$Res> {
-  __$VideoItemCopyWithImpl(this._self, this._then);
-
-  final _VideoItem _self;
-  final $Res Function(_VideoItem) _then;
-
-  /// Create a copy of VideoItem
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? videoPath = null,
-    Object? videoTitle = null,
-    Object? videoDescription = null,
-    Object? isPublished = null,
-    Object? isActivated = null,
-    Object? videoId = null,
-    Object? created = null,
-    Object? lastModified = null,
-    Object? watched = null,
-  }) {
-    return _then(_VideoItem(
-      videoPath: null == videoPath
-          ? _self.videoPath
-          : videoPath // ignore: cast_nullable_to_non_nullable
-              as String,
-      videoTitle: null == videoTitle
-          ? _self.videoTitle
-          : videoTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      videoDescription: null == videoDescription
-          ? _self.videoDescription
-          : videoDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      isPublished: null == isPublished
-          ? _self.isPublished
-          : isPublished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isActivated: null == isActivated
-          ? _self.isActivated
-          : isActivated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      videoId: null == videoId
-          ? _self.videoId
-          : videoId // ignore: cast_nullable_to_non_nullable
-              as String,
-      created: null == created
-          ? _self.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastModified: null == lastModified
-          ? _self.lastModified
-          : lastModified // ignore: cast_nullable_to_non_nullable
-              as String,
-      watched: null == watched
-          ? _self.watched
-          : watched // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  _$$VideoItemImplCopyWith<_$VideoItemImpl> get copyWith =>
+      __$$VideoItemImplCopyWithImpl<_$VideoItemImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$VideoItemImplToJson(
+      this,
+    );
   }
 }
 
-// dart format on
+abstract class _VideoItem implements VideoItem {
+  const factory _VideoItem(
+      {@JsonKey(name: 'videoPath') final String videoPath,
+      @JsonKey(name: 'videoTitle') final String videoTitle,
+      @JsonKey(name: 'videoDescription') final String videoDescription,
+      @JsonKey(name: 'isPublished') final bool isPublished,
+      @JsonKey(name: 'isActivated') final bool isActivated,
+      @JsonKey(name: 'videoId') final String videoId,
+      @JsonKey(name: 'created') final String created,
+      @JsonKey(name: 'lastModified') final String lastModified,
+      @JsonKey(name: 'watched') final bool watched}) = _$VideoItemImpl;
+
+  factory _VideoItem.fromJson(Map<String, dynamic> json) =
+      _$VideoItemImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'videoPath')
+  String get videoPath;
+  @override
+  @JsonKey(name: 'videoTitle')
+  String get videoTitle;
+  @override
+  @JsonKey(name: 'videoDescription')
+  String get videoDescription;
+  @override
+  @JsonKey(name: 'isPublished')
+  bool get isPublished;
+  @override
+  @JsonKey(name: 'isActivated')
+  bool get isActivated;
+  @override
+  @JsonKey(name: 'videoId')
+  String get videoId;
+  @override
+  @JsonKey(name: 'created')
+  String get created;
+  @override
+  @JsonKey(name: 'lastModified')
+  String get lastModified;
+  @override
+  @JsonKey(name: 'watched')
+  bool get watched;
+  @override
+  @JsonKey(ignore: true)
+  _$$VideoItemImplCopyWith<_$VideoItemImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

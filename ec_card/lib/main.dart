@@ -1,14 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:ec_card_app/src/domain/local_storage/secure_storage_manager.dart';
+import 'package:ec_card_app/src/injection.dart';
+import 'package:ec_card_app/src/data/core/services/firebase_messaging_service.dart';
+import 'package:ec_card_app/src/presentation/settings/settings_controller.dart';
+import 'package:ec_card_app/src/data/core/services/settings_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
-import 'src/data/core/services/firebase_messaging_service.dart';
-import 'src/domain/local_storage/secure_storage_manager.dart';
-import 'src/injection.dart';
-import 'src/presentation/core/res/app_theme.dart';
-import 'src/presentation/loading_status/loading_status_page.dart';
-import 'src/presentation/login/login_screen.dart';
+import 'src/presentation/core/app.dart';
+import 'src/presentation/core/locale_provider.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
 const FirebaseOptions _iosFirebaseOptions = FirebaseOptions(
   apiKey: 'AIzaSyA7cwT2gqaRMIbiS_mLxTlBB7UVAfxqdEo',
@@ -24,75 +33,89 @@ Future<void> _initializeFirebase() async {
     await Firebase.initializeApp(options: _iosFirebaseOptions);
     return;
   }
+
   await Firebase.initializeApp();
 }
 
-// Background notification handler
 @pragma('vm:entry-point')
-Future<void> firebaseMessagingBackgroundHandler(
-  RemoteMessage message,
-) async {
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await _initializeFirebase();
-
-  debugPrint(
-    '[Background Message Received] ID: ${message.messageId}',
+  appLog(
+    '[Background message] id=${message.messageId} data=${message.data}',
   );
 }
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // package:intl's DateFormat only gets its date-symbol data loaded as a
+  // side effect of GlobalMaterialLocalizations.delegate.load() running for
+  // the active locale. For locales that delegate doesn't support (e.g.
+  // Gaelic "gd"), this app's own fallback delegate (app.dart) takes over
+  // instead and never triggers that load, leaving intl's date data
+  // uninitialized for the whole session - so even DateFormat.localeExists()
+  // throws instead of returning false. Initializing it explicitly here
+  // guarantees it's always ready, regardless of which locale is active.
+  await initializeDateFormatting();
+  await _initializeFirebase();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  unawaited(FirebaseMessagingService.initialize());
 
-  // 1. Firebase initialization with try-catch
-  try {
-    await _initializeFirebase();
+  // Set up the SettingsController, which will glue user settings to multiple
+  // Flutter Widgets.
+  final settingsController = SettingsController(SettingsService());
 
-    FirebaseMessaging.onBackgroundMessage(
-      firebaseMessagingBackgroundHandler,
-    );
+  // Load the user's preferred theme while the splash screen is displayed.
+  // This prevents a sudden theme change when the app is first displayed.
+  await settingsController.loadSettings();
 
-    // 2. Initialize foreground notification service
-    await FirebaseMessagingService.initialize();
-  } catch (e) {
-    debugPrint("Firebase init note: $e");
-  }
+  // Load saved locale so the app starts in the user's preferred language.
+  final localeProvider = LocaleProvider();
+  await localeProvider.loadSavedLocale();
+  configureInjection(env: Environment.dev);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.manual,
+    overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top],
+  );
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor:
+        Colors.black, // navigation bar color//Navigation bar divider color
+    systemNavigationBarIconBrightness: Brightness.dark, //navigation bar icon
+  ));
 
-  // 3. Initialize Dependency Injection
-  configureInjection();
+  // Awaited before runApp. iOS Keychain entries survive a reinstall; run in
+  // the background, the splash screen could read stale tokens before the
+  // wipe, or the wipe could delete tokens from a quick first sign-in.
+  await clearSecureStorageOnReinstall();
 
-  // 4. Check login session from Secure Storage
-  bool isLoggedIn = false;
-
-  try {
-    final storage = getIt<SecureStorgeManager>();
-    final token = await storage.getAccessToken();
-
-    isLoggedIn = token != null && token.isNotEmpty;
-  } catch (e) {
-    debugPrint("Secure Storage note: $e");
-  }
-
-  // 5. Run application
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+  // Run the app and pass in the SettingsController. The app listens to the
+  // SettingsController for changes, then passes it further down to the
+  // SettingsView.
+  runApp(
+    ChangeNotifierProvider.value(
+      value: localeProvider,
+      child: MyAppView(
+        settingsController: settingsController,
+        localeProvider: localeProvider,
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
+Future<void> clearSecureStorageOnReinstall() async {
+  String key = 'hasRunBefore';
+  SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  const MyApp({
-    super.key,
-    required this.isLoggedIn,
-  });
+  final launchStatus = prefs.getBool(key) ?? false;
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'EC Card',
-      theme: appLightTheme,
-      darkTheme: appDarkTheme,
-      home: isLoggedIn
-          ? const LoadingStatusPage()
-          : const LoginScreen(),
-    );
+  if (!launchStatus) {
+    final _secureStorage = getIt<SecureStorgeManager>();
+
+    await _secureStorage.clearSecureStorage();
   }
+
+  await prefs.setBool(key, true);
 }

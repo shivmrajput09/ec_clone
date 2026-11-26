@@ -1,0 +1,408 @@
+{
+  "appTitle": "ec_card_app",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "login": "Log In",
+  "mobile_no": "Mobile Number",
+  "enter_mobile_no": "Enter Mobile Number",
+  "new_user": "New User?",
+  "register_now": " Register Now",
+  "register": "Register",
+  "terms_condition": "Terms & Conditions",
+  "app_terms_conditions": "Apps Terms & Conditions",
+  "accept_close": "Accept & Close",
+  "register_no": "Register Number",
+  "register_text_one": "We need to verify your mobile number by sending you a one Time Password.",
+  "register_text_two": "Please enter your Mobile No. without any prefixes and press the Register button.",
+  "enable_permission": "Enable Permission",
+  "allow_permission": "Please allow permission manually to complete the operation.",
+  "dismiss": "Dismiss",
+  "open_settings": "Open Settings",
+  "unexpectedError": "An unexpected error occured",
+  "noInternetConnection": "No Internet Connection",
+  "notFound": "Not Found",
+  "databaseDisconnected": "The operation had to be aborted due to a network disconnect",
+  "datatbaseExpiredToken": "The supplied auth token has expired",
+  "databaseInvalidToken": "The specified authentication token is invalid",
+  "missingPhoneNumber": "Mobile number cannot be empty",
+  "invalidPhoneNumber": "Please provide a valid mobile number",
+  "invalidVerificationCode": "Invalid OTP",
+  "missingVerificationCode": "Invalid OTP",
+  "codeExpired": "OTP has expired. Please resend to try again.",
+  "unknownLoginError": "{message}",
+  "registrationError": "An unknown registration error occured",
+  "profileImageUploadError": "Unable to upload profile picture",
+  "profileImageDeleteError": "Unable to delete profile picture",
+  "clickHereForMoreInfo": "click here for contact info",
+  "@unknownLoginError": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownDatabaseError": "An unknown Databse Error: {message}",
+  "@unknownDatabaseError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "continue_to_quiz": "Continue to Quiz",
+  "continue_to_dashboard": "Continue to Dashboard",
+  "cancel": "Cancel",
+  "done": "Done",
+  "next": "Next",
+  "verify": "Verify",
+  "phone_number": "Phone Number",
+  "phone_verification": "Phone Verification",
+  "otp": "OTP",
+  "submit": "Submit",
+  "save_details": "Save Details",
+  "postcode": "Postcode",
+  "enter_postcode": "Enter Postcode",
+  "dob": "Date of Birth",
+  "dob_placeholder": "DD /MM /YYYY",
+  "gender": "Gender",
+  "male": "M",
+  "female": "F",
+  "other": "Other",
+  "do_not_disclose": "Do not wish to disclose",
+  "access_code": "Access Code",
+  "enter_access_code": "Enter Access Code",
+  "please_enter_access_code": "Please Enter Access Code",
+  "resend_otp": "Resend OTP",
+  "resend_otp_countdown": "Resend OTP in {time}",
+  "@resend_otp_countdown": {
+    "description": "Shown on the OTP screen while the resend button is on cooldown",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "00:59"
+      }
+    }
+  },
+  "change_mobile": "Change Mobile",
+  "otp_has_been_sent_to_the_mobile_number": "We have sent an OTP to your Mobile No. {mobileNumber}",
+  "@otp_has_been_sent_to_the_mobile_number": {
+    "placeholders": {
+      "mobileNumber": {
+        "type": "String"
+      }
+    }
+  },
+  "well_done": "Well Done! Registration Successful",
+  "registration_text": "Your registration is complete now, however, to access the app you need to complete the quiz in the following process. You can watch educational videos to help you pass the quiz. If you have given access code, you can use this code to bypass the quiz process.",
+  "continue_button": "Continue",
+  "watch_text": "Watch",
+  "quiz_text": "Quiz",
+  "finish_text": "Finish",
+  "congratulations": "Congratulations",
+  "not_eligible_for_transaction": "Not Eligible for Transaction",
+  "to_scan_again": "to Scan Again!",
+  "oh_no": "Oh.. no..",
+  "oops": "OOPS",
+  "transaction_successful": "Transaction Successful!",
+  "quiz_completion_text_one": "You have successfully completed the quiz and been accepted into the eC-Card scheme.You will now be able to access our list of approved venues and collect your free condom supply. Please ensure that the app can access location services and your camera.",
+  "quiz_completion_text_two": "When you visit your venue please notify them that you are a member of the Sexual Health eC-Card scheme and that you would like to collect your free condoms. You will be asked to scan a QR code using the App to approve the transaction before being given your condom supply.",
+  "quiz_completion_text_three": "If you have any problem please contact the service intelligence centre.",
+  "quiz_completion_text_four": "Please note: Condoms are supplied in a fixed quantity, in one size and type. You can only make one collection in any 7 day period.",
+  "error_in_playing_video": "There is an error in playing the video. Please try again!!",
+  "please_accept_the_terms_and_conditions": "Please accept the terms and conditions.",
+  "user_not_found": "User Not Found",
+  "user_disabled": "User Disabled",
+  "missing_phone_number": "Missing Phone Number",
+  "invalid_phone_number": "",
+  "logout": "Logout",
+  "are_you_sure_logout": "Are you sure you want to logout?",
+  "delete_account": "Delete Account",
+  "support": "Support",
+  "ivts": "IVTS",
+  "privacy_policy": "Privacy Policy",
+  "accessibility_statement": "Accessibility Statement",
+  "language": "Language",
+  "selectLanguage": "Select Language",
+  "venues": "Venues",
+  "education": "Education",
+  "message": "Message",
+  "account": "Account",
+  "orderCompleted": "Order Completed",
+  "transactionDetails": "Transaction Details",
+  "close": "Close",
+  "thankYouRecentTransaction": "Thank you for your recent transaction at {date} {time} GMT. You can make your next pick-up after ",
+  "@thankYouRecentTransaction": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "countdownDay": "day",
+  "countdownHour": "hour",
+  "countdownMin": "min",
+  "countdownSec": "sec",
+  "welcomeToEcCard": "Welcome to the eC-Card App",
+  "registrationDisclaimer": "Please note this app is not for emergency contraceptives. If you need these, please contact your local pharmacy or sexual health service directly.",
+  "videos": "Videos",
+  "documents": "Documents",
+  "weblinks": "Weblinks",
+  "@weblinks": {
+    "description": "Title of the weblinks tab on the education screen"
+  },
+  "no_weblinks": "No educational weblinks found",
+  "@no_weblinks": {
+    "description": "Shown when the weblinks list is empty"
+  },
+  "weblink_opens_in_browser": "Opens in browser",
+  "@weblink_opens_in_browser": {
+    "description": "Accessible hint for a weblink card that opens an external page"
+  },
+  "sizeLabel": "Size: {size}",
+  "@sizeLabel": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "viewsCount": "{count} views",
+  "@viewsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "ecCard": "eC-Card",
+  "stores": "Stores",
+  "kiosk": "Kiosk",
+  "search": "Search",
+  "addressLabel": "Address: ",
+  "notesLabel": "Notes: ",
+  "directions": "Directions",
+  "noKiosksAvailable": "Currently no Kiosks are available.",
+  "noNotificationsYet": "No notifications yet!",
+  "selectProduct": "Select Product",
+  "noActiveProducts": "No active products found in this store.",
+  "productDescription": "Product Description",
+  "productSelectionWarning": "Please ensure you make the right selection as only one selection is allowed per ordering period.",
+  "confirmSelection": "Confirm Selection",
+  "productDescriptionLabel": "Product Description:",
+  "back": "Back",
+  "confirm": "Confirm",
+  "skip": "Skip",
+  "settings": "Settings",
+  "systemTheme": "System Theme",
+  "lightTheme": "Light Theme",
+  "darkTheme": "Dark Theme",
+  "transactions": "Transactions",
+  "allowUnlimitedTransactions": "Allow unlimited transactions?",
+  "delete": "Delete",
+  "delete_account_warning": "Once you delete your account, all your visit records will be permanently deleted",
+  "additional_registration_questions": "Additional Registration Questions",
+  "submission_failed": "Submission failed: {error}",
+  "@submission_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "no_questions_available": "No questions available.",
+  "select_option": "Select Option",
+  "please_select_option": "Please select an option",
+  "select_options": "Select Options",
+  "please_select_at_least_one": "Please select at least one option",
+  "ok": "OK",
+  "contact_information": "Contact Information",
+  "send_support_message": "Send Support Message",
+  "title_hint": "Title",
+  "title_cannot_be_empty": "Title cannot be empty",
+  "description_hint": "Description",
+  "description_cannot_be_empty": "Description cannot be empty",
+  "email_invalid": "Please enter a valid email address",
+  "email_hint": "E-mail",
+  "add_attachment": "Add Attachment",
+  "name_label": "Name: ",
+  "email_label": "Email: ",
+  "contact_number_label": "Contact Number: ",
+  "enter_otp_delete_account": "Enter OTP to delete your account",
+  "delete_confirm_warning": "After pressing submit, all your visit records will be permanently deleted. Do you wish to continue?",
+  "unexpected_error_try_again": "Unexpected Error! Please try again.",
+  "gallery": "Gallery",
+  "field_is_mandatory": "Field is mandatory",
+  "current_location": "Current Location",
+  "submitted_successfully": "Submitted Successfully!",
+  "failed_to_load_profile": "Failed to load profile data",
+  "api_exception_not_implemented": "API Exception Not Implemented",
+  "api_exception_request_cancelled": "API Exception Request Cancelled",
+  "api_exception_internal_server_error": "API Exception Internal Server Error",
+  "api_exception_not_found": "API Exception Not Found",
+  "api_exception_service_unavailable": "API Exception Service Unavailable",
+  "api_exception_method_not_allowed": "API Exception Method Not Allowed",
+  "api_exception_bad_request": "API Exception Bad Request",
+  "api_exception_unauthorized_request": "API Exception Unauthorized Request",
+  "api_exception_unexpected_error": "API Exception Unexpected Error",
+  "api_exception_request_timeout": "API Exception Request Timeout",
+  "api_exception_no_internet_connection": "API Exception No Internet Connection",
+  "api_exception_send_timeout": "API Exception Send Timeout",
+  "api_exception_conflict": "API Exception Conflict",
+  "api_exception_unable_to_process_request": "API Exception Unable to Process Request",
+  "api_exception_unable_to_perform_action": "API Exception Unable to Perform Action",
+  "api_exception_unauthorized_exception": "API Exception Unauthorized Exception",
+  "api_exception_default_error": "API Exception Default Error",
+  "api_exception_format_exception": "API Exception Format Exception",
+  "api_exception_not_acceptable": "API Exception Not Acceptable",
+  "version_label": "Version",
+  "update_available_title": "Update available",
+  "update_required_title": "Update required",
+  "update_available_message": "A new version of the app is available. Update now to get the latest features and fixes.",
+  "update_required_message": "This version of the app is no longer supported. Please update to continue.",
+  "update_now": "Update now",
+  "update_later": "Later",
+  "permission_denied": "Permission Denied",
+  "online": "Online",
+  "noProductsFound": "No products found",
+  "failedToLoadProducts": "Failed to load products.",
+  "readMore": "Read More",
+  "notEligibleToOrderNow": "You are not eligible to order right now.",
+  "productDetails": "Product Details",
+  "orderNow": "Order Now",
+  "provideAddressAndContact": "Please Provide Your Address\nand Contact No. to Order",
+  "streetRequired": "Street*",
+  "addressLineTwo": "Address Line Two",
+  "townCityRequired": "Town/City*",
+  "postcodeRequired": "Postcode*",
+  "contactNoRequired": "Contact No.*",
+  "requiredField": "Required",
+  "onlineStore": "Online Store",
+  "confirmDeliveryInfo": "Confirm Delivery Info",
+  "failedToPlaceOrder": "Failed to place order. Please try again.",
+  "unexpectedErrorOccurred": "An unexpected error occurred",
+  "orderBlockWarning": "You will be blocked for 7 days to put next order.",
+  "orderPlaced": "Order Placed",
+  "orderConfirmed": "Your Order is now confirmed.",
+  "orderDetails": "Order Details",
+  "productNameLabel": "Product Name:",
+  "venueNameLabel": "Venue Name:",
+  "orderDateLabel": "Order Date:",
+  "orderTimeLabel": "Order Time:",
+  "orderBlockedSevenDays": "You are blocked for 7 days\nto put next order.",
+  "openingTimesText": "Opening times",
+  "openingHoursMonday": "Monday",
+  "openingHoursTuesday": "Tuesday",
+  "openingHoursWednesday": "Wednesday",
+  "openingHoursThursday": "Thursday",
+  "openingHoursFriday": "Friday",
+  "openingHoursSaturday": "Saturday",
+  "openingHoursSunday": "Sunday",
+  "openingHoursMonShort": "Mon",
+  "openingHoursTueShort": "Tue",
+  "openingHoursWedShort": "Wed",
+  "openingHoursThuShort": "Thu",
+  "openingHoursFriShort": "Fri",
+  "openingHoursSatShort": "Sat",
+  "openingHoursSunShort": "Sun",
+  "openingHoursClosed": "closed",
+  "openingHoursAnd": "and",
+  "openingHoursTo": "to",
+  "orderHistory": "Order History",
+  "noOrdersFound": "No orders found",
+  "failedToLoadOrderHistory": "Failed to load order history. Please try again.",
+  "orderStatusLabel": "Status:",
+  "deliveryAddressLabel": "Delivery Address:",
+  "retry": "Retry",
+  "something_went_wrong": "Something went wrong. Please try again.",
+  "videoPlay": "Play",
+  "@videoPlay": {
+    "description": "Accessible name for the video play button"
+  },
+  "videoPause": "Pause",
+  "@videoPause": {
+    "description": "Accessible name for the video pause button"
+  },
+  "videoMute": "Mute",
+  "@videoMute": {
+    "description": "Accessible name for the video mute button"
+  },
+  "videoUnmute": "Unmute",
+  "@videoUnmute": {
+    "description": "Accessible name for the video unmute button"
+  },
+  "videoUnavailable": "This video is unavailable.",
+  "@videoUnavailable": {
+    "description": "Shown in place of the player when a video cannot be played"
+  },
+  "videoFullScreen": "Full screen",
+  "@videoFullScreen": {
+    "description": "Accessible name for the video full screen button"
+  },
+  "videoExitFullScreen": "Exit full screen",
+  "@videoExitFullScreen": {
+    "description": "Accessible name for the exit full screen button"
+  },
+  "videoSeek": "Video position",
+  "@videoSeek": {
+    "description": "Accessible name for the video seek slider"
+  },
+  "videoTimeSpoken": "{minutes} minutes {seconds} seconds",
+  "@videoTimeSpoken": {
+    "description": "A duration spoken aloud by a screen reader",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "videoProgressSpoken": "{position} of {duration}",
+  "@videoProgressSpoken": {
+    "description": "Video progress spoken aloud",
+    "placeholders": {
+      "position": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "payloadTooLarge": "That file is too large to send. Please choose a smaller one.",
+  "tooManyRequests": "Too many attempts. Please wait a moment and try again.",
+  "tooManyRequestsIn": "Too many attempts. Please try again in {seconds} seconds.",
+  "serverError": "Something went wrong at our end. Please try again shortly.",
+  "serviceUnavailable": "The service is temporarily unavailable. Please try again shortly.",
+  "@tooManyRequestsIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "backButtonLabel": "Back",
+  "@backButtonLabel": {
+    "description": "Accessible name of the app bar back arrow, read by screen readers"
+  },
+  "scanQrCode": "Scan QR code",
+  "@scanQrCode": {
+    "description": "Accessible name of the QR scanner button on the home screen, read by screen readers"
+  },
+  "attachedImage": "Attached image",
+  "@attachedImage": {
+    "description": "Accessible name of the image attached to a support message, read by screen readers"
+  },
+  "chooseDateOfBirth": "Choose date of birth",
+  "@chooseDateOfBirth": {
+    "description": "Accessible name of the calendar button in the date of birth field, read by screen readers"
+  }
+}

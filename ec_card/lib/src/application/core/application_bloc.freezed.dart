@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'application_bloc.dart';
@@ -9,85 +9,41 @@ part of 'application_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApplicationEvent {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ApplicationEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'ApplicationEvent()';
-  }
-}
-
-/// @nodoc
-class $ApplicationEventCopyWith<$Res> {
-  $ApplicationEventCopyWith(
-      ApplicationEvent _, $Res Function(ApplicationEvent) __);
-}
-
-/// Adds pattern-matching-related methods to [ApplicationEvent].
-extension ApplicationEventPatterns on ApplicationEvent {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(CheckStatus value)? checkStatus,
-    TResult Function(InternetStatusChanged value)? internetStatusChanged,
-    TResult Function(Logout value)? logout,
-    TResult Function(ApplicationLifecycleChanged value)?
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStatus,
+    required TResult Function(bool isConnected) internetStatusChanged,
+    required TResult Function() logout,
+    required TResult Function(AppLifecycleState lifecycleState)
+        applicationLifecycleChanged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStatus,
+    TResult? Function(bool isConnected)? internetStatusChanged,
+    TResult? Function()? logout,
+    TResult? Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkStatus,
+    TResult Function(bool isConnected)? internetStatusChanged,
+    TResult Function()? logout,
+    TResult Function(AppLifecycleState lifecycleState)?
         applicationLifecycleChanged,
     required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus() when checkStatus != null:
-        return checkStatus(_that);
-      case InternetStatusChanged() when internetStatusChanged != null:
-        return internetStatusChanged(_that);
-      case Logout() when logout != null:
-        return logout(_that);
-      case ApplicationLifecycleChanged()
-          when applicationLifecycleChanged != null:
-        return applicationLifecycleChanged(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CheckStatus value) checkStatus,
@@ -96,34 +52,8 @@ extension ApplicationEventPatterns on ApplicationEvent {
     required TResult Function(Logout value) logout,
     required TResult Function(ApplicationLifecycleChanged value)
         applicationLifecycleChanged,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus():
-        return checkStatus(_that);
-      case InternetStatusChanged():
-        return internetStatusChanged(_that);
-      case Logout():
-        return logout(_that);
-      case ApplicationLifecycleChanged():
-        return applicationLifecycleChanged(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckStatus value)? checkStatus,
@@ -131,35 +61,98 @@ extension ApplicationEventPatterns on ApplicationEvent {
     TResult? Function(Logout value)? logout,
     TResult? Function(ApplicationLifecycleChanged value)?
         applicationLifecycleChanged,
-  }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus() when checkStatus != null:
-        return checkStatus(_that);
-      case InternetStatusChanged() when internetStatusChanged != null:
-        return internetStatusChanged(_that);
-      case Logout() when logout != null:
-        return logout(_that);
-      case ApplicationLifecycleChanged()
-          when applicationLifecycleChanged != null:
-        return applicationLifecycleChanged(_that);
-      case _:
-        return null;
-    }
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStatus value)? checkStatus,
+    TResult Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult Function(Logout value)? logout,
+    TResult Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplicationEventCopyWith<$Res> {
+  factory $ApplicationEventCopyWith(
+          ApplicationEvent value, $Res Function(ApplicationEvent) then) =
+      _$ApplicationEventCopyWithImpl<$Res, ApplicationEvent>;
+}
+
+/// @nodoc
+class _$ApplicationEventCopyWithImpl<$Res, $Val extends ApplicationEvent>
+    implements $ApplicationEventCopyWith<$Res> {
+  _$ApplicationEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$CheckStatusImplCopyWith<$Res> {
+  factory _$$CheckStatusImplCopyWith(
+          _$CheckStatusImpl value, $Res Function(_$CheckStatusImpl) then) =
+      __$$CheckStatusImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CheckStatusImplCopyWithImpl<$Res>
+    extends _$ApplicationEventCopyWithImpl<$Res, _$CheckStatusImpl>
+    implements _$$CheckStatusImplCopyWith<$Res> {
+  __$$CheckStatusImplCopyWithImpl(
+      _$CheckStatusImpl _value, $Res Function(_$CheckStatusImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CheckStatusImpl implements CheckStatus {
+  const _$CheckStatusImpl();
+
+  @override
+  String toString() {
+    return 'ApplicationEvent.checkStatus()';
   }
 
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CheckStatusImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStatus,
+    required TResult Function(bool isConnected) internetStatusChanged,
+    required TResult Function() logout,
+    required TResult Function(AppLifecycleState lifecycleState)
+        applicationLifecycleChanged,
+  }) {
+    return checkStatus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStatus,
+    TResult? Function(bool isConnected)? internetStatusChanged,
+    TResult? Function()? logout,
+    TResult? Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+  }) {
+    return checkStatus?.call();
+  }
+
+  @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkStatus,
@@ -169,177 +162,84 @@ extension ApplicationEventPatterns on ApplicationEvent {
         applicationLifecycleChanged,
     required TResult orElse(),
   }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus() when checkStatus != null:
-        return checkStatus();
-      case InternetStatusChanged() when internetStatusChanged != null:
-        return internetStatusChanged(_that.isConnected);
-      case Logout() when logout != null:
-        return logout();
-      case ApplicationLifecycleChanged()
-          when applicationLifecycleChanged != null:
-        return applicationLifecycleChanged(_that.lifecycleState);
-      case _:
-        return orElse();
+    if (checkStatus != null) {
+      return checkStatus();
     }
+    return orElse();
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() checkStatus,
-    required TResult Function(bool isConnected) internetStatusChanged,
-    required TResult Function() logout,
-    required TResult Function(AppLifecycleState lifecycleState)
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckStatus value) checkStatus,
+    required TResult Function(InternetStatusChanged value)
+        internetStatusChanged,
+    required TResult Function(Logout value) logout,
+    required TResult Function(ApplicationLifecycleChanged value)
         applicationLifecycleChanged,
   }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus():
-        return checkStatus();
-      case InternetStatusChanged():
-        return internetStatusChanged(_that.isConnected);
-      case Logout():
-        return logout();
-      case ApplicationLifecycleChanged():
-        return applicationLifecycleChanged(_that.lifecycleState);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
+    return checkStatus(this);
   }
 
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? checkStatus,
-    TResult? Function(bool isConnected)? internetStatusChanged,
-    TResult? Function()? logout,
-    TResult? Function(AppLifecycleState lifecycleState)?
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckStatus value)? checkStatus,
+    TResult? Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult? Function(Logout value)? logout,
+    TResult? Function(ApplicationLifecycleChanged value)?
         applicationLifecycleChanged,
   }) {
-    final _that = this;
-    switch (_that) {
-      case CheckStatus() when checkStatus != null:
-        return checkStatus();
-      case InternetStatusChanged() when internetStatusChanged != null:
-        return internetStatusChanged(_that.isConnected);
-      case Logout() when logout != null:
-        return logout();
-      case ApplicationLifecycleChanged()
-          when applicationLifecycleChanged != null:
-        return applicationLifecycleChanged(_that.lifecycleState);
-      case _:
-        return null;
+    return checkStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStatus value)? checkStatus,
+    TResult Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult Function(Logout value)? logout,
+    TResult Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (checkStatus != null) {
+      return checkStatus(this);
     }
+    return orElse();
   }
 }
 
-/// @nodoc
-
-class CheckStatus implements ApplicationEvent {
-  const CheckStatus();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CheckStatus);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'ApplicationEvent.checkStatus()';
-  }
+abstract class CheckStatus implements ApplicationEvent {
+  const factory CheckStatus() = _$CheckStatusImpl;
 }
 
 /// @nodoc
-
-class InternetStatusChanged implements ApplicationEvent {
-  const InternetStatusChanged(this.isConnected);
-
-  final bool isConnected;
-
-  /// Create a copy of ApplicationEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $InternetStatusChangedCopyWith<InternetStatusChanged> get copyWith =>
-      _$InternetStatusChangedCopyWithImpl<InternetStatusChanged>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is InternetStatusChanged &&
-            (identical(other.isConnected, isConnected) ||
-                other.isConnected == isConnected));
-  }
-
-  @override
-  int get hashCode {
-    return Object.hash(runtimeType, isConnected);
-  }
-
-  @override
-  String toString() {
-    return 'ApplicationEvent.internetStatusChanged(isConnected: $isConnected)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $InternetStatusChangedCopyWith<$Res>
-    implements $ApplicationEventCopyWith<$Res> {
-  factory $InternetStatusChangedCopyWith(InternetStatusChanged value,
-          $Res Function(InternetStatusChanged) _then) =
-      _$InternetStatusChangedCopyWithImpl;
+abstract class _$$InternetStatusChangedImplCopyWith<$Res> {
+  factory _$$InternetStatusChangedImplCopyWith(
+          _$InternetStatusChangedImpl value,
+          $Res Function(_$InternetStatusChangedImpl) then) =
+      __$$InternetStatusChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isConnected});
 }
 
 /// @nodoc
-class _$InternetStatusChangedCopyWithImpl<$Res>
-    implements $InternetStatusChangedCopyWith<$Res> {
-  _$InternetStatusChangedCopyWithImpl(this._self, this._then);
+class __$$InternetStatusChangedImplCopyWithImpl<$Res>
+    extends _$ApplicationEventCopyWithImpl<$Res, _$InternetStatusChangedImpl>
+    implements _$$InternetStatusChangedImplCopyWith<$Res> {
+  __$$InternetStatusChangedImplCopyWithImpl(_$InternetStatusChangedImpl _value,
+      $Res Function(_$InternetStatusChangedImpl) _then)
+      : super(_value, _then);
 
-  final InternetStatusChanged _self;
-  final $Res Function(InternetStatusChanged) _then;
-
-  /// Create a copy of ApplicationEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? isConnected = null,
   }) {
-    return _then(InternetStatusChanged(
+    return _then(_$InternetStatusChangedImpl(
       null == isConnected
-          ? _self.isConnected
+          ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
@@ -348,87 +248,277 @@ class _$InternetStatusChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class Logout implements ApplicationEvent {
-  const Logout();
+class _$InternetStatusChangedImpl implements InternetStatusChanged {
+  const _$InternetStatusChangedImpl(this.isConnected);
+
+  @override
+  final bool isConnected;
+
+  @override
+  String toString() {
+    return 'ApplicationEvent.internetStatusChanged(isConnected: $isConnected)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Logout);
+        (other.runtimeType == runtimeType &&
+            other is _$InternetStatusChangedImpl &&
+            (identical(other.isConnected, isConnected) ||
+                other.isConnected == isConnected));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isConnected);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InternetStatusChangedImplCopyWith<_$InternetStatusChangedImpl>
+      get copyWith => __$$InternetStatusChangedImplCopyWithImpl<
+          _$InternetStatusChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStatus,
+    required TResult Function(bool isConnected) internetStatusChanged,
+    required TResult Function() logout,
+    required TResult Function(AppLifecycleState lifecycleState)
+        applicationLifecycleChanged,
+  }) {
+    return internetStatusChanged(isConnected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStatus,
+    TResult? Function(bool isConnected)? internetStatusChanged,
+    TResult? Function()? logout,
+    TResult? Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+  }) {
+    return internetStatusChanged?.call(isConnected);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkStatus,
+    TResult Function(bool isConnected)? internetStatusChanged,
+    TResult Function()? logout,
+    TResult Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (internetStatusChanged != null) {
+      return internetStatusChanged(isConnected);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckStatus value) checkStatus,
+    required TResult Function(InternetStatusChanged value)
+        internetStatusChanged,
+    required TResult Function(Logout value) logout,
+    required TResult Function(ApplicationLifecycleChanged value)
+        applicationLifecycleChanged,
+  }) {
+    return internetStatusChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckStatus value)? checkStatus,
+    TResult? Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult? Function(Logout value)? logout,
+    TResult? Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+  }) {
+    return internetStatusChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStatus value)? checkStatus,
+    TResult Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult Function(Logout value)? logout,
+    TResult Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (internetStatusChanged != null) {
+      return internetStatusChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InternetStatusChanged implements ApplicationEvent {
+  const factory InternetStatusChanged(final bool isConnected) =
+      _$InternetStatusChangedImpl;
+
+  bool get isConnected;
+  @JsonKey(ignore: true)
+  _$$InternetStatusChangedImplCopyWith<_$InternetStatusChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LogoutImplCopyWith<$Res> {
+  factory _$$LogoutImplCopyWith(
+          _$LogoutImpl value, $Res Function(_$LogoutImpl) then) =
+      __$$LogoutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LogoutImplCopyWithImpl<$Res>
+    extends _$ApplicationEventCopyWithImpl<$Res, _$LogoutImpl>
+    implements _$$LogoutImplCopyWith<$Res> {
+  __$$LogoutImplCopyWithImpl(
+      _$LogoutImpl _value, $Res Function(_$LogoutImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LogoutImpl implements Logout {
+  const _$LogoutImpl();
+
+  @override
+  String toString() {
+    return 'ApplicationEvent.logout()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LogoutImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'ApplicationEvent.logout()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStatus,
+    required TResult Function(bool isConnected) internetStatusChanged,
+    required TResult Function() logout,
+    required TResult Function(AppLifecycleState lifecycleState)
+        applicationLifecycleChanged,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStatus,
+    TResult? Function(bool isConnected)? internetStatusChanged,
+    TResult? Function()? logout,
+    TResult? Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+  }) {
+    return logout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkStatus,
+    TResult Function(bool isConnected)? internetStatusChanged,
+    TResult Function()? logout,
+    TResult Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckStatus value) checkStatus,
+    required TResult Function(InternetStatusChanged value)
+        internetStatusChanged,
+    required TResult Function(Logout value) logout,
+    required TResult Function(ApplicationLifecycleChanged value)
+        applicationLifecycleChanged,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckStatus value)? checkStatus,
+    TResult? Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult? Function(Logout value)? logout,
+    TResult? Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStatus value)? checkStatus,
+    TResult Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult Function(Logout value)? logout,
+    TResult Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-
-class ApplicationLifecycleChanged implements ApplicationEvent {
-  const ApplicationLifecycleChanged({required this.lifecycleState});
-
-  final AppLifecycleState lifecycleState;
-
-  /// Create a copy of ApplicationEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $ApplicationLifecycleChangedCopyWith<ApplicationLifecycleChanged>
-      get copyWith => _$ApplicationLifecycleChangedCopyWithImpl<
-          ApplicationLifecycleChanged>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ApplicationLifecycleChanged &&
-            (identical(other.lifecycleState, lifecycleState) ||
-                other.lifecycleState == lifecycleState));
-  }
-
-  @override
-  int get hashCode {
-    return Object.hash(runtimeType, lifecycleState);
-  }
-
-  @override
-  String toString() {
-    return 'ApplicationEvent.applicationLifecycleChanged(lifecycleState: $lifecycleState)';
-  }
+abstract class Logout implements ApplicationEvent {
+  const factory Logout() = _$LogoutImpl;
 }
 
 /// @nodoc
-abstract mixin class $ApplicationLifecycleChangedCopyWith<$Res>
-    implements $ApplicationEventCopyWith<$Res> {
-  factory $ApplicationLifecycleChangedCopyWith(
-          ApplicationLifecycleChanged value,
-          $Res Function(ApplicationLifecycleChanged) _then) =
-      _$ApplicationLifecycleChangedCopyWithImpl;
+abstract class _$$ApplicationLifecycleChangedImplCopyWith<$Res> {
+  factory _$$ApplicationLifecycleChangedImplCopyWith(
+          _$ApplicationLifecycleChangedImpl value,
+          $Res Function(_$ApplicationLifecycleChangedImpl) then) =
+      __$$ApplicationLifecycleChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AppLifecycleState lifecycleState});
 }
 
 /// @nodoc
-class _$ApplicationLifecycleChangedCopyWithImpl<$Res>
-    implements $ApplicationLifecycleChangedCopyWith<$Res> {
-  _$ApplicationLifecycleChangedCopyWithImpl(this._self, this._then);
+class __$$ApplicationLifecycleChangedImplCopyWithImpl<$Res>
+    extends _$ApplicationEventCopyWithImpl<$Res,
+        _$ApplicationLifecycleChangedImpl>
+    implements _$$ApplicationLifecycleChangedImplCopyWith<$Res> {
+  __$$ApplicationLifecycleChangedImplCopyWithImpl(
+      _$ApplicationLifecycleChangedImpl _value,
+      $Res Function(_$ApplicationLifecycleChangedImpl) _then)
+      : super(_value, _then);
 
-  final ApplicationLifecycleChanged _self;
-  final $Res Function(ApplicationLifecycleChanged) _then;
-
-  /// Create a copy of ApplicationEvent
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? lifecycleState = null,
   }) {
-    return _then(ApplicationLifecycleChanged(
+    return _then(_$ApplicationLifecycleChangedImpl(
       lifecycleState: null == lifecycleState
-          ? _self.lifecycleState
+          ? _value.lifecycleState
           : lifecycleState // ignore: cast_nullable_to_non_nullable
               as AppLifecycleState,
     ));
@@ -436,42 +526,198 @@ class _$ApplicationLifecycleChangedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$ApplicationState {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ApplicationState);
-  }
+
+class _$ApplicationLifecycleChangedImpl implements ApplicationLifecycleChanged {
+  const _$ApplicationLifecycleChangedImpl({required this.lifecycleState});
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  final AppLifecycleState lifecycleState;
 
   @override
   String toString() {
-    return 'ApplicationState()';
+    return 'ApplicationEvent.applicationLifecycleChanged(lifecycleState: $lifecycleState)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApplicationLifecycleChangedImpl &&
+            (identical(other.lifecycleState, lifecycleState) ||
+                other.lifecycleState == lifecycleState));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, lifecycleState);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApplicationLifecycleChangedImplCopyWith<_$ApplicationLifecycleChangedImpl>
+      get copyWith => __$$ApplicationLifecycleChangedImplCopyWithImpl<
+          _$ApplicationLifecycleChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkStatus,
+    required TResult Function(bool isConnected) internetStatusChanged,
+    required TResult Function() logout,
+    required TResult Function(AppLifecycleState lifecycleState)
+        applicationLifecycleChanged,
+  }) {
+    return applicationLifecycleChanged(lifecycleState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkStatus,
+    TResult? Function(bool isConnected)? internetStatusChanged,
+    TResult? Function()? logout,
+    TResult? Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+  }) {
+    return applicationLifecycleChanged?.call(lifecycleState);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkStatus,
+    TResult Function(bool isConnected)? internetStatusChanged,
+    TResult Function()? logout,
+    TResult Function(AppLifecycleState lifecycleState)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (applicationLifecycleChanged != null) {
+      return applicationLifecycleChanged(lifecycleState);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckStatus value) checkStatus,
+    required TResult Function(InternetStatusChanged value)
+        internetStatusChanged,
+    required TResult Function(Logout value) logout,
+    required TResult Function(ApplicationLifecycleChanged value)
+        applicationLifecycleChanged,
+  }) {
+    return applicationLifecycleChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckStatus value)? checkStatus,
+    TResult? Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult? Function(Logout value)? logout,
+    TResult? Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+  }) {
+    return applicationLifecycleChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckStatus value)? checkStatus,
+    TResult Function(InternetStatusChanged value)? internetStatusChanged,
+    TResult Function(Logout value)? logout,
+    TResult Function(ApplicationLifecycleChanged value)?
+        applicationLifecycleChanged,
+    required TResult orElse(),
+  }) {
+    if (applicationLifecycleChanged != null) {
+      return applicationLifecycleChanged(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-class $ApplicationStateCopyWith<$Res> {
-  $ApplicationStateCopyWith(
-      ApplicationState _, $Res Function(ApplicationState) __);
+abstract class ApplicationLifecycleChanged implements ApplicationEvent {
+  const factory ApplicationLifecycleChanged(
+          {required final AppLifecycleState lifecycleState}) =
+      _$ApplicationLifecycleChangedImpl;
+
+  AppLifecycleState get lifecycleState;
+  @JsonKey(ignore: true)
+  _$$ApplicationLifecycleChangedImplCopyWith<_$ApplicationLifecycleChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
-/// Adds pattern-matching-related methods to [ApplicationState].
-extension ApplicationStatePatterns on ApplicationState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+/// @nodoc
+mixin _$ApplicationState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
@@ -484,143 +730,96 @@ extension ApplicationStatePatterns on ApplicationState {
     TResult Function(Paused value)? paused,
     TResult Function(Inactive value)? inactive,
     required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case Initial() when initial != null:
-        return initial(_that);
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection(_that);
-      case InternetRestored() when internetRestored != null:
-        return internetRestored(_that);
-      case Authenticated() when authenticated != null:
-        return authenticated(_that);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated(_that);
-      case SetRouteForIntentNav() when setRouteForIntentNav != null:
-        return setRouteForIntentNav(_that);
-      case Resumed() when resumed != null:
-        return resumed(_that);
-      case Paused() when paused != null:
-        return paused(_that);
-      case Inactive() when inactive != null:
-        return inactive(_that);
-      case _:
-        return orElse();
-    }
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ApplicationStateCopyWith<$Res> {
+  factory $ApplicationStateCopyWith(
+          ApplicationState value, $Res Function(ApplicationState) then) =
+      _$ApplicationStateCopyWithImpl<$Res, ApplicationState>;
+}
+
+/// @nodoc
+class _$ApplicationStateCopyWithImpl<$Res, $Val extends ApplicationState>
+    implements $ApplicationStateCopyWith<$Res> {
+  _$ApplicationStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
+
+  @override
+  String toString() {
+    return 'ApplicationState.initial()';
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(NoInternetConnection value) noInternetConnection,
-    required TResult Function(InternetRestored value) internetRestored,
-    required TResult Function(Authenticated value) authenticated,
-    required TResult Function(Unauthenticated value) unauthenticated,
-    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
-    required TResult Function(Resumed value) resumed,
-    required TResult Function(Paused value) paused,
-    required TResult Function(Inactive value) inactive,
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
   }) {
-    final _that = this;
-    switch (_that) {
-      case Initial():
-        return initial(_that);
-      case NoInternetConnection():
-        return noInternetConnection(_that);
-      case InternetRestored():
-        return internetRestored(_that);
-      case Authenticated():
-        return authenticated(_that);
-      case Unauthenticated():
-        return unauthenticated(_that);
-      case SetRouteForIntentNav():
-        return setRouteForIntentNav(_that);
-      case Resumed():
-        return resumed(_that);
-      case Paused():
-        return paused(_that);
-      case Inactive():
-        return inactive(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
+    return initial();
   }
 
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(NoInternetConnection value)? noInternetConnection,
-    TResult? Function(InternetRestored value)? internetRestored,
-    TResult? Function(Authenticated value)? authenticated,
-    TResult? Function(Unauthenticated value)? unauthenticated,
-    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
-    TResult? Function(Resumed value)? resumed,
-    TResult? Function(Paused value)? paused,
-    TResult? Function(Inactive value)? inactive,
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
   }) {
-    final _that = this;
-    switch (_that) {
-      case Initial() when initial != null:
-        return initial(_that);
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection(_that);
-      case InternetRestored() when internetRestored != null:
-        return internetRestored(_that);
-      case Authenticated() when authenticated != null:
-        return authenticated(_that);
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated(_that);
-      case SetRouteForIntentNav() when setRouteForIntentNav != null:
-        return setRouteForIntentNav(_that);
-      case Resumed() when resumed != null:
-        return resumed(_that);
-      case Paused() when paused != null:
-        return paused(_that);
-      case Inactive() when inactive != null:
-        return inactive(_that);
-      case _:
-        return null;
-    }
+    return initial?.call();
   }
 
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -634,44 +833,106 @@ extension ApplicationStatePatterns on ApplicationState {
     TResult Function()? inactive,
     required TResult orElse(),
   }) {
-    final _that = this;
-    switch (_that) {
-      case Initial() when initial != null:
-        return initial();
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection();
-      case InternetRestored() when internetRestored != null:
-        return internetRestored();
-      case Authenticated() when authenticated != null:
-        return authenticated();
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated();
-      case SetRouteForIntentNav() when setRouteForIntentNav != null:
-        return setRouteForIntentNav();
-      case Resumed() when resumed != null:
-        return resumed();
-      case Paused() when paused != null:
-        return paused();
-      case Inactive() when inactive != null:
-        return inactive();
-      case _:
-        return orElse();
+    if (initial != null) {
+      return initial();
     }
+    return orElse();
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return initial(this);
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initial implements ApplicationState {
+  const factory Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
+      __$$NoInternetConnectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoInternetConnectionImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$NoInternetConnectionImpl>
+    implements _$$NoInternetConnectionImplCopyWith<$Res> {
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NoInternetConnectionImpl implements NoInternetConnection {
+  const _$NoInternetConnectionImpl();
+
+  @override
+  String toString() {
+    return 'ApplicationState.noInternetConnection()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoInternetConnectionImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -684,43 +945,10 @@ extension ApplicationStatePatterns on ApplicationState {
     required TResult Function() paused,
     required TResult Function() inactive,
   }) {
-    final _that = this;
-    switch (_that) {
-      case Initial():
-        return initial();
-      case NoInternetConnection():
-        return noInternetConnection();
-      case InternetRestored():
-        return internetRestored();
-      case Authenticated():
-        return authenticated();
-      case Unauthenticated():
-        return unauthenticated();
-      case SetRouteForIntentNav():
-        return setRouteForIntentNav();
-      case Resumed():
-        return resumed();
-      case Paused():
-        return paused();
-      case Inactive():
-        return inactive();
-      case _:
-        throw StateError('Unexpected subclass');
-    }
+    return noInternetConnection();
   }
 
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -733,210 +961,1091 @@ extension ApplicationStatePatterns on ApplicationState {
     TResult? Function()? paused,
     TResult? Function()? inactive,
   }) {
-    final _that = this;
-    switch (_that) {
-      case Initial() when initial != null:
-        return initial();
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection();
-      case InternetRestored() when internetRestored != null:
-        return internetRestored();
-      case Authenticated() when authenticated != null:
-        return authenticated();
-      case Unauthenticated() when unauthenticated != null:
-        return unauthenticated();
-      case SetRouteForIntentNav() when setRouteForIntentNav != null:
-        return setRouteForIntentNav();
-      case Resumed() when resumed != null:
-        return resumed();
-      case Paused() when paused != null:
-        return paused();
-      case Inactive() when inactive != null:
-        return inactive();
-      case _:
-        return null;
+    return noInternetConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection();
     }
+    return orElse();
   }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return noInternetConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return noInternetConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoInternetConnection implements ApplicationState {
+  const factory NoInternetConnection() = _$NoInternetConnectionImpl;
+}
+
+/// @nodoc
+abstract class _$$InternetRestoredImplCopyWith<$Res> {
+  factory _$$InternetRestoredImplCopyWith(_$InternetRestoredImpl value,
+          $Res Function(_$InternetRestoredImpl) then) =
+      __$$InternetRestoredImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InternetRestoredImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$InternetRestoredImpl>
+    implements _$$InternetRestoredImplCopyWith<$Res> {
+  __$$InternetRestoredImplCopyWithImpl(_$InternetRestoredImpl _value,
+      $Res Function(_$InternetRestoredImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class Initial implements ApplicationState {
-  const Initial();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'ApplicationState.initial()';
-  }
-}
-
-/// @nodoc
-
-class NoInternetConnection implements ApplicationState {
-  const NoInternetConnection();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoInternetConnection);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'ApplicationState.noInternetConnection()';
-  }
-}
-
-/// @nodoc
-
-class InternetRestored implements ApplicationState {
-  const InternetRestored();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InternetRestored);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$InternetRestoredImpl implements InternetRestored {
+  const _$InternetRestoredImpl();
 
   @override
   String toString() {
     return 'ApplicationState.internetRestored()';
   }
-}
-
-/// @nodoc
-
-class Authenticated implements ApplicationState {
-  const Authenticated();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Authenticated);
+        (other.runtimeType == runtimeType && other is _$InternetRestoredImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return internetRestored();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return internetRestored?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (internetRestored != null) {
+      return internetRestored();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return internetRestored(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return internetRestored?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (internetRestored != null) {
+      return internetRestored(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InternetRestored implements ApplicationState {
+  const factory InternetRestored() = _$InternetRestoredImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthenticatedImplCopyWith<$Res> {
+  factory _$$AuthenticatedImplCopyWith(
+          _$AuthenticatedImpl value, $Res Function(_$AuthenticatedImpl) then) =
+      __$$AuthenticatedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthenticatedImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$AuthenticatedImpl>
+    implements _$$AuthenticatedImplCopyWith<$Res> {
+  __$$AuthenticatedImplCopyWithImpl(
+      _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthenticatedImpl implements Authenticated {
+  const _$AuthenticatedImpl();
 
   @override
   String toString() {
     return 'ApplicationState.authenticated()';
   }
-}
-
-/// @nodoc
-
-class Unauthenticated implements ApplicationState {
-  const Unauthenticated();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Unauthenticated);
+        (other.runtimeType == runtimeType && other is _$AuthenticatedImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return authenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return authenticated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (authenticated != null) {
+      return authenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return authenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return authenticated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (authenticated != null) {
+      return authenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Authenticated implements ApplicationState {
+  const factory Authenticated() = _$AuthenticatedImpl;
+}
+
+/// @nodoc
+abstract class _$$UnauthenticatedImplCopyWith<$Res> {
+  factory _$$UnauthenticatedImplCopyWith(_$UnauthenticatedImpl value,
+          $Res Function(_$UnauthenticatedImpl) then) =
+      __$$UnauthenticatedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnauthenticatedImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$UnauthenticatedImpl>
+    implements _$$UnauthenticatedImplCopyWith<$Res> {
+  __$$UnauthenticatedImplCopyWithImpl(
+      _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnauthenticatedImpl implements Unauthenticated {
+  const _$UnauthenticatedImpl();
 
   @override
   String toString() {
     return 'ApplicationState.unauthenticated()';
   }
-}
-
-/// @nodoc
-
-class SetRouteForIntentNav implements ApplicationState {
-  const SetRouteForIntentNav();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SetRouteForIntentNav);
+        (other.runtimeType == runtimeType && other is _$UnauthenticatedImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return unauthenticated();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return unauthenticated?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return unauthenticated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return unauthenticated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (unauthenticated != null) {
+      return unauthenticated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unauthenticated implements ApplicationState {
+  const factory Unauthenticated() = _$UnauthenticatedImpl;
+}
+
+/// @nodoc
+abstract class _$$SetRouteForIntentNavImplCopyWith<$Res> {
+  factory _$$SetRouteForIntentNavImplCopyWith(_$SetRouteForIntentNavImpl value,
+          $Res Function(_$SetRouteForIntentNavImpl) then) =
+      __$$SetRouteForIntentNavImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SetRouteForIntentNavImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$SetRouteForIntentNavImpl>
+    implements _$$SetRouteForIntentNavImplCopyWith<$Res> {
+  __$$SetRouteForIntentNavImplCopyWithImpl(_$SetRouteForIntentNavImpl _value,
+      $Res Function(_$SetRouteForIntentNavImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SetRouteForIntentNavImpl implements SetRouteForIntentNav {
+  const _$SetRouteForIntentNavImpl();
 
   @override
   String toString() {
     return 'ApplicationState.setRouteForIntentNav()';
   }
-}
-
-/// @nodoc
-
-class Resumed implements ApplicationState {
-  const Resumed();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Resumed);
+        (other.runtimeType == runtimeType &&
+            other is _$SetRouteForIntentNavImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return setRouteForIntentNav();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return setRouteForIntentNav?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (setRouteForIntentNav != null) {
+      return setRouteForIntentNav();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return setRouteForIntentNav(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return setRouteForIntentNav?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (setRouteForIntentNav != null) {
+      return setRouteForIntentNav(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetRouteForIntentNav implements ApplicationState {
+  const factory SetRouteForIntentNav() = _$SetRouteForIntentNavImpl;
+}
+
+/// @nodoc
+abstract class _$$ResumedImplCopyWith<$Res> {
+  factory _$$ResumedImplCopyWith(
+          _$ResumedImpl value, $Res Function(_$ResumedImpl) then) =
+      __$$ResumedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResumedImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$ResumedImpl>
+    implements _$$ResumedImplCopyWith<$Res> {
+  __$$ResumedImplCopyWithImpl(
+      _$ResumedImpl _value, $Res Function(_$ResumedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ResumedImpl implements Resumed {
+  const _$ResumedImpl();
 
   @override
   String toString() {
     return 'ApplicationState.resumed()';
   }
-}
-
-/// @nodoc
-
-class Paused implements ApplicationState {
-  const Paused();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Paused);
+        (other.runtimeType == runtimeType && other is _$ResumedImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return resumed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return resumed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (resumed != null) {
+      return resumed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return resumed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return resumed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (resumed != null) {
+      return resumed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Resumed implements ApplicationState {
+  const factory Resumed() = _$ResumedImpl;
+}
+
+/// @nodoc
+abstract class _$$PausedImplCopyWith<$Res> {
+  factory _$$PausedImplCopyWith(
+          _$PausedImpl value, $Res Function(_$PausedImpl) then) =
+      __$$PausedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PausedImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$PausedImpl>
+    implements _$$PausedImplCopyWith<$Res> {
+  __$$PausedImplCopyWithImpl(
+      _$PausedImpl _value, $Res Function(_$PausedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PausedImpl implements Paused {
+  const _$PausedImpl();
 
   @override
   String toString() {
     return 'ApplicationState.paused()';
   }
-}
-
-/// @nodoc
-
-class Inactive implements ApplicationState {
-  const Inactive();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Inactive);
+        (other.runtimeType == runtimeType && other is _$PausedImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'ApplicationState.inactive()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return paused();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return paused?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (paused != null) {
+      return paused();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return paused(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return paused?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (paused != null) {
+      return paused(this);
+    }
+    return orElse();
   }
 }
 
-// dart format on
+abstract class Paused implements ApplicationState {
+  const factory Paused() = _$PausedImpl;
+}
+
+/// @nodoc
+abstract class _$$InactiveImplCopyWith<$Res> {
+  factory _$$InactiveImplCopyWith(
+          _$InactiveImpl value, $Res Function(_$InactiveImpl) then) =
+      __$$InactiveImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InactiveImplCopyWithImpl<$Res>
+    extends _$ApplicationStateCopyWithImpl<$Res, _$InactiveImpl>
+    implements _$$InactiveImplCopyWith<$Res> {
+  __$$InactiveImplCopyWithImpl(
+      _$InactiveImpl _value, $Res Function(_$InactiveImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InactiveImpl implements Inactive {
+  const _$InactiveImpl();
+
+  @override
+  String toString() {
+    return 'ApplicationState.inactive()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InactiveImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() noInternetConnection,
+    required TResult Function() internetRestored,
+    required TResult Function() authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() setRouteForIntentNav,
+    required TResult Function() resumed,
+    required TResult Function() paused,
+    required TResult Function() inactive,
+  }) {
+    return inactive();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? internetRestored,
+    TResult? Function()? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? setRouteForIntentNav,
+    TResult? Function()? resumed,
+    TResult? Function()? paused,
+    TResult? Function()? inactive,
+  }) {
+    return inactive?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? noInternetConnection,
+    TResult Function()? internetRestored,
+    TResult Function()? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? setRouteForIntentNav,
+    TResult Function()? resumed,
+    TResult Function()? paused,
+    TResult Function()? inactive,
+    required TResult orElse(),
+  }) {
+    if (inactive != null) {
+      return inactive();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(InternetRestored value) internetRestored,
+    required TResult Function(Authenticated value) authenticated,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(SetRouteForIntentNav value) setRouteForIntentNav,
+    required TResult Function(Resumed value) resumed,
+    required TResult Function(Paused value) paused,
+    required TResult Function(Inactive value) inactive,
+  }) {
+    return inactive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(InternetRestored value)? internetRestored,
+    TResult? Function(Authenticated value)? authenticated,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult? Function(Resumed value)? resumed,
+    TResult? Function(Paused value)? paused,
+    TResult? Function(Inactive value)? inactive,
+  }) {
+    return inactive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(InternetRestored value)? internetRestored,
+    TResult Function(Authenticated value)? authenticated,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(SetRouteForIntentNav value)? setRouteForIntentNav,
+    TResult Function(Resumed value)? resumed,
+    TResult Function(Paused value)? paused,
+    TResult Function(Inactive value)? inactive,
+    required TResult orElse(),
+  }) {
+    if (inactive != null) {
+      return inactive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Inactive implements ApplicationState {
+  const factory Inactive() = _$InactiveImpl;
+}

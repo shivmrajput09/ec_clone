@@ -6,8 +6,9 @@ part of 'user_dashboard.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UserDashboardData _$UserDashboardDataFromJson(Map<String, dynamic> json) =>
-    _UserDashboardData(
+_$UserDashboardDataImpl _$$UserDashboardDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UserDashboardDataImpl(
       unReadNotifications: (json['unReadNotifications'] as num?)?.toInt() ?? 0,
       brandLogo: json['brandLogo'] as String? ?? '',
       tncWebUrl: json['tncWebUrl'] as String? ?? '',
@@ -16,7 +17,8 @@ _UserDashboardData _$UserDashboardDataFromJson(Map<String, dynamic> json) =>
       support: json['support'] as Map<String, dynamic>? ?? const {},
     );
 
-Map<String, dynamic> _$UserDashboardDataToJson(_UserDashboardData instance) =>
+Map<String, dynamic> _$$UserDashboardDataImplToJson(
+        _$UserDashboardDataImpl instance) =>
     <String, dynamic>{
       'unReadNotifications': instance.unReadNotifications,
       'brandLogo': instance.brandLogo,

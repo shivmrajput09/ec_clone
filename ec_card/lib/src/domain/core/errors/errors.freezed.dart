@@ -1,6 +1,6 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'errors.dart';
@@ -9,46 +9,89 @@ part of 'errors.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppErrors {
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AppErrors);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AppErrors()';
-  }
-}
-
-/// @nodoc
-class $AppErrorsCopyWith<$Res> {
-  $AppErrorsCopyWith(AppErrors _, $Res Function(AppErrors) __);
-}
-
-/// Adds pattern-matching-related methods to [AppErrors].
-extension AppErrorsPatterns on AppErrors {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NotFound value)? notFound,
@@ -63,159 +106,99 @@ extension AppErrorsPatterns on AppErrors {
     TResult Function(ServerError value)? serverError,
     TResult Function(ServiceUnavailable value)? serviceUnavailable,
     required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound() when notFound != null:
-        return notFound(_that);
-      case RequestTimeout() when requestTimeout != null:
-        return requestTimeout(_that);
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection(_that);
-      case DefaultError() when defaultError != null:
-        return defaultError(_that);
-      case UnexpectedError() when unexpectedError != null:
-        return unexpectedError(_that);
-      case PermissionDenied() when permissionDenied != null:
-        return permissionDenied(_that);
-      case AuthErrors() when authErrors != null:
-        return authErrors(_that);
-      case PayloadTooLarge() when payloadTooLarge != null:
-        return payloadTooLarge(_that);
-      case TooManyRequests() when tooManyRequests != null:
-        return tooManyRequests(_that);
-      case ServerError() when serverError != null:
-        return serverError(_that);
-      case ServiceUnavailable() when serviceUnavailable != null:
-        return serviceUnavailable(_that);
-      case _:
-        return orElse();
-    }
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AppErrorsCopyWith<$Res> {
+  factory $AppErrorsCopyWith(AppErrors value, $Res Function(AppErrors) then) =
+      _$AppErrorsCopyWithImpl<$Res, AppErrors>;
+}
+
+/// @nodoc
+class _$AppErrorsCopyWithImpl<$Res, $Val extends AppErrors>
+    implements $AppErrorsCopyWith<$Res> {
+  _$AppErrorsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$NotFoundImplCopyWith<$Res> {
+  factory _$$NotFoundImplCopyWith(
+          _$NotFoundImpl value, $Res Function(_$NotFoundImpl) then) =
+      __$$NotFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotFoundImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$NotFoundImpl>
+    implements _$$NotFoundImplCopyWith<$Res> {
+  __$$NotFoundImplCopyWithImpl(
+      _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NotFoundImpl implements NotFound {
+  const _$NotFoundImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.notFound()';
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotFoundImpl);
+  }
 
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NotFound value) notFound,
-    required TResult Function(RequestTimeout value) requestTimeout,
-    required TResult Function(NoInternetConnection value) noInternetConnection,
-    required TResult Function(DefaultError value) defaultError,
-    required TResult Function(UnexpectedError value) unexpectedError,
-    required TResult Function(PermissionDenied value) permissionDenied,
-    required TResult Function(AuthErrors value) authErrors,
-    required TResult Function(PayloadTooLarge value) payloadTooLarge,
-    required TResult Function(TooManyRequests value) tooManyRequests,
-    required TResult Function(ServerError value) serverError,
-    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound():
-        return notFound(_that);
-      case RequestTimeout():
-        return requestTimeout(_that);
-      case NoInternetConnection():
-        return noInternetConnection(_that);
-      case DefaultError():
-        return defaultError(_that);
-      case UnexpectedError():
-        return unexpectedError(_that);
-      case PermissionDenied():
-        return permissionDenied(_that);
-      case AuthErrors():
-        return authErrors(_that);
-      case PayloadTooLarge():
-        return payloadTooLarge(_that);
-      case TooManyRequests():
-        return tooManyRequests(_that);
-      case ServerError():
-        return serverError(_that);
-      case ServiceUnavailable():
-        return serviceUnavailable(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
+    return notFound();
   }
 
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NotFound value)? notFound,
-    TResult? Function(RequestTimeout value)? requestTimeout,
-    TResult? Function(NoInternetConnection value)? noInternetConnection,
-    TResult? Function(DefaultError value)? defaultError,
-    TResult? Function(UnexpectedError value)? unexpectedError,
-    TResult? Function(PermissionDenied value)? permissionDenied,
-    TResult? Function(AuthErrors value)? authErrors,
-    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
-    TResult? Function(TooManyRequests value)? tooManyRequests,
-    TResult? Function(ServerError value)? serverError,
-    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound() when notFound != null:
-        return notFound(_that);
-      case RequestTimeout() when requestTimeout != null:
-        return requestTimeout(_that);
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection(_that);
-      case DefaultError() when defaultError != null:
-        return defaultError(_that);
-      case UnexpectedError() when unexpectedError != null:
-        return unexpectedError(_that);
-      case PermissionDenied() when permissionDenied != null:
-        return permissionDenied(_that);
-      case AuthErrors() when authErrors != null:
-        return authErrors(_that);
-      case PayloadTooLarge() when payloadTooLarge != null:
-        return payloadTooLarge(_that);
-      case TooManyRequests() when tooManyRequests != null:
-        return tooManyRequests(_that);
-      case ServerError() when serverError != null:
-        return serverError(_that);
-      case ServiceUnavailable() when serviceUnavailable != null:
-        return serviceUnavailable(_that);
-      case _:
-        return null;
-    }
+    return notFound?.call();
   }
 
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? notFound,
@@ -231,48 +214,111 @@ extension AppErrorsPatterns on AppErrors {
     TResult Function()? serviceUnavailable,
     required TResult orElse(),
   }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound() when notFound != null:
-        return notFound();
-      case RequestTimeout() when requestTimeout != null:
-        return requestTimeout();
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection();
-      case DefaultError() when defaultError != null:
-        return defaultError(_that.error);
-      case UnexpectedError() when unexpectedError != null:
-        return unexpectedError();
-      case PermissionDenied() when permissionDenied != null:
-        return permissionDenied();
-      case AuthErrors() when authErrors != null:
-        return authErrors(_that.loginError);
-      case PayloadTooLarge() when payloadTooLarge != null:
-        return payloadTooLarge();
-      case TooManyRequests() when tooManyRequests != null:
-        return tooManyRequests(_that.retryAfter);
-      case ServerError() when serverError != null:
-        return serverError();
-      case ServiceUnavailable() when serviceUnavailable != null:
-        return serviceUnavailable();
-      case _:
-        return orElse();
+    if (notFound != null) {
+      return notFound();
     }
+    return orElse();
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return notFound(this);
+  }
 
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return notFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (notFound != null) {
+      return notFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotFound implements AppErrors {
+  const factory NotFound() = _$NotFoundImpl;
+}
+
+/// @nodoc
+abstract class _$$RequestTimeoutImplCopyWith<$Res> {
+  factory _$$RequestTimeoutImplCopyWith(_$RequestTimeoutImpl value,
+          $Res Function(_$RequestTimeoutImpl) then) =
+      __$$RequestTimeoutImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RequestTimeoutImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$RequestTimeoutImpl>
+    implements _$$RequestTimeoutImplCopyWith<$Res> {
+  __$$RequestTimeoutImplCopyWithImpl(
+      _$RequestTimeoutImpl _value, $Res Function(_$RequestTimeoutImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RequestTimeoutImpl implements RequestTimeout {
+  const _$RequestTimeoutImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.requestTimeout()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RequestTimeoutImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notFound,
@@ -287,47 +333,10 @@ extension AppErrorsPatterns on AppErrors {
     required TResult Function() serverError,
     required TResult Function() serviceUnavailable,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound():
-        return notFound();
-      case RequestTimeout():
-        return requestTimeout();
-      case NoInternetConnection():
-        return noInternetConnection();
-      case DefaultError():
-        return defaultError(_that.error);
-      case UnexpectedError():
-        return unexpectedError();
-      case PermissionDenied():
-        return permissionDenied();
-      case AuthErrors():
-        return authErrors(_that.loginError);
-      case PayloadTooLarge():
-        return payloadTooLarge();
-      case TooManyRequests():
-        return tooManyRequests(_that.retryAfter);
-      case ServerError():
-        return serverError();
-      case ServiceUnavailable():
-        return serviceUnavailable();
-      case _:
-        throw StateError('Unexpected subclass');
-    }
+    return requestTimeout();
   }
 
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? notFound,
@@ -342,155 +351,276 @@ extension AppErrorsPatterns on AppErrors {
     TResult? Function()? serverError,
     TResult? Function()? serviceUnavailable,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NotFound() when notFound != null:
-        return notFound();
-      case RequestTimeout() when requestTimeout != null:
-        return requestTimeout();
-      case NoInternetConnection() when noInternetConnection != null:
-        return noInternetConnection();
-      case DefaultError() when defaultError != null:
-        return defaultError(_that.error);
-      case UnexpectedError() when unexpectedError != null:
-        return unexpectedError();
-      case PermissionDenied() when permissionDenied != null:
-        return permissionDenied();
-      case AuthErrors() when authErrors != null:
-        return authErrors(_that.loginError);
-      case PayloadTooLarge() when payloadTooLarge != null:
-        return payloadTooLarge();
-      case TooManyRequests() when tooManyRequests != null:
-        return tooManyRequests(_that.retryAfter);
-      case ServerError() when serverError != null:
-        return serverError();
-      case ServiceUnavailable() when serviceUnavailable != null:
-        return serviceUnavailable();
-      case _:
-        return null;
+    return requestTimeout?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (requestTimeout != null) {
+      return requestTimeout();
     }
+    return orElse();
   }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return requestTimeout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return requestTimeout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (requestTimeout != null) {
+      return requestTimeout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RequestTimeout implements AppErrors {
+  const factory RequestTimeout() = _$RequestTimeoutImpl;
+}
+
+/// @nodoc
+abstract class _$$NoInternetConnectionImplCopyWith<$Res> {
+  factory _$$NoInternetConnectionImplCopyWith(_$NoInternetConnectionImpl value,
+          $Res Function(_$NoInternetConnectionImpl) then) =
+      __$$NoInternetConnectionImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NoInternetConnectionImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$NoInternetConnectionImpl>
+    implements _$$NoInternetConnectionImplCopyWith<$Res> {
+  __$$NoInternetConnectionImplCopyWithImpl(_$NoInternetConnectionImpl _value,
+      $Res Function(_$NoInternetConnectionImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class NotFound implements AppErrors {
-  const NotFound();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NotFound);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AppErrors.notFound()';
-  }
-}
-
-/// @nodoc
-
-class RequestTimeout implements AppErrors {
-  const RequestTimeout();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RequestTimeout);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AppErrors.requestTimeout()';
-  }
-}
-
-/// @nodoc
-
-class NoInternetConnection implements AppErrors {
-  const NoInternetConnection();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoInternetConnection);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+class _$NoInternetConnectionImpl implements NoInternetConnection {
+  const _$NoInternetConnectionImpl();
 
   @override
   String toString() {
     return 'AppErrors.noInternetConnection()';
   }
-}
-
-/// @nodoc
-
-class DefaultError implements AppErrors {
-  const DefaultError({required this.error});
-
-  final String error;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $DefaultErrorCopyWith<DefaultError> get copyWith =>
-      _$DefaultErrorCopyWithImpl<DefaultError>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DefaultError &&
-            (identical(other.error, error) || other.error == error));
+            other is _$NoInternetConnectionImpl);
   }
 
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, error);
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return noInternetConnection();
   }
 
   @override
-  String toString() {
-    return 'AppErrors.defaultError(error: $error)';
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return noInternetConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return noInternetConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return noInternetConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (noInternetConnection != null) {
+      return noInternetConnection(this);
+    }
+    return orElse();
   }
 }
 
+abstract class NoInternetConnection implements AppErrors {
+  const factory NoInternetConnection() = _$NoInternetConnectionImpl;
+}
+
 /// @nodoc
-abstract mixin class $DefaultErrorCopyWith<$Res>
-    implements $AppErrorsCopyWith<$Res> {
-  factory $DefaultErrorCopyWith(
-          DefaultError value, $Res Function(DefaultError) _then) =
-      _$DefaultErrorCopyWithImpl;
+abstract class _$$DefaultErrorImplCopyWith<$Res> {
+  factory _$$DefaultErrorImplCopyWith(
+          _$DefaultErrorImpl value, $Res Function(_$DefaultErrorImpl) then) =
+      __$$DefaultErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class _$DefaultErrorCopyWithImpl<$Res> implements $DefaultErrorCopyWith<$Res> {
-  _$DefaultErrorCopyWithImpl(this._self, this._then);
+class __$$DefaultErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$DefaultErrorImpl>
+    implements _$$DefaultErrorImplCopyWith<$Res> {
+  __$$DefaultErrorImplCopyWithImpl(
+      _$DefaultErrorImpl _value, $Res Function(_$DefaultErrorImpl) _then)
+      : super(_value, _then);
 
-  final DefaultError _self;
-  final $Res Function(DefaultError) _then;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? error = null,
   }) {
-    return _then(DefaultError(
+    return _then(_$DefaultErrorImpl(
       error: null == error
-          ? _self.error
+          ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -499,84 +629,478 @@ class _$DefaultErrorCopyWithImpl<$Res> implements $DefaultErrorCopyWith<$Res> {
 
 /// @nodoc
 
-class UnexpectedError implements AppErrors {
-  const UnexpectedError();
+class _$DefaultErrorImpl implements DefaultError {
+  const _$DefaultErrorImpl({required this.error});
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UnexpectedError);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+  final String error;
 
   @override
   String toString() {
-    return 'AppErrors.unexpectedError()';
+    return 'AppErrors.defaultError(error: $error)';
   }
-}
-
-/// @nodoc
-
-class PermissionDenied implements AppErrors {
-  const PermissionDenied();
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PermissionDenied);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  String toString() {
-    return 'AppErrors.permissionDenied()';
-  }
-}
-
-/// @nodoc
-
-class AuthErrors implements AppErrors {
-  const AuthErrors({required this.loginError});
-
-  final LoginErrors loginError;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AuthErrorsCopyWith<AuthErrors> get copyWith =>
-      _$AuthErrorsCopyWithImpl<AuthErrors>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is AuthErrors &&
-            (identical(other.loginError, loginError) ||
-                other.loginError == loginError));
+            other is _$DefaultErrorImpl &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, loginError);
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DefaultErrorImplCopyWith<_$DefaultErrorImpl> get copyWith =>
+      __$$DefaultErrorImplCopyWithImpl<_$DefaultErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return defaultError(error);
   }
 
   @override
-  String toString() {
-    return 'AppErrors.authErrors(loginError: $loginError)';
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return defaultError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (defaultError != null) {
+      return defaultError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return defaultError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return defaultError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (defaultError != null) {
+      return defaultError(this);
+    }
+    return orElse();
   }
 }
 
+abstract class DefaultError implements AppErrors {
+  const factory DefaultError({required final String error}) =
+      _$DefaultErrorImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$DefaultErrorImplCopyWith<_$DefaultErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 /// @nodoc
-abstract mixin class $AuthErrorsCopyWith<$Res>
-    implements $AppErrorsCopyWith<$Res> {
-  factory $AuthErrorsCopyWith(
-          AuthErrors value, $Res Function(AuthErrors) _then) =
-      _$AuthErrorsCopyWithImpl;
+abstract class _$$UnexpectedErrorImplCopyWith<$Res> {
+  factory _$$UnexpectedErrorImplCopyWith(_$UnexpectedErrorImpl value,
+          $Res Function(_$UnexpectedErrorImpl) then) =
+      __$$UnexpectedErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UnexpectedErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$UnexpectedErrorImpl>
+    implements _$$UnexpectedErrorImplCopyWith<$Res> {
+  __$$UnexpectedErrorImplCopyWithImpl(
+      _$UnexpectedErrorImpl _value, $Res Function(_$UnexpectedErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UnexpectedErrorImpl implements UnexpectedError {
+  const _$UnexpectedErrorImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.unexpectedError()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UnexpectedErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return unexpectedError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return unexpectedError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (unexpectedError != null) {
+      return unexpectedError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return unexpectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return unexpectedError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (unexpectedError != null) {
+      return unexpectedError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnexpectedError implements AppErrors {
+  const factory UnexpectedError() = _$UnexpectedErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$PermissionDeniedImplCopyWith<$Res> {
+  factory _$$PermissionDeniedImplCopyWith(_$PermissionDeniedImpl value,
+          $Res Function(_$PermissionDeniedImpl) then) =
+      __$$PermissionDeniedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PermissionDeniedImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$PermissionDeniedImpl>
+    implements _$$PermissionDeniedImplCopyWith<$Res> {
+  __$$PermissionDeniedImplCopyWithImpl(_$PermissionDeniedImpl _value,
+      $Res Function(_$PermissionDeniedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PermissionDeniedImpl implements PermissionDenied {
+  const _$PermissionDeniedImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.permissionDenied()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PermissionDeniedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return permissionDenied();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return permissionDenied?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return permissionDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return permissionDenied?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (permissionDenied != null) {
+      return permissionDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PermissionDenied implements AppErrors {
+  const factory PermissionDenied() = _$PermissionDeniedImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthErrorsImplCopyWith<$Res> {
+  factory _$$AuthErrorsImplCopyWith(
+          _$AuthErrorsImpl value, $Res Function(_$AuthErrorsImpl) then) =
+      __$$AuthErrorsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({LoginErrors loginError});
 
@@ -584,118 +1108,374 @@ abstract mixin class $AuthErrorsCopyWith<$Res>
 }
 
 /// @nodoc
-class _$AuthErrorsCopyWithImpl<$Res> implements $AuthErrorsCopyWith<$Res> {
-  _$AuthErrorsCopyWithImpl(this._self, this._then);
+class __$$AuthErrorsImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$AuthErrorsImpl>
+    implements _$$AuthErrorsImplCopyWith<$Res> {
+  __$$AuthErrorsImplCopyWithImpl(
+      _$AuthErrorsImpl _value, $Res Function(_$AuthErrorsImpl) _then)
+      : super(_value, _then);
 
-  final AuthErrors _self;
-  final $Res Function(AuthErrors) _then;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? loginError = null,
   }) {
-    return _then(AuthErrors(
+    return _then(_$AuthErrorsImpl(
       loginError: null == loginError
-          ? _self.loginError
+          ? _value.loginError
           : loginError // ignore: cast_nullable_to_non_nullable
               as LoginErrors,
     ));
   }
 
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LoginErrorsCopyWith<$Res> get loginError {
-    return $LoginErrorsCopyWith<$Res>(_self.loginError, (value) {
-      return _then(_self.copyWith(loginError: value));
+    return $LoginErrorsCopyWith<$Res>(_value.loginError, (value) {
+      return _then(_value.copyWith(loginError: value));
     });
   }
 }
 
 /// @nodoc
 
-class PayloadTooLarge implements AppErrors {
-  const PayloadTooLarge();
+class _$AuthErrorsImpl implements AuthErrors {
+  const _$AuthErrorsImpl({required this.loginError});
+
+  @override
+  final LoginErrors loginError;
+
+  @override
+  String toString() {
+    return 'AppErrors.authErrors(loginError: $loginError)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PayloadTooLarge);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthErrorsImpl &&
+            (identical(other.loginError, loginError) ||
+                other.loginError == loginError));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, loginError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthErrorsImplCopyWith<_$AuthErrorsImpl> get copyWith =>
+      __$$AuthErrorsImplCopyWithImpl<_$AuthErrorsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return authErrors(loginError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return authErrors?.call(loginError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (authErrors != null) {
+      return authErrors(loginError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return authErrors(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return authErrors?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (authErrors != null) {
+      return authErrors(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthErrors implements AppErrors {
+  const factory AuthErrors({required final LoginErrors loginError}) =
+      _$AuthErrorsImpl;
+
+  LoginErrors get loginError;
+  @JsonKey(ignore: true)
+  _$$AuthErrorsImplCopyWith<_$AuthErrorsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PayloadTooLargeImplCopyWith<$Res> {
+  factory _$$PayloadTooLargeImplCopyWith(_$PayloadTooLargeImpl value,
+          $Res Function(_$PayloadTooLargeImpl) then) =
+      __$$PayloadTooLargeImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PayloadTooLargeImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$PayloadTooLargeImpl>
+    implements _$$PayloadTooLargeImplCopyWith<$Res> {
+  __$$PayloadTooLargeImplCopyWithImpl(
+      _$PayloadTooLargeImpl _value, $Res Function(_$PayloadTooLargeImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PayloadTooLargeImpl implements PayloadTooLarge {
+  const _$PayloadTooLargeImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.payloadTooLarge()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PayloadTooLargeImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'AppErrors.payloadTooLarge()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return payloadTooLarge();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return payloadTooLarge?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (payloadTooLarge != null) {
+      return payloadTooLarge();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return payloadTooLarge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return payloadTooLarge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (payloadTooLarge != null) {
+      return payloadTooLarge(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-
-class TooManyRequests implements AppErrors {
-  const TooManyRequests({this.retryAfter});
-
-  final Duration? retryAfter;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $TooManyRequestsCopyWith<TooManyRequests> get copyWith =>
-      _$TooManyRequestsCopyWithImpl<TooManyRequests>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is TooManyRequests &&
-            (identical(other.retryAfter, retryAfter) ||
-                other.retryAfter == retryAfter));
-  }
-
-  @override
-  int get hashCode {
-    return Object.hash(runtimeType, retryAfter);
-  }
-
-  @override
-  String toString() {
-    return 'AppErrors.tooManyRequests(retryAfter: $retryAfter)';
-  }
+abstract class PayloadTooLarge implements AppErrors {
+  const factory PayloadTooLarge() = _$PayloadTooLargeImpl;
 }
 
 /// @nodoc
-abstract mixin class $TooManyRequestsCopyWith<$Res>
-    implements $AppErrorsCopyWith<$Res> {
-  factory $TooManyRequestsCopyWith(
-          TooManyRequests value, $Res Function(TooManyRequests) _then) =
-      _$TooManyRequestsCopyWithImpl;
+abstract class _$$TooManyRequestsImplCopyWith<$Res> {
+  factory _$$TooManyRequestsImplCopyWith(_$TooManyRequestsImpl value,
+          $Res Function(_$TooManyRequestsImpl) then) =
+      __$$TooManyRequestsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Duration? retryAfter});
 }
 
 /// @nodoc
-class _$TooManyRequestsCopyWithImpl<$Res>
-    implements $TooManyRequestsCopyWith<$Res> {
-  _$TooManyRequestsCopyWithImpl(this._self, this._then);
+class __$$TooManyRequestsImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$TooManyRequestsImpl>
+    implements _$$TooManyRequestsImplCopyWith<$Res> {
+  __$$TooManyRequestsImplCopyWithImpl(
+      _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
+      : super(_value, _then);
 
-  final TooManyRequests _self;
-  final $Res Function(TooManyRequests) _then;
-
-  /// Create a copy of AppErrors
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? retryAfter = freezed,
   }) {
-    return _then(TooManyRequests(
+    return _then(_$TooManyRequestsImpl(
       retryAfter: freezed == retryAfter
-          ? _self.retryAfter
+          ? _value.retryAfter
           : retryAfter // ignore: cast_nullable_to_non_nullable
               as Duration?,
     ));
@@ -704,42 +1484,471 @@ class _$TooManyRequestsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class ServerError implements AppErrors {
-  const ServerError();
+class _$TooManyRequestsImpl implements TooManyRequests {
+  const _$TooManyRequestsImpl({this.retryAfter});
+
+  @override
+  final Duration? retryAfter;
+
+  @override
+  String toString() {
+    return 'AppErrors.tooManyRequests(retryAfter: $retryAfter)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ServerError);
+        (other.runtimeType == runtimeType &&
+            other is _$TooManyRequestsImpl &&
+            (identical(other.retryAfter, retryAfter) ||
+                other.retryAfter == retryAfter));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, retryAfter);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TooManyRequestsImplCopyWith<_$TooManyRequestsImpl> get copyWith =>
+      __$$TooManyRequestsImplCopyWithImpl<_$TooManyRequestsImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return tooManyRequests(retryAfter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return tooManyRequests?.call(retryAfter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(retryAfter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return tooManyRequests?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TooManyRequests implements AppErrors {
+  const factory TooManyRequests({final Duration? retryAfter}) =
+      _$TooManyRequestsImpl;
+
+  Duration? get retryAfter;
+  @JsonKey(ignore: true)
+  _$$TooManyRequestsImplCopyWith<_$TooManyRequestsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ServerErrorImpl implements ServerError {
+  const _$ServerErrorImpl();
 
   @override
   String toString() {
     return 'AppErrors.serverError()';
   }
-}
-
-/// @nodoc
-
-class ServiceUnavailable implements AppErrors {
-  const ServiceUnavailable();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ServiceUnavailable);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  String toString() {
-    return 'AppErrors.serviceUnavailable()';
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return serverError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
   }
 }
 
-// dart format on
+abstract class ServerError implements AppErrors {
+  const factory ServerError() = _$ServerErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$ServiceUnavailableImplCopyWith<$Res> {
+  factory _$$ServiceUnavailableImplCopyWith(_$ServiceUnavailableImpl value,
+          $Res Function(_$ServiceUnavailableImpl) then) =
+      __$$ServiceUnavailableImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ServiceUnavailableImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$ServiceUnavailableImpl>
+    implements _$$ServiceUnavailableImplCopyWith<$Res> {
+  __$$ServiceUnavailableImplCopyWithImpl(_$ServiceUnavailableImpl _value,
+      $Res Function(_$ServiceUnavailableImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ServiceUnavailableImpl implements ServiceUnavailable {
+  const _$ServiceUnavailableImpl();
+
+  @override
+  String toString() {
+    return 'AppErrors.serviceUnavailable()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ServiceUnavailableImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notFound,
+    required TResult Function() requestTimeout,
+    required TResult Function() noInternetConnection,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+    required TResult Function() permissionDenied,
+    required TResult Function(LoginErrors loginError) authErrors,
+    required TResult Function() payloadTooLarge,
+    required TResult Function(Duration? retryAfter) tooManyRequests,
+    required TResult Function() serverError,
+    required TResult Function() serviceUnavailable,
+  }) {
+    return serviceUnavailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? notFound,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? noInternetConnection,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+    TResult? Function()? permissionDenied,
+    TResult? Function(LoginErrors loginError)? authErrors,
+    TResult? Function()? payloadTooLarge,
+    TResult? Function(Duration? retryAfter)? tooManyRequests,
+    TResult? Function()? serverError,
+    TResult? Function()? serviceUnavailable,
+  }) {
+    return serviceUnavailable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notFound,
+    TResult Function()? requestTimeout,
+    TResult Function()? noInternetConnection,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    TResult Function()? permissionDenied,
+    TResult Function(LoginErrors loginError)? authErrors,
+    TResult Function()? payloadTooLarge,
+    TResult Function(Duration? retryAfter)? tooManyRequests,
+    TResult Function()? serverError,
+    TResult Function()? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (serviceUnavailable != null) {
+      return serviceUnavailable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+    required TResult Function(PermissionDenied value) permissionDenied,
+    required TResult Function(AuthErrors value) authErrors,
+    required TResult Function(PayloadTooLarge value) payloadTooLarge,
+    required TResult Function(TooManyRequests value) tooManyRequests,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+  }) {
+    return serviceUnavailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+    TResult? Function(PermissionDenied value)? permissionDenied,
+    TResult? Function(AuthErrors value)? authErrors,
+    TResult? Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult? Function(TooManyRequests value)? tooManyRequests,
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+  }) {
+    return serviceUnavailable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NotFound value)? notFound,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    TResult Function(PermissionDenied value)? permissionDenied,
+    TResult Function(AuthErrors value)? authErrors,
+    TResult Function(PayloadTooLarge value)? payloadTooLarge,
+    TResult Function(TooManyRequests value)? tooManyRequests,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    required TResult orElse(),
+  }) {
+    if (serviceUnavailable != null) {
+      return serviceUnavailable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ServiceUnavailable implements AppErrors {
+  const factory ServiceUnavailable() = _$ServiceUnavailableImpl;
+}

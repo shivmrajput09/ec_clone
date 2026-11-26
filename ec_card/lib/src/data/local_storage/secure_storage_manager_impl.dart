@@ -1,8 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:ec_card_app/src/domain/local_storage/secure_storage_manager.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/local_storage/secure_storage_manager.dart';
 
 const _userInfo = 'user_info';
 const ACCESS_TOKEN = 'access_token';
@@ -16,13 +16,14 @@ const CLAIM_TRANSACTION = 'claim_transaction_data';
 
 @LazySingleton(as: SecureStorgeManager)
 class SecureStorageManagerImpl implements SecureStorgeManager {
-  final FlutterSecureStorage _secureStorage;
+  SecureStorageManagerImpl(this._secureStorage);
 
-  SecureStorageManagerImpl() : _secureStorage = const FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage;
 
   @override
   Future<String?> getUserInfo() async {
-    return await _secureStorage.read(key: _userInfo);
+    final userInfo = await _secureStorage.read(key: _userInfo);
+    return userInfo;
   }
 
   @override
@@ -32,17 +33,20 @@ class SecureStorageManagerImpl implements SecureStorgeManager {
 
   @override
   Future<String?> getAccessToken() async {
-    return await _secureStorage.read(key: ACCESS_TOKEN);
+    final accessToken = await _secureStorage.read(key: ACCESS_TOKEN);
+    return accessToken;
   }
 
   @override
   Future<String?> getPhoneNumber() async {
-    return await _secureStorage.read(key: PHONE_NUMBER);
+    final phoneNumber = await _secureStorage.read(key: PHONE_NUMBER);
+    return phoneNumber;
   }
 
   @override
   Future<String?> getRefreshToken() async {
-    return await _secureStorage.read(key: REFRESH_TOKEN);
+    final refreshToken = await _secureStorage.read(key: REFRESH_TOKEN);
+    return refreshToken;
   }
 
   @override
@@ -62,32 +66,41 @@ class SecureStorageManagerImpl implements SecureStorgeManager {
 
   @override
   Future<String?> getClaimTransactionDataFromLocal() async {
-    return await _secureStorage.read(key: CLAIM_TRANSACTION);
+    final claimTransactionData =
+        await _secureStorage.read(key: CLAIM_TRANSACTION);
+    return claimTransactionData;
   }
 
   @override
   Future<String?> getEligibilityStatusDataToLocal() async {
-    return await _secureStorage.read(key: ELIGIBILITY_STATUS);
+    final eligibilityStatusData =
+        await _secureStorage.read(key: ELIGIBILITY_STATUS);
+    return eligibilityStatusData;
   }
 
   @override
   Future<String?> getQuizPassStatusFromLocal() async {
-    return await _secureStorage.read(key: QUIZ_PASS_STATUS);
+    final quizStatusData = await _secureStorage.read(key: QUIZ_PASS_STATUS);
+    return quizStatusData;
   }
 
   @override
   Future<String?> getUserDashboardDataFromLocal() async {
-    return await _secureStorage.read(key: USER_DASHBOARD);
+    final userDashboardData = await _secureStorage.read(key: USER_DASHBOARD);
+    return userDashboardData;
   }
 
   @override
-  Future<void> setClaimTransactionDataToLocal({required String scannedCode}) async {
+  Future<void> setClaimTransactionDataToLocal(
+      {required String scannedCode}) async {
     await _secureStorage.write(key: CLAIM_TRANSACTION, value: scannedCode);
   }
 
   @override
-  Future<void> setEligibilityStatusDataToLocal({required String eligibilityStatus}) async {
-    await _secureStorage.write(key: ELIGIBILITY_STATUS, value: eligibilityStatus);
+  Future<void> setEligibilityStatusDataToLocal(
+      {required String eligibilityStatus}) async {
+    await _secureStorage.write(
+        key: ELIGIBILITY_STATUS, value: eligibilityStatus);
   }
 
   @override
@@ -96,12 +109,14 @@ class SecureStorageManagerImpl implements SecureStorgeManager {
   }
 
   @override
-  Future<void> setUserDashBoardDataToLocal({required String userDashboardData}) async {
+  Future<void> setUserDashBoardDataToLocal(
+      {required String userDashboardData}) async {
     await _secureStorage.write(key: USER_DASHBOARD, value: userDashboardData);
   }
 
   @override
-  Future<void> setUserProfileDataToLocal({required String userProfileData}) async {
+  Future<void> setUserProfileDataToLocal(
+      {required String userProfileData}) async {
     await _secureStorage.write(key: USER_PROFILE, value: userProfileData);
   }
 
@@ -117,6 +132,7 @@ class SecureStorageManagerImpl implements SecureStorgeManager {
 
   @override
   Future<String?> getUserProfileDataFromLocal() async {
-    return await _secureStorage.read(key: USER_PROFILE);
+    final userProfileData = await _secureStorage.read(key: USER_PROFILE);
+    return userProfileData;
   }
 }
