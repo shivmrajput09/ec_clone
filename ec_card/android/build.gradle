@@ -5,20 +5,66 @@ allprojects {
     }
 }
 
-val newBuildDir: Directory =
-    rootProject.layout.buildDirectory
-        .dir("../../build")
-        .get()
-rootProject.layout.buildDirectory.value(newBuildDir)
-
+rootProject.buildDir = '../build'
 subprojects {
-    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
-    project.layout.buildDirectory.value(newSubprojectBuildDir)
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
-    project.evaluationDependsOn(":app")
+    project.evaluationDependsOn(':app')
 }
 
-tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
+// Derive a package name from the directory chain holding the plugin's sources,
+// e.g. src/main/java/dev/fluttercommunity/plus/connectivity -> that package.
+def sourcePackage = { subproject ->
+    ["src/main/java", "src/main/kotlin"].findResult { sourceRoot ->
+        def root = subproject.file(sourceRoot)
+        if (!root.isDirectory()) return null
+        def dir = root
+        def segments = []
+        // Walk down while there is exactly one subdirectory and no source file yet.
+        while (true) {
+            def hasSources = dir.listFiles()?.any { it.isFile() && (it.name.endsWith(".java") || it.name.endsWith(".kt")) }
+            if (hasSources) break
+            def children = dir.listFiles()?.findAll { it.isDirectory() }
+            if (children?.size() != 1) break
+            dir = children[0]
+            segments << dir.name
+        }
+        segments ? segments.join(".") : null
+    }
+}
+
+def applyNamespaceFallback = { subproject ->
+    def androidExtension = subproject.extensions.findByName("android")
+    if (androidExtension == null || !androidExtension.hasProperty("namespace") || androidExtension.namespace) {
+        return
+    }
+    // Prefer the manifest's package attribute, but plugins predating AGP 8 often
+    // have had it stripped, leaving nothing to read. Fall back to the source
+    // package, then to the Gradle group.
+    def manifestPackage = null
+    def manifestFile = subproject.file("src/main/AndroidManifest.xml")
+    if (manifestFile.exists()) {
+        manifestPackage = new XmlSlurper().parse(manifestFile).@package?.text() ?: null
+    }
+    def namespace = manifestPackage ?: sourcePackage(subproject) ?: (subproject.group?.toString() ?: null)
+    if (namespace) {
+        androidExtension.namespace = namespace
+    }
+}
+
+// Must run as soon as the Android plugin is applied: AGP 8 creates its variant
+// builders in its own afterEvaluate hook, which is registered before ours and so
+// fires first. Setting the namespace from afterEvaluate is too late and fails with
+// "Namespace not specified" for pre-AGP-8 plugins.
+subprojects { subproject ->
+    ["com.android.library", "com.android.application"].each { pluginId ->
+        subproject.plugins.withId(pluginId) {
+            applyNamespaceFallback(subproject)
+        }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
 }

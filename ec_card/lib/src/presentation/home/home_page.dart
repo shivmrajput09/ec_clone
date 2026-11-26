@@ -1,328 +1,254 @@
+import 'package:ec_card_app/src/presentation/venue/map_controller_handle.dart';
+import 'dart:async';
 
+import 'package:badges/badges.dart' as badge;
+import 'package:ec_card_app/src/application/loading_status/loading_status_cubit.dart';
+
+import 'package:ec_card_app/src/presentation/account/account_screen.dart';
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/education/education_screen.dart';
+import 'package:ec_card_app/src/presentation/home/scanner/eligibility_checker.dart';
+import 'package:ec_card_app/src/presentation/message/message_screen.dart';
+import 'package:ec_card_app/src/presentation/venue/venue_screen.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:ec_card_app/src/localization/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
-import '../education/education_screen.dart';
-import '../account/account_screen.dart';
-import '../venue/venue_screen.dart';
-import '../venue/map_controller_handle.dart';
-import 'scanner/scanner_page.dart';
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
-  static const routeName = '/home';
+  static const routeName = "/home";
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
-  final int _unreadMessagesCount = 3;
-
-  // Google Maps Location Variables
-  LatLng _currentPosition = const LatLng(54.0934, -2.8948);
-
-  final MapControllerHandle _mapHandle = MapControllerHandle();
-
-  bool _isLoadingLocation = true;
+  int index = 0;
+  bool locationFetched = false;
+  late LatLng initialCameraPosition;
+  final MapControllerHandle _completer = MapControllerHandle();
 
   @override
   void initState() {
     super.initState();
-    _determinePosition();
+    locationFetched = true;
+    getLocation();
+    // Fetched once here rather than from build(). Calling it during build
+    // re-emits state, which rebuilds and calls it again until the data
+    // arrives - firing repeated requests and, because the tree swaps between
+    // the spinner and the IndexedStack on every emission, tearing down and
+    // recreating the map each time.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final cubit = context.read<LoadingStatusCubit>();
+      if (cubit.state.userDashboardData == null) {
+        cubit.fetchUserDashboardData();
+      }
+    });
   }
 
-  // Determine Current GPS Location
-  Future<void> _determinePosition() async {
+  /// Centre of the UK, used when the device location cannot be read (denied
+  /// permission, location services off, or a timeout). Without a fallback the
+  /// screen stayed on its placeholder indefinitely.
+  static const LatLng _fallbackCameraPosition = LatLng(54.0934, -2.8948);
+
+  getLocation() async {
+    LatLng resolved = _fallbackCameraPosition;
     try {
-      LocationPermission permission =
-          await Geolocator.checkPermission();
-
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-      }
-
-      if (permission == LocationPermission.whileInUse ||
-          permission == LocationPermission.always) {
-        final pos = await Geolocator.getCurrentPosition();
-
-        if (mounted) {
-          setState(() {
-            _currentPosition =
-                LatLng(pos.latitude, pos.longitude);
-            _isLoadingLocation = false;
-          });
-        }
-        return;
-      }
-    } catch (_) {}
-
-    if (mounted) {
-      setState(() => _isLoadingLocation = false);
+      final Position position = await determinePosition();
+      resolved = LatLng(position.latitude, position.longitude);
+    } catch (e) {
+      appLog("Could not determine location, using fallback: $e");
     }
+
+    if (!mounted) return;
+    initialCameraPosition = resolved;
+    setState(() {
+      locationFetched = false;
+    });
+  }
+
+  Future<Position> determinePosition() async {
+    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      appLog("Location services are disabled");
+    }
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      // Re-read the result: the original code checked the stale value, so a
+      // denial fell through to getCurrentPosition() and threw.
+      permission = await Geolocator.requestPermission();
+    }
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      appLog("Location Services denied");
+      throw Exception("Location permission denied");
+    }
+
+    final currentPosition = await Geolocator.getCurrentPosition();
+
+    return currentPosition;
   }
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF3F51B5);
-    const accentCyan = Color(0xFF00ADB5);
+    bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
-    return Scaffold(
-      // IndexedStack: Maintains tab state
-      body: IndexedStack(
-        index: _currentIndex,
-        children: [
-          // Tab 0: Google Maps Venue Screen
-          _isLoadingLocation
+    return BlocBuilder<LoadingStatusCubit, LoadingStatusState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: state.dashboardLoading
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : VenueScreen(
-                  initialCameraPosition: _currentPosition,
-                  completer: _mapHandle,
-                ),
-
-          // Tab 1: Education
-          const EducationScreen(),
-
-          // Tab 2: Messages
-          _buildMessagesTab(primaryColor),
-
-          // Tab 3: Account
-          const AccountScreen(),
-        ],
-      ),
-
-      // Center Docked FAB
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.centerDocked,
-
-      floatingActionButton: FloatingActionButton(
-        elevation: 4,
-        backgroundColor: accentCyan,
-        shape: const CircleBorder(),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ScannerPage(),
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.qr_code_scanner,
-          color: Colors.white,
-          size: 30,
-        ),
-      ),
-
-      // Custom Bottom Navigation Bar
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8,
-        elevation: 10,
-        color: Colors.white,
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // Venues
-              _buildNavTabItem(
-                icon: Icons.storefront_outlined,
-                activeIcon: Icons.storefront,
-                label: 'Venues',
-                index: 0,
-                primaryColor: primaryColor,
-              ),
-
-              // Education
-              _buildNavTabItem(
-                icon: Icons.menu_book_outlined,
-                activeIcon: Icons.menu_book,
-                label: 'Education',
-                index: 1,
-                primaryColor: primaryColor,
-              ),
-
-              // FAB Spacer
-              const SizedBox(width: 48),
-
-              // Messages
-              _buildNavTabItem(
-                icon: Icons.mail_outline,
-                activeIcon: Icons.mail,
-                label: 'Messages',
-                index: 2,
-                badgeCount: _unreadMessagesCount,
-                primaryColor: primaryColor,
-              ),
-
-              // Account
-              _buildNavTabItem(
-                icon: Icons.person_outline,
-                activeIcon: Icons.person,
-                label: 'Account',
-                index: 3,
-                primaryColor: primaryColor,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Bottom Navigation Tab Item
-  Widget _buildNavTabItem({
-    required IconData icon,
-    required IconData activeIcon,
-    required String label,
-    required int index,
-    required Color primaryColor,
-    int badgeCount = 0,
-  }) {
-    final isSelected = _currentIndex == index;
-
-    return InkWell(
-      onTap: () => setState(() => _currentIndex = index),
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 4,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(
-                  isSelected ? activeIcon : icon,
-                  color: isSelected ? primaryColor : Colors.grey,
-                  size: 24,
-                ),
-
-                // Notification Badge
-                if (badgeCount > 0)
-                  Positioned(
-                    right: -6,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: const BoxDecoration(
-                        color: Colors.redAccent,
-                        shape: BoxShape.circle,
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 16,
-                        minHeight: 16,
-                      ),
-                      child: Text(
-                        '$badgeCount',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
+              : locationFetched
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : IndexedStack(
+                      children: [
+                        VenueScreen(
+                          initialCameraPosition: initialCameraPosition,
+                          completer: _completer,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
+                        const EducationScreen(),
+                        // BlocProvider(
+                        //   create: (context) => getIt<MessageCubit>(),
+                        //   child: const MessageScreen(),
+                        // ),
+                        const MessageScreen(),
+                        const AccountScreen(),
+                      ],
+                      index: index,
                     ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Visibility(
+            visible: !keyboardIsOpen,
+            child: FloatingActionButton(
+              backgroundColor: primaryColorLight,
+              onPressed: () async {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            const EligibilityCheckerScreen()));
+              },
+              child: ImageIcon(
+                const AssetImage('assets/images/qr-code-scan.png'),
+                // The button shows only an image, so without this a screen
+                // reader announces it with no name at all.
+                semanticLabel: AppLocalizations.of(context)!.scanQrCode,
+                size: 32.sp,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          bottomNavigationBar: BottomAppBar(
+            elevation: 0,
+            color: Colors.white,
+            // shape: const CircularNotchedRectangle(),
+            notchMargin: 0,
+            clipBehavior: Clip.none,
+            child: BottomNavigationBar(
+              selectedFontSize: 11,
+              unselectedFontSize: 11,
+              backgroundColor: Colors.white,
+              elevation: 0,
+              currentIndex: index,
+              onTap: (index) => setState(() {
+                this.index = index;
+              }),
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: primaryColorLight,
+              selectedLabelStyle: TextStyle(
+                  color: primaryColorLight, fontWeight: FontWeight.w500),
+              selectedIconTheme: IconThemeData(
+                color: primaryColorLight,
+              ),
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    index == 0
+                        ? FluentIcons.home_24_filled
+                        : FluentIcons.home_24_regular,
+                    size: 28,
                   ),
+                  label: AppLocalizations.of(context)!.venues,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    index == 1
+                        ? FluentIcons.learning_app_24_filled
+                        : FluentIcons.learning_app_24_regular,
+                    size: 28,
+                  ),
+                  /*ImageIcon(
+                    AssetImage('assets/images/educationUnSelected.png'),
+                    size: 23,
+                  ),*/
+                  label: AppLocalizations.of(context)!.education,
+                ),
+                // const BottomNavigationBarItem(
+                //   icon: SizedBox(),
+                //   label: "",
+                // ),
+                BottomNavigationBarItem(
+                  icon: state.userDashboardData?.unReadNotifications != null &&
+                          state.userDashboardData!.unReadNotifications > 0
+                      ? badge.Badge(
+                          badgeColor: primaryCyan,
+                          // The badge count is decoration on top of the tab
+                          // icon. Left in the semantics tree it is announced
+                          // as a bare digit ahead of the tab's own name —
+                          // "4, Message, tab 3 of 4" — so keep it visual only.
+                          badgeContent: ExcludeSemantics(
+                            child: Text(
+                              "${state.userDashboardData?.unReadNotifications}",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      fontSize: 10,
+                                      color: white,
+                                      fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                          child: Icon(
+                            index == 2
+                                ? FluentIcons.mail_24_filled
+                                : FluentIcons.mail_24_regular,
+                            size: 28,
+                          ))
+                      : Icon(
+                          index == 2
+                              ? FluentIcons.mail_24_filled
+                              : FluentIcons.mail_24_regular,
+                          size: 28,
+                        ),
+                  label: AppLocalizations.of(context)!.message,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    index == 3
+                        ? FluentIcons.person_24_filled
+                        : FluentIcons.person_24_regular,
+                    size: 28,
+                  ),
+                  label: AppLocalizations.of(context)!.account,
+                ),
               ],
             ),
-
-            const SizedBox(height: 2),
-
-            Text(
-              label,
-              style: TextStyle(
-                color: isSelected ? primaryColor : Colors.grey,
-                fontSize: 11,
-                fontWeight: isSelected
-                    ? FontWeight.bold
-                    : FontWeight.normal,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // Tab 2: Messages
-  Widget _buildMessagesTab(Color primaryColor) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notifications & Messages'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(12),
-        children: [
-          _buildMessageItem(
-            'Card Renewal Confirmed',
-            'Your EC membership has been certified for 12 months.',
-            '2 hrs ago',
           ),
-          _buildMessageItem(
-            'New Pharmacy Added',
-            'A new participating venue is available in your area.',
-            '1 day ago',
-          ),
-          _buildMessageItem(
-            'Training Milestone Completed',
-            'You have successfully unlocked the certification quiz.',
-            '3 days ago',
-          ),
-        ],
-      ),
-    );
-  }
-
-  // Message Card
-  Widget _buildMessageItem(
-    String title,
-    String desc,
-    String time,
-  ) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 6),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: ListTile(
-        leading: const CircleAvatar(
-          backgroundColor: Colors.indigoAccent,
-          child: Icon(
-            Icons.notifications,
-            color: Colors.white,
-            size: 20,
-          ),
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
-        ),
-        subtitle: Text(
-          desc,
-          style: const TextStyle(fontSize: 12),
-        ),
-        trailing: Text(
-          time,
-          style: TextStyle(
-            color: Colors.grey[600],
-            fontSize: 11,
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
