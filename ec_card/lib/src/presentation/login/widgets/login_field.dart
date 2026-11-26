@@ -7,8 +7,8 @@ import 'package:ec_card_app/src/localization/app_localizations.dart';
 
 class LoginFieldWidget extends StatelessWidget {
   const LoginFieldWidget({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

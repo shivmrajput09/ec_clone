@@ -1,50 +1,127 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:async';
+
+import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
+import 'package:ec_card_app/src/domain/core/errors/errors.dart';
+import 'package:ec_card_app/src/domain/core/errors/login_errors.dart';
+import 'package:ec_card_app/src/domain/login/login_repo.dart';
+import 'package:ec_card_app/src/domain/login/value_object.dart';
+import 'package:ec_card_app/src/domain/register/register_repo.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
-import '../../domain/login/login_repo.dart';
-
+part 'otp_state.dart';
 part 'otp_cubit.freezed.dart';
-
-@freezed
-class OtpState with _$OtpState {
-  const factory OtpState.initial() = _Initial;
-  const factory OtpState.loading() = _Loading;
-  const factory OtpState.success() = _Success;
-  const factory OtpState.error(String message) = _Error;
-}
 
 @injectable
 class OtpCubit extends Cubit<OtpState> {
-  final LoginRepository _loginRepo;
+  OtpCubit(
+    this.loginRepo,
+    this.registerRepo,
+  ) : super(OtpState.initial());
 
-  OtpCubit(this._loginRepo) : super(const OtpState.initial());
+  final LoginRepository loginRepo;
+  final RegisterRepository registerRepo;
 
-  Future<void> verifyOtp({
-    required String phoneNumber,
-    required String otp,
-  }) async {
-    final cleanOtp = otp.trim();
-    if (cleanOtp.length != 6) {
-      emit(const OtpState.error('Please enter complete 6-digit verification code'));
-      return;
-    }
+  // @override
+  // Future<void> close() {
+  //   // _subscription?.cancel();
+  //   return super.close();
+  // }
 
-    emit(const OtpState.loading());
+  void started({required String phoneNumber}) {
+    emit(state.copyWith(isLoading: true));
+    Future.delayed(const Duration(milliseconds: 500), () {
+      emit(state.copyWith(
+          isLoading: false, phoneNumber: PhoneNumber(phoneNumber)));
+    });
 
-    final result = await _loginRepo.signInWithOTP(phoneNumber, cleanOtp);
-    result.fold(
-      (failure) => emit(const OtpState.error('Invalid OTP. Please check and try again.')),
-      (success) => emit(const OtpState.success()),
-    );
+    //send OTP function
   }
 
-  Future<void> resendOtp(String phoneNumber) async {
-    emit(const OtpState.loading());
-    final result = await _loginRepo.sendOTP(phoneNumber);
-    result.fold(
-      (failure) => emit(const OtpState.error('Could not resend OTP. Please try again later.')),
-      (success) => emit(const OtpState.initial()),
-    );
+  void resendOtp() async {
+    final resendOTP = await loginRepo.sendOTP(state.phoneNumber!.value);
+
+    resendOTP.fold((l) {
+      emit(state.copyWith(
+        authFailureOrSuccessOption: some(left(const AppErrors.authErrors(
+            loginError: LoginErrors.invalidPhoneNumber()))),
+        verificationCompletedWithoutOtp: false,
+        serverVerificationCompleted: false,
+      ));
+    }, (r) {
+      started(phoneNumber: state.phoneNumber!.value);
+    });
+  }
+
+  void otpChanged(String otp) {
+    emit(state.copyWith(
+      smsCode: otp,
+      authFailureOrSuccessOption: none(),
+      verificationCompletedWithoutOtp: false,
+      serverVerificationCompleted: false,
+      smsSent: false,
+      isLoading: false,
+    ));
+  }
+
+  // void otpSent() {
+  //   emit(state.copyWith(
+  //     authFailureOrSuccessOption: none(),
+  //     verificationCompletedWithoutOtp: false,
+  //     serverVerificationCompleted: false,
+  //     smsSent: true,
+  //     isLoading: false,
+  //   ));
+  // }
+
+  void verificationFailed(AppErrors error) {
+    emit(state.copyWith(
+      authFailureOrSuccessOption: some(left(error)),
+      verificationCompletedWithoutOtp: false,
+      serverVerificationCompleted: false,
+      isLoading: false,
+    ));
+  }
+
+  void verifyOtp(String calledFrom) async {
+    emit(state.copyWith(isLoading: true));
+
+    if (calledFrom == "login") {
+      final verifyOtp = await loginRepo.signInWithOTP(
+        state.phoneNumber!.value,
+        state.smsCode,
+      );
+
+      verifyOtp.fold((l) {
+        verificationFailed(l);
+      }, (r) {
+        appLog("OTP Cubit: Verify OTP ------> $r");
+        verificationComplete();
+      });
+    } else {
+      final verifyRegisterOTP = await registerRepo.verifyRegistration(
+        state.phoneNumber!.value,
+        state.smsCode,
+      );
+
+      verifyRegisterOTP.fold((l) {
+        verificationFailed(l);
+      }, (r) {
+        appLog("OTP Cubit: Verify OTP ------> $r");
+        verificationComplete();
+      });
+    }
+  }
+
+  void verificationComplete() {
+    emit(state.copyWith(
+      isLoading: false,
+      verificationCompletedWithoutOtp: false,
+      serverVerificationCompleted: false,
+      authFailureOrSuccessOption: some(right(unit)),
+    ));
   }
 }

@@ -1,162 +1,265 @@
-// lib/src/data/loading_status/loading_status_repo_impl.dart
-
 import 'dart:convert';
-import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 
-import '../../domain/core/errors/errors.dart';
-import '../../domain/loading_status/loading_status_repo.dart';
-import '../../domain/local_storage/secure_storage_manager.dart';
-import 'model/org_brand_info/org_brand_info.dart';
-import 'model/user_dashboard/user_dashboard.dart';
-import 'model/user_profile/user_profile.dart';
+import 'package:ec_card_app/src/data/core/model/response_data.dart';
+import 'package:ec_card_app/src/data/loading_status/model/org_brand_info/org_brand_info.dart';
+import 'package:ec_card_app/src/data/loading_status/model/user_dashboard/user_dashboard.dart';
+import 'package:ec_card_app/src/data/loading_status/model/user_profile/user_profile.dart';
+import 'package:ec_card_app/src/domain/core/errors/errors.dart';
+import 'package:dartz/dartz.dart';
+import 'package:ec_card_app/src/domain/loading_status/loading_status_api_service.dart';
+import 'package:ec_card_app/src/domain/loading_status/loading_status_repo.dart';
+import 'package:ec_card_app/src/domain/local_storage/secure_storage_manager.dart';
+import 'package:ec_card_app/src/injection.dart';
+import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
 @LazySingleton(as: LoadingStatusRepository)
 class LoadingStatusRepoImpl implements LoadingStatusRepository {
-  final SecureStorgeManager _secureStorageManager;
+  LoadingStatusRepoImpl(this._secureStorgeManager);
 
-  LoadingStatusRepoImpl(this._secureStorageManager);
-
+  final loadingStatusAPIService = getIt<LoadingStatusAPIService>();
+  final SecureStorgeManager _secureStorgeManager;
   @override
-  Future<Either<AppErrors, String>> checkQuizPassedStatus({
-    required bool isConnectedToInternet,
-    bool skipProfileCheck = false,
-  }) async {
+  Future<Either<AppErrors, String>> checkQuizPassedStatus(
+      {required bool isConnectedToInternet,
+      bool skipProfileCheck = false}) async {
     try {
-      // 1. Local Secure Storage se saved progress check karo
-      final localStatus = await _secureStorageManager.getQuizPassStatusFromLocal();
-      if (localStatus != null && localStatus.isNotEmpty) {
-        try {
-          final decoded = jsonDecode(localStatus);
-          if (decoded is Map<String, dynamic>) {
-            // Agar quiz pass ho chuka hai -> Dashboard / HomePage
-            if (decoded['quizPassed'] == true) {
-              return right('showDashboard');
-            }
-            // Agar videos dekhi hain par quiz bacha hai -> QuizScreen
-            if (decoded['videosWatched'] == true) {
-              return right('showQuiz');
-            }
+      Map<String, dynamic> resultData = {};
+      bool showProfileQuestions = false;
+
+      if (isConnectedToInternet) {
+        // Callers that just submitted the additional-registration answers
+        // set skipProfileCheck: the profile GET can briefly still report
+        // questions.show == true (backend read-after-write lag), which
+        // would otherwise bounce the user straight back to the profile
+        // questions screen instead of on to the quiz/video/dashboard.
+        if (!skipProfileCheck) {
+          final profileResponse =
+              await loadingStatusAPIService.userProfileAPI();
+          final profileResult = convertToResponseData(profileResponse);
+          if (profileResult.status == 200) {
+            final UserProfileData userProfileData = UserProfileData.fromJson(
+                jsonDecode(profileResult.data));
+            showProfileQuestions = userProfileData.questions.show ?? false;
+          } else {
+            return left(AppErrors.defaultError(error: profileResult.message));
           }
-        } catch (_) {}
+        }
+
+        // Onboarding order is Additional Questions -> Videos -> Quiz, so
+        // video/quiz status is fetched regardless of whether profile questions
+        // are still pending (the priority is applied below).
+        final response = await loadingStatusAPIService.quizPassedAPI();
+        final result = convertToResponseData(response);
+
+        if (result.status == 200) {
+          resultData = jsonDecode(result.data);
+
+          await _secureStorgeManager.setQuizPassStatusToLocal(
+              statusData: result.data);
+        } else {
+          return left(AppErrors.defaultError(error: result.message));
+        }
+      } else {
+        final quizStatusData = await _secureStorgeManager.getQuizPassStatusFromLocal();
+        resultData = jsonDecode(quizStatusData!);
       }
 
-      // 2. Offline check
-      if (!isConnectedToInternet) {
-        // Offline hone par agar cache nahi mila, toh safe route showVideo
-        return right('showVideo');
-      }
+      appLog("RESULT DATA: $resultData");
 
-      // 3. Default Onboarding Progressive Flow:
-      // First Time user hamesha Video Module se start karega
-      return right('showVideo');
+      if (resultData['haltProgress']['halt'] == true) {
+        return right(jsonEncode(resultData['haltProgress']));
+      } else if (showProfileQuestions) {
+        // Additional registration questions come before videos and the quiz.
+        return right('showProfile');
+      } else if (!resultData['skipVideosPage']) {
+        return right("showVideo");
+      } else if (!resultData['skipQuizPage']) {
+        return right("showQuiz");
+      } else {
+        appLog("---- LOADING API SERVICE:  SHOW DASHBOARD ---->");
+        return right('showDashboard');
+      }
     } catch (e) {
-      return left(const AppErrors.unexpectedError());
+      appLog("---- LOADING API SERVICE:  Error ----> $e");
+      return left(appErrorFrom(e));
     }
   }
 
   @override
   Future<Either<AppErrors, OrgBrandInfoData>> getBrandInfo() async {
     try {
-      return right(const OrgBrandInfoData(
-        orgName: 'EC Card National Health Service',
-        copyrightText: '© EC Card Healthcare UK',
-        isActivated: true,
-        isPublished: true,
-      ));
+      final response = await loadingStatusAPIService.orgBrandInfoAPI();
+      final result = convertToResponseData(response);
+
+      if (result.status == 200) {
+        final OrgBrandInfoData brandInfo =
+            OrgBrandInfoData.fromJson(jsonDecode(result.data)['orgBrandInfo']);
+
+        appLog("---- LOADING API SERVICE:  getBrandInfo ----> $brandInfo");
+        return right(brandInfo);
+      } else {
+        return left(AppErrors.defaultError(error: result.message));
+      }
     } catch (e) {
-      return left(const AppErrors.unexpectedError());
+      appLog("---- LOADING API SERVICE:  getBrandInfo Error ----> $e");
+      return left(appErrorFrom(e));
     }
   }
 
   @override
-  Future<Either<AppErrors, UserProfileData>> getUserProfileData({
-    required bool isConnectedToInternet,
-  }) async {
+  Future<Either<AppErrors, UserDashboardData>> getUserDashBoardData(
+      {required bool isConnectedToInternet}) async {
     try {
-      // Local cache se profile check karo
-      final localData = await _secureStorageManager.getUserProfileDataFromLocal();
-      if (localData != null && localData.isNotEmpty) {
-        try {
-          final profile = UserProfileData.fromJson(jsonDecode(localData));
-          return right(profile);
-        } catch (_) {}
+      UserDashboardData dashboardData = const UserDashboardData();
+
+      if (isConnectedToInternet) {
+        final response = await loadingStatusAPIService.userDashboardAPI();
+        final result = convertToResponseData(response);
+        if (result.status == 200) {
+          dashboardData = UserDashboardData.fromJson(jsonDecode(result.data));
+
+          await _secureStorgeManager.setUserDashBoardDataToLocal(
+              userDashboardData: result.data);
+        } else {
+          return left(AppErrors.defaultError(error: result.message));
+        }
+      } else {
+        final userData =
+            await _secureStorgeManager.getUserDashboardDataFromLocal();
+        dashboardData = UserDashboardData.fromJson(jsonDecode(userData!));
       }
 
-      final phoneNumber = await _secureStorageManager.getPhoneNumber() ?? '';
+      return right(dashboardData);
+    } catch (e) {
+      appLog("---- LOADING API SERVICE:  getUserDashBoardData Error ----> $e");
+      return left(appErrorFrom(e));
+    }
+  }
 
-      // Freezed model ke exact constructor parameters match kiye gaye hain
-      final defaultProfile = UserProfileData(
+  @override
+  Future<Either<AppErrors, UserProfileData>> getUserProfileData(
+      {required bool isConnectedToInternet}) async {
+    try {
+      UserProfileData userProfileData = const UserProfileData(
         profile: Profile(
-          mobile: phoneNumber.isNotEmpty ? phoneNumber : '07123456789',
-          postalCode: 'EC1A 1BB',
-          dateOfBirth: '2000-01-01',
-          gender: 'Not specified',
+          mobile: '',
+          postalCode: '',
+          dateOfBirth: '',
+          gender: '',
         ),
-        questions: const Questions(
-          show: false,
-          list: [],
+        questions: Questions(
+          show: true,
+          list: [
+            Question(
+              choiceType: "single_select",
+              required: false,
+              enabled: true,
+              type: "ethnicity",
+              title: "ethnicity",
+              questionType: "Single Select",
+              options: [],
+            ),
+            Question(
+              choiceType: "single_select",
+              required: true,
+              enabled: true,
+              type: "employment_status",
+              title: "employment_status",
+              questionType: "Single Select",
+              options: [],
+            ),
+            Question(
+              choiceType: "single_select",
+              required: false,
+              enabled: true,
+              type: "sexual_orientation",
+              title: "sexual_orientation",
+              questionType: "Single Select",
+              options: [],
+            ),
+            Question(
+              choiceType: "single_select",
+              required: true,
+              enabled: true,
+              type: "main_language",
+              title: "main_language",
+              questionType: "Single Select",
+              options: [],
+            ),
+            Question(
+              choiceType: "multi_select",
+              required: true,
+              enabled: true,
+              type: "disability",
+              title: "disability",
+              questionType: "Multi Select",
+              options: [],
+            ),
+          ],
         ),
       );
 
-      await _secureStorageManager.setUserProfileDataToLocal(
-        userProfileData: jsonEncode(defaultProfile.toJson()),
-      );
 
-      return right(defaultProfile);
+
+      if (isConnectedToInternet) {
+        final response = await loadingStatusAPIService.userProfileAPI();
+        final result = convertToResponseData(response);
+        if (result.status == 200) {
+          userProfileData = UserProfileData.fromJson(jsonDecode(result.data));
+
+          await _secureStorgeManager.setUserProfileDataToLocal(
+              userProfileData: result.data);
+        } else {
+          return left(AppErrors.defaultError(error: result.message));
+        }
+      } else {
+        final userData =
+        await _secureStorgeManager.getUserProfileDataFromLocal();
+        userProfileData = UserProfileData.fromJson(jsonDecode(userData!));
+      }
+
+      return right(userProfileData);
     } catch (e) {
-      return left(const AppErrors.unexpectedError());
+      appLog("---- LOADING API SERVICE:  getUserProfileData Error ----> $e");
+      return left(appErrorFrom(e));
     }
   }
 
   @override
-  Future<Either<AppErrors, UserDashboardData>> getUserDashBoardData({
-    required bool isConnectedToInternet,
-  }) async {
+  Future<Either<AppErrors, String>> confirmSelfDeletion(String otp) async {
     try {
-      // Local cache se dashboard data check karo
-      final localData = await _secureStorageManager.getUserDashboardDataFromLocal();
-      if (localData != null && localData.isNotEmpty) {
-        try {
-          final dashboard = UserDashboardData.fromJson(jsonDecode(localData));
-          return right(dashboard);
-        } catch (_) {}
+      final response =
+          await loadingStatusAPIService.userSelfDeleteConfirmAPI(otp);
+      final result = convertToResponseData(response);
+
+      if (result.status == 200) {
+        return right("Deletion Successful");
+      } else {
+        return left(AppErrors.defaultError(error: result.message));
       }
-
-      final phoneNumber = await _secureStorageManager.getPhoneNumber() ?? '';
-
-      // Freezed model ke exact constructor parameters match kiye gaye hain
-      final defaultDashboard = UserDashboardData(
-        message: 'Welcome to EC Card Health Hub',
-        unReadNotifications: 0,
-        brandLogo: '',
-        tncWebUrl: 'https://eccard.org.uk/terms',
-        privacyWebUrl: 'https://eccard.org.uk/privacy',
-        support: {
-          'user': phoneNumber.isNotEmpty ? phoneNumber : 'EC Member',
-          'email': 'support@eccard.org.uk',
-          'active': true,
-        },
-      );
-
-      await _secureStorageManager.setUserDashBoardDataToLocal(
-        userDashboardData: jsonEncode(defaultDashboard.toJson()),
-      );
-
-      return right(defaultDashboard);
     } catch (e) {
-      return left(const AppErrors.unexpectedError());
+      appLog("---- LOADING API SERVICE:  confirmSelfDeletion Error ----> $e");
+      return left(appErrorFrom(e));
     }
   }
 
   @override
   Future<Either<AppErrors, String>> selfDeletionProcess() async {
-    return right('Account self-deletion request initiated successfully.');
-  }
+    try {
+      final response = await loadingStatusAPIService.userSelfDeleteAPI();
+      final result = convertToResponseData(response);
 
-  @override
-  Future<Either<AppErrors, String>> confirmSelfDeletion(String otp) async {
-    await _secureStorageManager.clearSecureStorage();
-    return right('Account session and data removed completely.');
+      if (result.status == 200) {
+        return right(result.message);
+      } else {
+        return left(AppErrors.defaultError(error: result.message));
+      }
+    } catch (e) {
+      appLog("---- LOADING API SERVICE:  selfDeletionProcess Error ----> $e");
+      return left(appErrorFrom(e));
+    }
   }
 }

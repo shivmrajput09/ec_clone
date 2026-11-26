@@ -14,7 +14,7 @@ String userDashboardDataToJson(UserDashboardData data) =>
     json.encode(data.toJson());
 
 @freezed
-abstract class UserDashboardData with _$UserDashboardData {
+class UserDashboardData with _$UserDashboardData {
   const factory UserDashboardData({
     @JsonKey(name: 'unReadNotifications') @Default(0) int unReadNotifications,
     @JsonKey(name: 'brandLogo') @Default('') String brandLogo,

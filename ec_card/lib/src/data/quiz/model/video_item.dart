@@ -1,5 +1,7 @@
 // ignore_for_file: invalid_annotation_target
+
 import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'video_item.g.dart';
@@ -22,4 +24,13 @@ abstract class VideoItem with _$VideoItem {
   }) = _VideoItem;
 
   factory VideoItem.fromJson(dynamic json) => _$VideoItemFromJson(json);
+}
+
+List<VideoItem> convertIntoListOfVideoItem(Iterable<dynamic> list) {
+  List<VideoItem> resultList = [];
+  Future.forEach(list, (element) {
+    resultList.add(VideoItem.fromJson(element));
+  });
+
+  return resultList;
 }

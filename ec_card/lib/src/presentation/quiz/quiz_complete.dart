@@ -1,114 +1,136 @@
-// lib/src/presentation/quiz/quiz_complete.dart
-
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/button.dart';
+import 'package:ec_card_app/src/presentation/loading_status/loading_status_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../home/home_page.dart'; // 👈 YAHAN NAYA IMPORT ADD KIYA HAI (HomePage ke liye)
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:html/parser.dart' as html_parser;
+
+import 'package:ec_card_app/src/localization/app_localizations.dart';
 
 class QuizCompleteScreen extends StatelessWidget {
-  final int score;
-  final int totalQuestions;
+  const QuizCompleteScreen({Key? key, required this.message}) : super(key: key);
 
-  const QuizCompleteScreen({
-    super.key,
-    required this.score,
-    required this.totalQuestions,
-  });
+  static const routeName = '/quiz-complete';
+
+  final String message;
+
+  String _plainMessage() {
+    final parsed = (html_parser.parseFragment(message).text ?? '').trim();
+    return parsed.isEmpty ? message : parsed;
+  }
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF3F51B5);
-
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Celebration Icon
-              const CircleAvatar(
-                radius: 45,
-                backgroundColor: Color(0xFFE8F5E9),
-                child: Icon(Icons.verified, size: 55, color: Colors.green),
-              ),
-              const SizedBox(height: 20),
-
-              const Text(
-                'Assessment Passed!',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black87),
-              ),
-              const SizedBox(height: 8),
-
-              Text(
-                'Score: $score% (Qualified)',
-                style: const TextStyle(fontSize: 18, color: Colors.green, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 25),
-
-              // Active Membership Card Grant Box
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [primaryColor, Color(0xFF1A237E)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(color: Colors.indigo.withOpacity(0.3), blurRadius: 12, offset: const Offset(0, 6)),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text('ACTIVE MEMBERSHIP GRANTED',
-                            style: TextStyle(color: Colors.cyan, fontWeight: FontWeight.bold, letterSpacing: 1.2)),
-                        Icon(Icons.check_circle_outline, color: Colors.white, size: 24),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    const Text('CERTIFIED EC PATIENT',
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 4),
-                    const Text('Status: Qualified for Free Pharmacy Vouchers',
-                        style: TextStyle(color: Colors.white70, fontSize: 13)),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 35),
-
-              // 🎯 YAHAN MAIN CHANGE HUA HAI:
-              SizedBox(
-                width: double.infinity,
-                height: 52,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  onPressed: () {
-                    // 👇 YAHAN DASHBOARD KI JAGAH MAIN HOMEPAGE (4 TABS WALA) CONNECT KIYA HAI:
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(), // 👈 YAHAN NAYI SCREEN JODI GAYI HAI
+      body: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              color: primaryBackgroundColor,
+              image: const DecorationImage(
+                  image: AssetImage('assets/images/backgroundSuccess.png'),
+                  fit: BoxFit.fill),
+            ),
+            // Scrollable so longer translations can never overflow the bottom;
+            // the card sizes to its content and the viewport scrolls if needed.
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                  left: 20.w, right: 20.w, top: 80.h, bottom: 20.h),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r)),
+                    color: Colors.white,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.w, vertical: 30.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 30.0.h),
+                            child: Image.asset('assets/images/success.png',
+                                fit: BoxFit.contain, height: 60),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.congratulations,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(fontSize: 18, color: primaryCyan),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 30.h),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxHeight: MediaQuery.of(context).size.height /
+                                    3, // Set the maximum height
+                              ),
+                                child: Scrollbar(
+                                thumbVisibility: true,
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    _plainMessage(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge
+                                        ?.copyWith(fontSize: 16),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 15.h),
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .quiz_completion_text_four,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                      fontSize: 16,
+                                      color: primaryBackgroundColor),
+                              // textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 30, right: 30, top: 20),
+                            child: ButtonWidget(
+                                title: AppLocalizations.of(context)!
+                                    .continue_button,
+                                onPressed: () {
+                                  // Route back through LoadingStatusPage
+                                  // instead of straight to the dashboard, so
+                                  // additional registration questions (which
+                                  // now come after the quiz) get shown if
+                                  // still pending.
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const LoadingStatusPage()),
+                                      (route) => false);
+                                }),
+                          ),
+                        ],
                       ),
-                      (route) => false,
-                    );
-                  },
-                  child: const Text('GO TO DASHBOARD',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
-                ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

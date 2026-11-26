@@ -1,38 +1,64 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
+import 'package:ec_card_app/src/domain/core/errors/errors.dart';
+import 'package:ec_card_app/src/domain/login/login_repo.dart';
+import 'package:ec_card_app/src/domain/login/value_object.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
-import '../../domain/login/login_repo.dart';
-
+part 'login_state.dart';
 part 'login_cubit.freezed.dart';
-
-@freezed
-class LoginState with _$LoginState {
-  const factory LoginState.initial() = _Initial;
-  const factory LoginState.loading() = _Loading;
-  const factory LoginState.success() = _Success;
-  const factory LoginState.error(String message) = _Error;
-}
 
 @injectable
 class LoginCubit extends Cubit<LoginState> {
-  final LoginRepository _loginRepo;
+  LoginCubit({
+    required this.loginRepo,
+  }) : super(LoginState.initial());
 
-  LoginCubit(this._loginRepo) : super(const LoginState.initial());
+  final LoginRepository loginRepo;
 
-  Future<void> sendOtpForPhone(String phoneNumber) async {
-    final cleanPhone = phoneNumber.trim();
-    if (cleanPhone.isEmpty || cleanPhone.length < 8) {
-      emit(const LoginState.error('Please enter a valid UK/mobile phone number'));
-      return;
-    }
+  void phoneFieldValueChanged(String input) {
+    final updatedPhoneNumber = PhoneNumber(input);
 
-    emit(const LoginState.loading());
+    emit(state.copyWith(
+      phoneNumber: updatedPhoneNumber,
+      phoneValidationFailureOrSuccess: none(),
+      showPhoneFieldError: false,
+    ));
+  }
 
-    final result = await _loginRepo.sendOTP(cleanPhone);
-    result.fold(
-      (failure) => emit(const LoginState.error('Failed to send OTP. Please try again.')),
-      (success) => emit(const LoginState.success()),
-    );
+  void nextButtonClicked() async {
+    emit(state.copyWith(
+      isLoading: true,
+      phoneValidationFailureOrSuccess: none(),
+    ));
+    // if (await state.phoneNumber!.isValid() == true) {
+
+    // } else {
+    //   emit(state.copyWith(
+    //     phoneValidationFailureOrSuccess: some(left(const AppErrors.authErrors(
+    //         loginError: LoginErrors.invalidPhoneNumber()))),
+    //     showPhoneFieldError: true,
+    //     isLoading: false,
+    //   ));
+    // }
+    appLog(
+        "Login Cubit: NextButtonClicked -------> Phone Number: ${state.phoneNumber!.value}");
+    final sendOTP = await loginRepo.sendOTP(state.phoneNumber!.value);
+    sendOTP.fold((l) {
+      emit(state.copyWith(
+        phoneValidationFailureOrSuccess: some(left(l)),
+        showPhoneFieldError: true,
+        isLoading: false,
+      ));
+    }, (r) {
+      emit(state.copyWith(
+        phoneValidationFailureOrSuccess: some(right(state.phoneNumber!)),
+        showPhoneFieldError: false,
+        isLoading: false,
+      ));
+    });
   }
 }

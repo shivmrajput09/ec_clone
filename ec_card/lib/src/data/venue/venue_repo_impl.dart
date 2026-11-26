@@ -1,54 +1,116 @@
-// lib/src/data/venue/venue_repo_impl.dart
+import 'dart:convert';
 
+import 'package:ec_card_app/src/data/core/model/response_data.dart';
+import 'package:ec_card_app/src/data/venue/model/products.dart';
+import 'package:ec_card_app/src/data/venue/model/products_response.dart';
+import 'package:ec_card_app/src/domain/core/errors/errors.dart';
+import 'package:ec_card_app/src/data/venue/model/venue.dart';
 import 'package:dartz/dartz.dart';
+import 'package:ec_card_app/src/domain/venue/venue_api_service.dart';
+import 'package:ec_card_app/src/domain/venue/venue_repo.dart';
+import 'package:ec_card_app/src/injection.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../domain/core/errors/errors.dart';
-import '../../domain/venue/venue_repo.dart';
-import 'model/venue.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
 @LazySingleton(as: VenueRepository)
 class VenueRepoImpl implements VenueRepository {
+  final venueAPIservice = getIt<VenueAPIService>();
   @override
-  Future<Either<AppErrors, List<Venue>>> getVenuesList({
-    required double latitude,
-    required double longitude,
-  }) async {
+  Future<Either<AppErrors, List<VenueBody>>> getVenuesList(
+      double latitude, double longitude) async {
     try {
-      // User location ke aas-paas nearby participating NHS pharmacies
-      final List<Venue> nearbyVenues = [
-        Venue(
-          id: 'v1',
-          name: 'Boots Pharmacy - NHS Partner',
-          address: 'High Street, Central Square',
-          latitude: latitude + 0.0035,
-          longitude: longitude + 0.0025,
-          phone: '+44 20 7946 0912',
-          openingHours: 'Mon - Sat: 8:00 AM - 8:00 PM',
-        ),
-        Venue(
-          id: 'v2',
-          name: 'Superdrug Health & Contraception Clinic',
-          address: 'Westgate Shopping Centre, Unit 4',
-          latitude: latitude - 0.0028,
-          longitude: longitude - 0.0031,
-          phone: '+44 20 7946 0845',
-          openingHours: 'Mon - Sun: 9:00 AM - 6:00 PM',
-        ),
-        Venue(
-          id: 'v3',
-          name: 'Community Care Pharmacy',
-          address: 'St. Mary Road, Healthcare Complex',
-          latitude: latitude + 0.0052,
-          longitude: longitude - 0.0018,
-          phone: '+44 20 7946 0331',
-          openingHours: 'Open 24 Hours Emergency',
-        ),
-      ];
+      final response = await venueAPIservice.viewStoresAPI(latitude, longitude);
+      final result = convertToResponseData(response);
 
-      return right(nearbyVenues);
+      if (result.status == 200) {
+        // appLog("---- VENUE REPO IMPL: ----- ${result.data}");
+        final listOfVenues =
+            convertIntoListOfVenueBody(jsonDecode(result.data)['storesList']);
+
+        // appLog("---- VENUE REPO IMPL: ----- $listOfVenues");
+
+        return right(listOfVenues);
+      } else {
+        return left(AppErrors.defaultError(
+          error: result.message,
+        ));
+      }
     } catch (e) {
-      return left(const AppErrors.unexpectedError());
+      return left(appErrorFrom(e));
+    }
+  }
+
+  @override
+  Future<Either<AppErrors, List<VenueBody>>> getIvtsList(
+      double latitude, double longitude) async {
+    try {
+      final response = await venueAPIservice.viewIVTSAPI(latitude, longitude);
+      final result = convertToResponseData(response);
+
+      if (result.status == 200) {
+        // appLog("---- VENUE REPO IMPL: IVTS -----> ${result.data}");
+        final list =
+            convertIVTSlistTOVenueList(jsonDecode(result.data)['ivtsList']);
+
+        return right(list);
+      } else {
+        return left(serverErrorFrom(result));
+      }
+    } catch (e) {
+      return left(appErrorFrom(e));
+    }
+  }
+
+  @override
+  Future<Either<AppErrors, ProductsResponse>> getProductsList() async {
+    try {
+      final response = await venueAPIservice.viewProductsAPI();
+      final result = convertToResponseData(response);
+
+      if (result.status == 200) {
+        final data = jsonDecode(result.data);
+        final userInfo = data['userInfo'] ?? {};
+        final list = convertJSONlistTOVProductList(data['list'] ?? []);
+
+        return right(ProductsResponse(
+          list: list,
+          message: data['message'] ?? '',
+          postalCode: userInfo['postalCode'] ?? '',
+          phoneNumber: userInfo['phone'] ?? '',
+        ));
+      } else {
+        return left(serverErrorFrom(result));
+      }
+    } catch (e) {
+      return left(appErrorFrom(e));
+    }
+  }
+
+  @override
+  Future<Either<AppErrors, String>> orderProducts(
+    String street,
+    String address,
+    String city,
+    String orgProductId,
+  ) async {
+    try {
+      final response = await venueAPIservice.orderProductsAPI(
+        street,
+        address,
+        city,
+        orgProductId,
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = response.data;
+        return right(data['message'] ?? 'Order placed successfully');
+      } else {
+        return left(AppErrors.defaultError(
+          error: "Failed with status code: ${response.statusCode}",
+        ));
+      }
+    } catch (e) {
+      return left(appErrorFrom(e));
     }
   }
 }

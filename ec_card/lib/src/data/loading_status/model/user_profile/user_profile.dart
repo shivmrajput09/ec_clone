@@ -13,7 +13,7 @@ String userProfileDataToJson(UserProfileData data) =>
     json.encode(data.toJson());
 
 @freezed
-abstract class UserProfileData with _$UserProfileData {
+class UserProfileData with _$UserProfileData {
   const factory UserProfileData({
     required Profile profile,
     required Questions questions,
@@ -24,7 +24,7 @@ abstract class UserProfileData with _$UserProfileData {
 }
 
 @freezed
-abstract class Profile with _$Profile {
+class Profile with _$Profile {
   const factory Profile({
     required String mobile,
     required String postalCode,
@@ -37,7 +37,7 @@ abstract class Profile with _$Profile {
 }
 
 @freezed
-abstract class Questions with _$Questions {
+class Questions with _$Questions {
   const factory Questions({
     required bool show,
     required List<Question> list,
@@ -48,7 +48,7 @@ abstract class Questions with _$Questions {
 }
 
 @freezed
-abstract class Question with _$Question {
+class Question with _$Question {
   const factory Question({
     required String choiceType,
     required bool required,

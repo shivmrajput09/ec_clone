@@ -1,236 +1,186 @@
-// lib/src/presentation/quiz/quiz_screen.dart
-
-import 'package:flutter/material.dart';
 import 'dart:convert';
-import '../../domain/local_storage/secure_storage_manager.dart';
-import '../../injection.dart';
-import 'quiz_complete.dart';
-import 'quiz_fail_screen.dart';
+import 'dart:io';
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+import 'package:ec_card_app/src/application/quiz/quiz_cubit.dart';
+import 'package:ec_card_app/src/injection.dart';
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/back_icon.dart';
+import 'package:ec_card_app/src/presentation/loading_status/loading_status_page.dart';
+import 'package:ec_card_app/src/presentation/quiz/quiz_complete.dart';
+import 'package:ec_card_app/src/presentation/quiz/widgets/quiz_card.dart';
+import 'package:ec_card_app/src/presentation/quiz/widgets/quiz_fail.screen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../utils/extension.dart';
 
-  @override
-  State<QuizScreen> createState() => _QuizScreenState();
-}
+import 'package:ec_card_app/src/localization/app_localizations.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
-class _QuizScreenState extends State<QuizScreen> {
-  // Sample EC-Card Clinical & Protocol Questions
-  final List<Map<String, dynamic>> _questions = [
-    {
-      'question': '1. Within how many hours should Emergency Contraception be taken for maximum efficacy?',
-      'options': [
-        'Within 24 to 72 hours',
-        'Within 7 days',
-        'Within 2 weeks',
-        'Anytime in the month'
-      ],
-      'correctIndex': 0,
-    },
-    {
-      'question': '2. Who is eligible to receive free EC Card services at participating UK pharmacies?',
-      'options': [
-        'Registered patients within authorized age guidelines',
-        'Only private insurance holders',
-        'Non-residents without NHS verification',
-        'None of the above'
-      ],
-      'correctIndex': 0,
-    },
-    {
-      'question': '3. What must the patient do at the pharmacy to claim the emergency voucher?',
-      'options': [
-        'Scan the pharmacy QR code via EC Card app',
-        'Bring a paper letter from the council',
-        'Pay standard prescription charge',
-        'Call the helpline only'
-      ],
-      'correctIndex': 0,
-    },
-    {
-      'question': '4. Is patient confidentiality maintained during the EC consultation?',
-      'options': [
-        'Yes, consultations are strictly confidential',
-        'No, details are made public',
-        'Only if requested in advance',
-        'Depends on the pharmacy'
-      ],
-      'correctIndex': 0,
-    },
-  ];
+class QuizScreen extends StatelessWidget {
+  const QuizScreen({Key? key, this.showBackButton = true}) : super(key: key);
 
-  final Map<int, int> _selectedAnswers = {};
-  bool _isSubmitting = false;
-
-  void _submitQuiz() async {
-    setState(() => _isSubmitting = true);
-    await Future.delayed(const Duration(milliseconds: 800)); // Calculation delay
-    setState(() => _isSubmitting = false);
-
-    // Score Calculation
-    int correctCount = 0;
-    for (int i = 0; i < _questions.length; i++) {
-      if (_selectedAnswers[i] == _questions[i]['correctIndex']) {
-        correctCount++;
-      }
-    }
-
-    final double scorePercentage = (correctCount / _questions.length) * 100;
-    final bool isPassed = scorePercentage >= 75; // 75% Passing Criteria
-
-    if (!mounted) return;
-
-    // 🎯 PASS / FAIL BRANCHING
-    if (isPassed) {
-      await getIt<SecureStorgeManager>().setQuizPassStatusToLocal(
-        statusData: jsonEncode({'videosWatched': true, 'quizPassed': true}),
-      );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => QuizCompleteScreen(
-            score: scorePercentage.toInt(),
-            totalQuestions: _questions.length,
-          ),
-        ),
-      );
-    } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => QuizFailScreen(
-            score: scorePercentage.toInt(),
-            totalQuestions: _questions.length,
-          ),
-        ),
-      );
-    }
-  }
+  final bool? showBackButton;
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF3F51B5);
-    final allAnswered = _selectedAnswers.length == _questions.length;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Assessment Quiz'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
-      body: Column(
-        children: [
-          // Progress Header
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            color: Colors.indigo.shade50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Answered: ${_selectedAnswers.length} / ${_questions.length}',
-                  style: const TextStyle(fontWeight: FontWeight.bold, color: primaryColor),
-                ),
-                Text(
-                  'Passing: 75%',
-                  style: TextStyle(fontWeight: FontWeight.w600, color: Colors.grey[700]),
-                ),
-              ],
-            ),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pop(context, true);
+        return true;
+      },
+      child: BlocProvider(
+        create: (context) => getIt<QuizCubit>()..getQuestionsList(),
+        child: Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 60,
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            leading: showBackButton == true
+                ? IconButton(
+                    onPressed: () {
+                      appLog("Back pressed");
+                      Navigator.pop(context, true);
+                    },
+                    icon: BackIcon(
+                      semanticLabel:
+                          AppLocalizations.of(context)!.backButtonLabel,
+                    ),
+                    color: primaryBackgroundColor,
+                  )
+                : const SizedBox(),
+            elevation: 0.5,
+            shadowColor: primaryCyan,
+            centerTitle: true,
+            title: Text(AppLocalizations.of(context)!.quiz_text),
           ),
+          body: BlocConsumer<QuizCubit, QuizState>(
+            listener: (context, state) {
+              state.questionFecthingFailureOrSuccess.map((a) => a.fold((l) {
+                    context.showError(l);
+                  }, (r) {
+                    // Account has already passed the quiz: the server returns no
+                    // questions, so skip the (otherwise blank) quiz screen.
+                    // Route back through LoadingStatusPage rather than
+                    // straight to the dashboard, so any pending additional
+                    // questions still get shown.
+                    if (state.quizLevelPassed) {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const LoadingStatusPage()),
+                          (route) => false);
+                    }
+                  }));
 
-          // Questions List
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: _questions.length,
-              itemBuilder: (context, qIndex) {
-                final q = _questions[qIndex];
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-                  elevation: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          q['question'],
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 12),
-                        ...List.generate(q['options'].length, (oIndex) {
-                          final isSelected = _selectedAnswers[qIndex] == oIndex;
-                          return InkWell(
-                            onTap: () {
-                              setState(() {
-                                _selectedAnswers[qIndex] = oIndex;
-                              });
-                            },
-                            borderRadius: BorderRadius.circular(10),
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(vertical: 4),
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                              decoration: BoxDecoration(
-                                color: isSelected ? Colors.indigo.shade50 : Colors.grey.shade50,
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: isSelected ? primaryColor : Colors.grey.shade300,
-                                  width: isSelected ? 2 : 1,
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
-                                    color: isSelected ? primaryColor : Colors.grey,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                    child: Text(
-                                      q['options'][oIndex],
-                                      style: TextStyle(
-                                        color: isSelected ? primaryColor : Colors.black87,
-                                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              state.submitQuizFailureOrSuccess?.map((a) => a.fold((l) {
+                    context.showError(l);
+                  }, (r) {
+                    final Map<String, dynamic> resultData = jsonDecode(r);
+
+                    if (resultData['quizLevelPassed'] == false) {
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(content: Text("${resultData['message']}")));
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => QuizFailScreen(
+                                    message: resultData['message'],
+                                  )),
+                          (route) => false);
+                    } else {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => QuizCompleteScreen(
+                                    message: resultData['message'],
+                                  )),
+                          (route) => false);
+                    }
+                  }));
+            },
+            builder: (context, state) {
+              return state.isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(color: primaryCyan),
+                    )
+                  : SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.quizList.length,
+                              itemBuilder: (context, index) {
+                                return QuizCardWidget(
+                                    question: state.quizList[index]);
+                              }),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 60.h, vertical: 40.h),
+                            child: state.isQuizSubmitLoading
+                                ? const CircularProgressIndicator(
+                                    color: primaryCyan,
+                                  )
+                                : SizedBox(
+                                    width: double.infinity,
+                                    height: 48,
+                                    child: ElevatedButton(
+                                      onPressed: state.allQuestionsAnswered
+                                          ? () {
+                                              context
+                                                  .read<QuizCubit>()
+                                                  .onSubmitQuizPressed();
+                                            }
+                                          : null,
+                                      child: Text(
+                                        AppLocalizations.of(context)!
+                                            .finish_text,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge
+                                            ?.copyWith(
+                                                fontSize: 18,
+                                                color: Colors.white),
+                                      ),
+                                      style: ButtonStyle(
+                                        padding: MaterialStateProperty.all<
+                                                EdgeInsetsGeometry?>(
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 40)),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color?>(
+                                                state.allQuestionsAnswered
+                                                    ? primaryCyan
+                                                    : Colors.grey[300]),
+                                        shape: MaterialStateProperty.all<
+                                                RoundedRectangleBorder?>(
+                                            RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        30.r))),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-
-          // Submit Button
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton(
-                onPressed: (allAnswered && !_isSubmitting) ? _submitQuiz : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-                child: _isSubmitting
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : Text(
-                        allAnswered ? 'SUBMIT ASSESSMENT' : 'ANSWER ALL TO SUBMIT',
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                            /* ButtonWidget(
+                                    title: AppLocalizations.of(context)!
+                                        .finish_text,
+                                    onPressed: state.allQuestionsAnswered
+                                        ? () {
+                                            context
+                                                .read<QuizCubit>()
+                                                .onSubmitQuizPressed();
+                                          }
+                                        : null),*/
+                          ),
+                        ],
                       ),
-              ),
-            ),
+                    );
+            },
           ),
-        ],
+        ),
       ),
     );
   }

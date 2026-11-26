@@ -15,7 +15,7 @@ String orgBrandInfoDataToJson(OrgBrandInfoData data) =>
     json.encode(data.toJson());
 
 @freezed
-abstract class OrgBrandInfoData with _$OrgBrandInfoData {
+class OrgBrandInfoData with _$OrgBrandInfoData {
   const factory OrgBrandInfoData({
     @JsonKey(name: 'orgName') @Default('') String orgName,
     @JsonKey(name: 'city') @Default('') String city,

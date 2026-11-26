@@ -1,138 +1,192 @@
-// lib/src/presentation/videos/video_screen.dart
-
+import 'package:animations/animations.dart';
+import 'package:ec_card_app/src/application/quiz/video/video_cubit.dart';
+import 'package:ec_card_app/src/injection.dart';
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/appbar.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/button.dart';
+import 'package:ec_card_app/src/presentation/loading_status/loading_status_page.dart';
+import 'package:ec_card_app/src/presentation/videos/widgets/access_code_dialog.dart';
+import 'package:ec_card_app/src/presentation/videos/widgets/video_detail_card.dart';
+import 'package:ec_card_app/src/presentation/videos/widgets/video_player_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import '../../domain/local_storage/secure_storage_manager.dart';
-import '../../injection.dart';
-import 'widgets/video_player_screen.dart';
-import '../quiz/quiz_screen.dart'; // ✅ Part 12: Quiz Screen connected
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class VideosScreen extends StatefulWidget {
-  const VideosScreen({super.key});
+import 'package:ec_card_app/src/localization/app_localizations.dart';
 
-  @override
-  State<VideosScreen> createState() => _VideosScreenState();
-}
+class VideosScreen extends StatelessWidget {
+  const VideosScreen({Key? key}) : super(key: const Key("videos-screen"));
 
-class _VideosScreenState extends State<VideosScreen> {
-  // Sample Training Videos List
-  final List<Map<String, dynamic>> _videos = [
-    {
-      'id': '1',
-      'title': '1. Introduction to EC Healthcare Guidelines',
-      'url': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-      'watched': false,
-    },
-    {
-      'id': '2',
-      'title': '2. Emergency Contraception Protocol',
-      'url': 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-      'watched': false,
-    },
-  ];
-
-  bool get _allVideosWatched => _videos.every((v) => v['watched'] == true);
+  static const routeName = '/videos-screen';
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF3F51B5);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Training Videos'),
-        backgroundColor: primaryColor,
-        foregroundColor: Colors.white,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(12),
-              itemCount: _videos.length,
-              itemBuilder: (context, index) {
-                final video = _videos[index];
-                final isWatched = video['watched'] as bool;
-
-                return Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(12),
-                    leading: CircleAvatar(
-                      backgroundColor: isWatched ? Colors.green[100] : Colors.indigo[50],
-                      child: Icon(
-                        isWatched ? Icons.check_circle : Icons.play_arrow,
-                        color: isWatched ? Colors.green : primaryColor,
-                      ),
-                    ),
-                    title: Text(
-                      video['title'],
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      isWatched ? 'Status: Completed' : 'Status: Mandatory to watch',
-                      style: TextStyle(color: isWatched ? Colors.green : Colors.orange),
-                    ),
-                    onTap: () {
-                      Navigator.push(
+    return BlocProvider(
+      create: (context) => getIt<VideoCubit>()..getVideosList(),
+      child: BlocConsumer<VideoCubit, VideoState>(
+        listener: (context, state) {
+          state.markAllWatchedFailureOrSuccess?.fold(
+              () => null,
+              (a) => a.fold((l) => null, (r) async {
+                    final res = await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => VideoPlayerScreen(
-                            videoTitle: video['title'],
-                            videoUrl: video['url'],
-                            onVideoCompleted: () {
-                              setState(() {
-                                video['watched'] = true;
-                              });
-                            },
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
+                            builder: (context) => const LoadingStatusPage()));
 
-          // 🎯 TARGET BUTTON: Videos dekhne ke baad yeh Unlock hoga aur Quiz Screen kholega
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: double.infinity,
-              height: 52,
-              child: ElevatedButton(
-                onPressed: _allVideosWatched
-                    ? () async {
-                        // Persist videosWatched to SecureStorage for Gatekeeper
-                        await getIt<SecureStorgeManager>().setQuizPassStatusToLocal(
-                          statusData: jsonEncode({'videosWatched': true}),
-                        );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const QuizScreen(),
-                          ),
-                        );
-                      }
-                    : null, // null hone par button disabled rehta hai
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor,
-                  disabledBackgroundColor: Colors.grey[300],
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                ),
-                child: Text(
-                  _allVideosWatched ? 'CONTINUE TO QUIZ (UNLOCKED)' : 'WATCH ALL VIDEOS TO UNLOCK',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: _allVideosWatched ? Colors.white : Colors.grey[600],
+                    // if (res != null && res && state.showSkipButton) {
+                    //   context.read<VideoCubit>().getVideosList();
+                    // }
+                    context.read<VideoCubit>().getVideosList();
+                  }));
+        },
+        builder: (context, state) {
+          return Scaffold(
+            appBar: CustomAppBar(
+              appBar: AppBar(),
+              title: AppLocalizations.of(context)!.videos,
+              // Videos is always pushed with pushAndRemoveUntil((route) => false), so
+              // it is the only route on the stack. A back button here would pop
+              // the last route and leave a blank screen.
+              showBackButton: false,
+            ),
+            body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      child: state.isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: primaryCyan,
+                              ),
+                            )
+                          : ListView.builder(
+                              itemCount: state.videoList.length,
+                              itemBuilder: (context, index) {
+                                return VideoDetailCardWidget(
+                                  video: state.videoList[index],
+                                  onWatchButtonPress: () {
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) =>
+                                                VidePlayerScreen(
+                                                  videoList: state.videoList,
+                                                  index: index,
+                                                )));
+                                  },
+                                );
+                              }),
+                    ),
                   ),
-                ),
+                  state.showSkipButton
+                      ? Padding(
+                          padding: EdgeInsets.only(bottom: 20.h),
+                          child: TextButton(
+                            onPressed: () {
+                              context.read<VideoCubit>().onSkipPressed();
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)!.skip,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.purple[900]),
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30.h),
+                    child: ButtonWidget(
+                      title: AppLocalizations.of(context)!.enter_access_code,
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AccessCodeDialog();
+                            });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30.h),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        onPressed: state.allVideosWatched
+                            ? () {
+                                // Route back through LoadingStatusPage so it
+                                // re-evaluates status now that videos are
+                                // watched: quiz next if pending, then
+                                // additional questions, then dashboard -
+                                // rather than this screen hardcoding what
+                                // comes next.
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    PageRouteBuilder(
+                                      transitionDuration:
+                                          const Duration(milliseconds: 500),
+                                      reverseTransitionDuration:
+                                          const Duration(milliseconds: 500),
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        return SharedAxisTransition(
+                                          transitionType:
+                                              SharedAxisTransitionType
+                                                  .horizontal,
+                                          secondaryAnimation:
+                                              secondaryAnimation,
+                                          animation: animation,
+                                          child: child,
+                                        );
+                                      },
+                                      pageBuilder: (context, animation,
+                                          secondaryAnimation) {
+                                        return const LoadingStatusPage();
+                                      },
+                                    ),
+                                    (route) => false);
+                              }
+                            : null,
+                        child: Text(
+                          state.skipQuizPage
+                              ? AppLocalizations.of(context)!
+                                  .continue_to_dashboard
+                              : AppLocalizations.of(context)!.continue_to_quiz,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge
+                              ?.copyWith(fontSize: 18, color: Colors.white),
+                        ),
+                        style: ButtonStyle(
+                          padding:
+                              MaterialStateProperty.all<EdgeInsetsGeometry?>(
+                                  const EdgeInsets.symmetric(horizontal: 40)),
+                          backgroundColor: state.allVideosWatched
+                              ? MaterialStateProperty.all<Color?>(primaryCyan)
+                              : MaterialStateProperty.all<Color?>(
+                                  Colors.grey[300]),
+                          shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder?>(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.r))),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

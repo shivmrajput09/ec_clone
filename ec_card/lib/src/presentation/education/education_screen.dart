@@ -1,94 +1,100 @@
-// lib/src/presentation/education/education_screen.dart
-
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/appbar.dart';
+import 'package:ec_card_app/src/presentation/education/pages/documents_page.dart';
+import 'package:ec_card_app/src/presentation/education/pages/weblinks_page.dart';
+import 'package:ec_card_app/src/presentation/education/pages/video_page.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import '../videos/video_screen.dart';
+import 'package:ec_card_app/src/localization/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EducationScreen extends StatelessWidget {
-  const EducationScreen({super.key});
+class EducationScreen extends StatefulWidget {
+  const EducationScreen({Key? key, this.initialTabIndex = 0})
+      : super(key: const Key("eduaction-screen"));
+
+  static const routeName = "/education";
+
+  /// Which tab to open on: 0 Videos, 1 Documents, 2 Weblinks. A notification
+  /// about a weblink opens this screen on the Weblinks tab.
+  final int initialTabIndex;
+
+  @override
+  State<EducationScreen> createState() => _EducationScreenState();
+}
+
+class _EducationScreenState extends State<EducationScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
-    const primaryColor = Color(0xFF3F51B5);
+    super.build(context);
 
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Educational Media Hub'),
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-          bottom: const TabBar(
-            indicatorColor: Colors.cyan,
-            indicatorWeight: 3,
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.white70,
-            tabs: [
-              Tab(icon: Icon(Icons.video_library), text: 'Videos'),
-              Tab(icon: Icon(Icons.picture_as_pdf), text: 'Documents'),
-              Tab(icon: Icon(Icons.link), text: 'Weblinks'),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            // TAB 1: Videos Hub
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.video_collection_outlined, size: 70, color: primaryColor),
-                    const SizedBox(height: 16),
-                    const Text('Mandatory Training Modules', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 8),
-                    const Text('Watch interactive video lectures to qualify for certification.', textAlign: TextAlign.center),
-                    const SizedBox(height: 24),
-                    ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(backgroundColor: primaryColor, foregroundColor: Colors.white),
-                      icon: const Icon(Icons.play_circle_outline),
-                      label: const Text('Open Training Videos'),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const VideosScreen()));
-                      },
-                    ),
-                  ],
+    return Scaffold(
+      appBar: CustomAppBar(appBar: AppBar(), title: AppLocalizations.of(context)!.education),
+      body: DefaultTabController(
+        length: 3,
+        initialIndex: widget.initialTabIndex,
+        child: Scaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(50),
+            child: Container(
+              // margin: EdgeInsets.only(top: 10.h),
+              height: 50,
+              color: Colors.white,
+              child: TabBar(
+                onTap: (val) {},
+                // isScrollable: true,
+                labelColor: primaryBackgroundColor,
+                indicatorPadding: const EdgeInsets.symmetric(horizontal: 15),
+                unselectedLabelColor: Colors.grey[500],
+                indicatorSize: TabBarIndicatorSize.label,
+                indicator: UnderlineTabIndicator(
+                  borderSide:
+                      BorderSide(color: primaryBackgroundColor, width: 5),
                 ),
+                tabs: [
+                  TabHeadingWidget(title: AppLocalizations.of(context)!.videos),
+                  TabHeadingWidget(title: AppLocalizations.of(context)!.documents),
+                  TabHeadingWidget(title: AppLocalizations.of(context)!.weblinks),
+                ],
               ),
             ),
-
-            // TAB 2: Guideline PDF Documents Viewer
-            SfPdfViewer.network(
-              'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-              canShowPaginationDialog: true,
-              pageLayoutMode: PdfPageLayoutMode.continuous,
-            ),
-
-            // TAB 3: Weblinks
-            ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _buildWeblinkTile('NHS Healthcare Portal', 'Official UK Health Service guidelines'),
-                _buildWeblinkTile('Emergency Contraception Guide', 'Clinical protocol and FAQ for patients'),
-                _buildWeblinkTile('Pharmacy Locator Service', 'Find authorized distribution centers'),
-              ],
-            ),
-          ],
+          ),
+          body: TabBarView(children: [
+            VideoPage(),
+            DocumentsPage(),
+            WeblinksPage(),
+          ]),
         ),
       ),
     );
   }
+}
 
-  Widget _buildWeblinkTile(String title, String subtitle) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        leading: const Icon(Icons.language, color: Color(0xFF3F51B5)),
-        title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(subtitle),
-        trailing: const Icon(Icons.open_in_new, size: 18),
-        onTap: () {},
+class TabHeadingWidget extends StatelessWidget {
+  const TabHeadingWidget({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Align(
+        alignment: Alignment.center,
+        // Three tabs leave each one a third of the width, and at a large
+        // system font size "Documents" broke across two lines. Shrinking the
+        // label to fit keeps every tab on one line, in every language.
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            title,
+            maxLines: 1,
+            softWrap: false,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ),
       ),
     );
   }

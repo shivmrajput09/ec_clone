@@ -1,210 +1,340 @@
-// lib/src/presentation/venue/venue_screen.dart
+import 'package:ec_card_app/src/presentation/venue/map_controller_handle.dart';
+import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:ec_card_app/src/application/venue/venue_cubit.dart';
+import 'package:ec_card_app/src/presentation/core/locale_provider.dart';
+import 'package:ec_card_app/src/presentation/core/res/app_colors.dart';
+import 'package:ec_card_app/src/presentation/venue/pages/product_page.dart';
+import 'package:ec_card_app/src/presentation/venue/widgets/map_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ec_card_app/src/presentation/core/widgets/appbar.dart';
+import 'package:ec_card_app/src/presentation/venue/pages/vending_machine_page.dart';
+import 'package:ec_card_app/src/presentation/venue/pages/venue_page.dart';
+import 'package:flutter/material.dart';
+import 'package:ec_card_app/src/localization/app_localizations.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../../application/venue/venue_cubit.dart';
-import '../../application/venue/venue_state.dart';
-import '../../data/venue/model/venue.dart';
-import '../../injection.dart';
-import '../core/res/app_colors.dart';
-import 'map_controller_handle.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 
 class VenueScreen extends StatefulWidget {
+  const VenueScreen(
+      {Key? key, required this.initialCameraPosition, required this.completer})
+      : super(key: const Key("venue-screen"));
+
+  static const routeName = "/venue";
+
   final LatLng initialCameraPosition;
   final MapControllerHandle completer;
-
-  const VenueScreen({
-    super.key,
-    required this.initialCameraPosition,
-    required this.completer,
-  });
 
   @override
   State<VenueScreen> createState() => _VenueScreenState();
 }
 
 class _VenueScreenState extends State<VenueScreen> {
+  // Collapsed when a store card is tapped so the camera move is
+  // visible: the panel can cover half the screen, including the
+  // point being focused.
+  final PanelController _panelController = PanelController();
+
+  GoogleMapController? _controller;
   final Set<Marker> _markers = {};
+  // final Completer<GoogleMapController> _completer = Completer();
+
+  CameraPosition? _cameraPosition;
+  String? _lastLoadedLanguageCode;
+
+  @override
+  void initState() {
+    super.initState();
+    started();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final languageCode = context.watch<LocaleProvider>().locale.languageCode;
+    if (_lastLoadedLanguageCode == languageCode) {
+      return;
+    }
+
+    _lastLoadedLanguageCode = languageCode;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _setCurrentLocationMarker();
+      _fetchVenueContent();
+    });
+  }
+
+  started() async {
+    setState(() {
+      _cameraPosition =
+          CameraPosition(target: widget.initialCameraPosition, zoom: 17.0);
+      _markers
+        ..clear()
+        ..add(_currentLocationMarker());
+      if (_controller != null) {
+        _controller
+            ?.animateCamera(CameraUpdate.newCameraPosition(_cameraPosition!));
+      }
+    });
+
+    final c = await widget.completer.controller;
+    if (!mounted) return;
+    c.animateCamera(CameraUpdate.newCameraPosition(_cameraPosition!));
+  }
+
+  void _setCurrentLocationMarker() {
+    setState(() {
+      _markers
+        ..clear()
+        ..add(_currentLocationMarker());
+    });
+  }
+
+  Marker _currentLocationMarker() {
+    return Marker(
+      markerId: const MarkerId("Current Location"),
+      position: widget.initialCameraPosition,
+      infoWindow:
+          InfoWindow(title: AppLocalizations.of(context)!.current_location),
+      onDragEnd: (_currentlatLng) {
+        // latLng = _currentlatLng;
+      },
+    );
+  }
+
+  void _fetchVenueContent() {
+    context.read<VenueCubit>().getVenuesList(
+          widget.initialCameraPosition.latitude,
+          widget.initialCameraPosition.longitude,
+        );
+    context.read<VenueCubit>().getProductsList();
+  }
+
+  Future<Position> determinePosition() async {
+    final serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      appLog("Location services are disabled");
+    }
+    final LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        appLog("Location Services denied");
+      }
+    }
+
+    final currentPosition = await Geolocator.getCurrentPosition();
+
+    return currentPosition;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<VenueCubit>()
-        ..fetchNearbyVenues(
-          latitude: widget.initialCameraPosition.latitude,
-          longitude: widget.initialCameraPosition.longitude,
-        ),
-      child: Scaffold(
-        body: BlocConsumer<VenueCubit, VenueState>(
-          listener: (context, state) {
-            if (state is VenueLoaded) {
-              setState(() {
-                _markers.clear();
-                for (var venue in state.venues) {
-                  _markers.add(
-                    Marker(
-                      markerId: MarkerId(venue.id),
-                      position: LatLng(venue.latitude, venue.longitude),
-                      infoWindow: InfoWindow(
-                        title: venue.name,
-                        snippet: venue.address,
-                      ),
-                      icon: BitmapDescriptor.defaultMarkerWithHue(
-                        BitmapDescriptor.hueAzure,
-                      ),
-                      onTap: () {
-                        context.read<VenueCubit>().selectVenue(venue);
-                      },
-                    ),
-                  );
-                }
-              });
-            }
-          },
-          builder: (context, state) {
-            return Stack(
+    return Scaffold(
+      appBar: CustomAppBar(
+          appBar: AppBar(), title: AppLocalizations.of(context)!.ecCard),
+      body: BlocBuilder<VenueCubit, VenueState>(
+        builder: (context, state) {
+          return SlidingUpPanel(
+            controller: _panelController,
+            parallaxEnabled: true,
+            body: Column(
               children: [
-                // 1. Google Map View
-                GoogleMap(
-                  initialCameraPosition: CameraPosition(
-                    target: widget.initialCameraPosition,
-                    zoom: 14.5,
-                  ),
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: false,
-                  zoomControlsEnabled: false,
-                  markers: _markers,
-                  onMapCreated: (controller) {
-                    if (!widget.completer.completer.isCompleted) {
-                      widget.completer.completer.complete(controller);
-                    }
-                  },
+                Expanded(
+                  child: state.isVenueLoading || state.isIVTSLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : MapView(
+                          mapCompleter: widget.completer,
+                          latlng: widget.initialCameraPosition,
+                          venueList: state.venuesList,
+                          ivtsList: state.ivtsList,
+                          cameraPosition: _cameraPosition!,
+                          locationMarker: _markers,
+                        ),
                 ),
-
-                // 2. Top Header Bar
-                SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        child: Row(
-                          children: [
-                            Icon(Icons.local_pharmacy, color: primaryBackgroundColor),
-                            const SizedBox(width: 12),
-                            const Expanded(
-                              child: Text(
-                                'Nearby EC Pharmacies & Clinics',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                              ),
-                            ),
-                          ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 2 - 150.h,
+                )
+              ],
+            ),
+            minHeight: 160.h,
+            maxHeight: MediaQuery.of(context).size.height / 2,
+            panel: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 6,
+                        width: double.infinity,
+                        color: Colors.white,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 3,
+                          width: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[400],
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-
-                // 3. Bottom Sliding Pharmacy Cards
-                if (state is VenueLoaded && state.venues.isNotEmpty)
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 80, // Center FAB ke upar space
-                    height: 140,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      itemCount: state.venues.length,
-                      itemBuilder: (context, index) {
-                        final venue = state.venues[index];
-                        final isSelected = state.selectedVenue?.id == venue.id;
-
-                        return Container(
-                          width: 280,
-                          margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                          child: Card(
-                            elevation: isSelected ? 6 : 3,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14),
-                              side: isSelected
-                                  ? BorderSide(color: primaryBackgroundColor, width: 2)
-                                  : BorderSide.none,
-                            ),
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(14),
-                              onTap: () {
-                                context.read<VenueCubit>().selectVenue(venue);
-                                widget.completer.animateTo(
-                                  LatLng(venue.latitude, venue.longitude),
-                                  zoom: 16.0,
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.store, size: 18, color: primaryBackgroundColor),
-                                        const SizedBox(width: 6),
-                                        Expanded(
-                                          child: Text(
-                                            venue.name,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                      Container(
+                        height: 6,
+                        width: double.infinity,
+                        color: Colors.white,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 3,
+                          width: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[400],
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 6,
+                        width: double.infinity,
+                        color: Colors.white,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: 3,
+                          width: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[400],
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: DefaultTabController(
+                          length: 3,
+                          child: Scaffold(
+                            appBar: PreferredSize(
+                              preferredSize: const Size.fromHeight(80),
+                              child: Container(
+                                // margin: EdgeInsets.only(top: 10.h),
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[400]!,
+                                            width: 0.5))),
+                                child: TabBar(
+                                  onTap: (val) {
+                                    context
+                                        .read<VenueCubit>()
+                                        .setSelectedTabIndex(val);
+                                  },
+                                  labelColor: primaryColorLight,
+                                  isScrollable: false,
+                                  labelStyle: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: primaryColorLight),
+                                  indicatorPadding: EdgeInsets.zero,
+                                  labelPadding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  unselectedLabelColor: Colors.grey[500],
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  indicator: UnderlineTabIndicator(
+                                    borderSide: BorderSide(
+                                        color: state.selectedTabIndex == 0
+                                            ? Colors.cyan
+                                            : state.selectedTabIndex == 1
+                                                ? kioskUnderline
+                                                : Colors.red,
+                                        width: 2),
+                                  ),
+                                  tabs: [
+                                    TabTitleWidget(
+                                      iconPath: 'assets/images/store.png',
+                                      title:
+                                          AppLocalizations.of(context)!.stores,
+                                      selectedTab: state.selectedTabIndex == 0,
                                     ),
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      venue.address,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                                    TabTitleWidget(
+                                      iconPath:
+                                          'assets/images/vendingMachine.png',
+                                      title:
+                                          AppLocalizations.of(context)!.kiosk,
+                                      selectedTab: state.selectedTabIndex == 1,
                                     ),
-                                    const Spacer(),
-                                    Row(
-                                      children: [
-                                        const Icon(Icons.access_time, size: 14, color: Colors.green),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          venue.openingHours,
-                                          style: const TextStyle(fontSize: 11, color: Colors.green),
-                                        ),
-                                      ],
+                                    TabTitleWidget(
+                                      iconPath: 'assets/images/search.png',
+                                      title:
+                                          AppLocalizations.of(context)!.online,
+                                      selectedTab: state.selectedTabIndex == 2,
                                     ),
                                   ],
                                 ),
                               ),
                             ),
+                            body: TabBarView(children: [
+                              VenuePageWidget(
+                                completer: widget.completer,
+                                panelController: _panelController,
+                              ),
+                              VendingMachinePageWidget(
+                                completer: widget.completer,
+                                panelController: _panelController,
+                              ),
+                              const SearchProductScreen(),
+                            ]),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      )
+                    ],
                   ),
-
-                // Loading Indicator
-                if (state is VenueLoading)
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
+    );
+  }
+}
+
+class TabTitleWidget extends StatelessWidget {
+  const TabTitleWidget({
+    Key? key,
+    required this.iconPath,
+    required this.title,
+    required this.selectedTab,
+  }) : super(key: key);
+
+  final String iconPath;
+  final String title;
+  final bool selectedTab;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Image.asset(iconPath, height: 36, width: 36),
+        // const SizedBox(height: 5),
+        Text(
+          title,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              fontSize: 13,
+              color: selectedTab ? primaryColorLight : Colors.grey[400]),
+        ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }

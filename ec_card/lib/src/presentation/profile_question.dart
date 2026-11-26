@@ -17,7 +17,8 @@ import 'package:ec_card_app/src/data/core/logging/app_log.dart';
 class ProfileQuestionsScreen extends StatefulWidget {
   final bool showBackButton;
 
-  const ProfileQuestionsScreen({super.key, this.showBackButton = true});
+  const ProfileQuestionsScreen({Key? key, this.showBackButton = true})
+      : super(key: key);
 
   @override
   _ProfileQuestionsScreenState createState() => _ProfileQuestionsScreenState();
@@ -31,8 +32,6 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
   bool _submitAttempted = false;
   String errorMessage = '';
   final _formKey = GlobalKey<FormState>();
-  
-  // Variables to hold user's answers
   final Map<String, String?> _selectedSingleAnswers = {};
   final Map<String, List<String>> _selectedMultiAnswers = {};
 
@@ -42,9 +41,6 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     _loadProfileData();
   }
 
-  /// [Zero-Knowledge Explanation]
-  /// Yeh function screen khulte hi backend se questions ki list mangwata hai.
-  /// (Form hardcoded nahi hai, server decide karta hai kya poochna hai).
   Future<void> _loadProfileData() async {
     final result = await loadingStatusRepository.getUserProfileData(
         isConnectedToInternet: true);
@@ -61,14 +57,6 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     );
   }
 
-  /// [Zero-Knowledge Explanation]
-  /// Yeh function "Submit" button dabane par chalta hai. 
-  /// Yeh check karta hai ki user ne saare required sawalo ke jawab diye ya nahi, aur phir answers server ko bhejta hai.
-  ///
-  /// [Change Effect]
-  /// Yahan `_formKey.currentState!.validate()` form ke single-select ko check karta hai.
-  /// Phir `missingRequiredMultiSelect` alag se multi-select ko check karta hai.
-  /// Agar tum yeh `missingRequiredMultiSelect` wala `if` hata do, toh user bina Multi-Select required question bhare submit kar dega, aur server error dega.
   void _submitAnswers() async {
     setState(() => _submitAttempted = true);
 
@@ -82,7 +70,6 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
       return;
     }
 
-    // Checking if any REQUIRED multi-select question is empty
     final missingRequiredMultiSelect = userProfileData!.questions.list.any(
       (question) =>
           question.choiceType == "multi_select" &&
@@ -95,11 +82,10 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     }
 
     setState(() {
-      _isSubmitting = true; 
+      _isSubmitting = true; // Show progress indicator
     });
 
-    // Formatting answers for backend JSON format
-    final List answers = userProfileData!.questions.list
+    final List<Map> answers = userProfileData!.questions.list
         .map((question) {
           if (question.choiceType == "single_select") {
             return {
@@ -139,7 +125,8 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
       if (!mounted) return;
 
       setState(() {
-        _isSubmitting = false; 
+        _isSubmitting =
+            false; // Hide progress indicator after API call completes
       });
 
       result.fold(
@@ -155,6 +142,7 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
         },
         (message) async {
           appLog("Profile completion status saved successfully.");
+
           if (context.mounted) {
             _showDashBoard();
           }
@@ -175,10 +163,11 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     }
   }
 
-  /// [Zero-Knowledge Explanation]
-  /// Submit hone ke baad, hum user ko directly dashboard nahi bhejte.
-  /// Hum use wapas `LoadingStatusPage` (Gatekeeper) ke paas bhejte hain, taaki Gatekeeper check kare ki ab isse Quiz dikhana hai ya Video.
   void _showDashBoard() {
+    // Route back through LoadingStatusPage so it re-evaluates quiz/video/halt
+    // status now that the additional questions have been answered, instead
+    // of jumping straight to the dashboard and skipping the quiz until the
+    // next app start.
     Navigator.pushAndRemoveUntil(
         context,
         PageRouteBuilder(
@@ -227,6 +216,12 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
                       padding: const EdgeInsets.all(16),
                       child: Form(
                         key: _formKey,
+                        // Form defaults to AutovalidateMode.disabled, so
+                        // once Submit triggers the first validate() and
+                        // shows an error, selecting a value afterward never
+                        // re-runs the validator on its own - the error text
+                        // just sits there. onUserInteraction makes it
+                        // revalidate as the user fixes each field.
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         child: Column(
                           children: [
@@ -235,7 +230,7 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
                             ElevatedButton(
                               onPressed: _isSubmitting
                                   ? null
-                                  : _submitAnswers,
+                                  : _submitAnswers, // Disable button if submitting
                               style: ElevatedButton.styleFrom(
                                 minimumSize: const Size.fromHeight(50),
                                 backgroundColor: primaryCyan,
@@ -293,6 +288,11 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
           ? null
           : _selectedSingleAnswers[question.type],
       isExpanded: true,
+      // DropdownButtonFormField ignores decoration.hintStyle for what it
+      // actually displays when nothing is selected - it renders an
+      // unstyled Text(decoration.hintText) unless a hint widget is passed
+      // explicitly here. Without this, the placeholder rendered full-size
+      // and dark instead of matching the multi-select's grey placeholder.
       hint: Text(
         AppLocalizations.of(context)!.select_option,
         style: TextStyle(
@@ -363,14 +363,15 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     );
   }
 
-  /// [Zero-Knowledge Explanation]
-  /// Flutter ke normal Dropdown mein Checkboxes nahi hote (Multi-select nahi hota).
-  /// Toh yahan ek custom "Fake Dropdown" banaya gaya hai. Jab is par click karte hain, toh ek Dialog(Popup) khulta hai jisme Checkboxes bhare hote hain.
   Widget _buildMultiSelectDropdown(Question question) {
     final selected = _selectedMultiAnswers[question.type] ?? [];
     final hasError =
         _submitAttempted && question.required && selected.isEmpty;
 
+    // Same InputDecoration shape as _buildSingleSelectDropdown (which
+    // DropdownButtonFormField renders via InputDecorator under the hood),
+    // so the floating label, border, and error styling stay identical
+    // between the two dropdown types instead of drifting apart.
     return GestureDetector(
       onTap: () => _showMultiSelectDialog(question),
       child: InputDecorator(
@@ -397,6 +398,11 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
             borderSide: const BorderSide(color: primaryCyan, width: 1),
           ),
         ),
+        // DropdownButtonFormField always passes isEmpty: false when it has
+        // a hint to show (see Flutter's dropdown.dart), which is what keeps
+        // its label permanently floated above the border rather than
+        // sitting inline. This field always shows either the selected
+        // values or a hint as its content, so it mirrors that here.
         isEmpty: false,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -425,14 +431,11 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
     );
   }
 
-  /// [Zero-Knowledge Explanation]
-  /// Yeh function wo popup dikhata hai jisme tum multiple options tick karte ho.
-  /// 'tempSelectedValues' isliye banaya hai ki agar user cancel kare toh purani chuni hui cheezein wehsi ki wehsi rahein.
   void _showMultiSelectDialog(Question question) {
     List<String> selectedValues =
         List.from(_selectedMultiAnswers[question.type] ?? []);
     final tempSelectedValues =
-        List<String>.from(selectedValues); 
+        List<String>.from(selectedValues); // Create a temporary list
 
     showDialog(
       context: context,
@@ -443,6 +446,7 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            // Reduced padding
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -457,6 +461,9 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
                     ),
                   ),
                 ),
+                // Flexible bounds the scroll view to the space left after the
+                // title and buttons, so a long option list scrolls instead of
+                // overflowing the dialog.
                 Flexible(
                   child: SingleChildScrollView(
                     child: ListBody(
@@ -481,7 +488,7 @@ class _ProfileQuestionsScreenState extends State<ProfileQuestionsScreen> {
                               tempSelectedValues.remove(option);
                             }
                             (context as Element)
-                                .markNeedsBuild(); // Trigger rebuild for dialog
+                                .markNeedsBuild(); // Trigger rebuild
                           },
                         );
                       }).toList(),

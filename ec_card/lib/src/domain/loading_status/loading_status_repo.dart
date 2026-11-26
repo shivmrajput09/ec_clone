@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../../data/loading_status/model/org_brand_info/org_brand_info.dart';
-import '../../data/loading_status/model/user_dashboard/user_dashboard.dart';
-import '../../data/loading_status/model/user_profile/user_profile.dart';
-import '../core/errors/errors.dart';
+import 'package:ec_card_app/src/data/loading_status/model/org_brand_info/org_brand_info.dart';
+import 'package:ec_card_app/src/data/loading_status/model/user_dashboard/user_dashboard.dart';
+import 'package:ec_card_app/src/data/loading_status/model/user_profile/user_profile.dart';
+import 'package:ec_card_app/src/domain/core/errors/errors.dart';
 
 abstract class LoadingStatusRepository {
   Future<Either<AppErrors, String>> checkQuizPassedStatus(
@@ -11,7 +11,7 @@ abstract class LoadingStatusRepository {
   Future<Either<AppErrors, OrgBrandInfoData>> getBrandInfo();
 
   Future<Either<AppErrors, UserProfileData>> getUserProfileData(
-      {required bool isConnectedToInternet});
+    {required bool isConnectedToInternet});
 
   Future<Either<AppErrors, UserDashboardData>> getUserDashBoardData(
       {required bool isConnectedToInternet});
